@@ -1,0 +1,33 @@
+# Account information
+IMAPAccount fastmail
+Host imap.fastmail.com
+User james@r-vn.org
+PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.fastmail.gpg"
+SSLType IMAPS
+
+# Remote storage
+IMAPStore fastmail-remote
+Account fastmail
+
+# Local storage
+MaildirStore fastmail-local
+Path ~/Mail/r-vn.org/
+Inbox ~/Mail/r-vn.org/INBOX
+SubFolders Verbatim
+
+# Here we link up the remote and local storages.
+Channel fastmail
+Master :fastmail-remote:
+Slave :fastmail-local:
+# Syncs all folders except for old archives.
+Patterns * !2005-2017*
+# Automatically remove any messages marked for deletion.
+Expunge Both
+# Keep the arrival date with the message to preserve time based message sorting locally.
+CopyArrivalDate yes
+# Sync everything.
+Sync All
+# Automatically create missing mailboxes on the master and the slave.
+Create Both
+# Keep sync state in the local slave mailboxes.
+SyncState *
