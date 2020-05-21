@@ -1,6 +1,7 @@
 { ... }:
 {
   imports = [
+    ./dropbox.nix
     ./evolution.nix
     ./gnome-utils.nix
     ./keybase.nix

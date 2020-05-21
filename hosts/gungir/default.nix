@@ -14,6 +14,7 @@
   # Modules
   modules = {
     desktop = {
+      apps.dropbox.enable = true;
       #apps.evolution.enable = true;
       apps.gnome-utils.enable = true;
       apps.keybase.enable = true;
