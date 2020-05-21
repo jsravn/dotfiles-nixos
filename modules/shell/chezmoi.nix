@@ -14,6 +14,8 @@ with lib;
         unstable.chezmoi
         lastpass-cli
       ];
+      # Don't use pinentry - always use console.
+      env.LPASS_DISABLE_PINENTRY = "1";
     };
   };
 }
