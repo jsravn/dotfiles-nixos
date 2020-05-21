@@ -43,13 +43,13 @@ with lib;
     security.pam.services.${config.my.username}.enableGnomeKeyring = true;
 
     # Set terminal
-    my.home.xdg.configFile."sway.d/term.conf".text = ''
+    my.home.xdg.configFile."sway.d/00-term.conf".text = ''
       # Set terminal
       set $term ${config.modules.desktop.term.default}
     '';
 
     # Add some additional useful services.
-    my.home.xdg.configFile."sway.d/gnome.conf".text = ''
+    my.home.xdg.configFile."sway.d/00-gnome.conf".text = ''
       # xsettingsd for legacy GTK apps to read GTK config via XSETTINGS protocol
       exec ${pkgs.gnome3.gnome-settings-daemon}/libexec/gsd-xsettings
 

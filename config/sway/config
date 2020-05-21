@@ -52,7 +52,6 @@ for_window [app_id="gnome-calculator"] floating enable
 # background applications
 exec mako
 exec redshift -m wayland
-exec dropbox
 exec swaymsg \
 	"workspace $ws8; exec spotify; \
      workspace $ws2; exec emacs; \

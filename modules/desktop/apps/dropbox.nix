@@ -12,5 +12,10 @@ with lib;
     my.packages = with pkgs; [
       dropbox
     ];
+
+    # Start up automatically in Sway.
+    my.home.xdg.configFile."sway.d/50-dropbox.conf".text = ''
+      exec dropbox
+    '';
   };
 }
