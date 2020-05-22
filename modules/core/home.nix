@@ -95,7 +95,6 @@ in {
       '';
 
     # SSH configuration.
-    programs.ssh.startAgent = true;
     my.home.programs.ssh = {
       enable = true;
       matchBlocks."*" = {

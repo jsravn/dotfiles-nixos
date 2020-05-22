@@ -35,12 +35,6 @@ with lib;
       alias.startsway = "$XDG_CONFIG_HOME/sway/startsway.sh";
     };
 
-    # Use gnome-keyring for SSH and secret management.
-    environment.systemPackages = with pkgs; [
-      gnome3.gnome-keyring
-    ];
-    security.pam.services.${config.my.username}.enableGnomeKeyring = true;
-
     # Set terminal
     my.home.xdg.configFile."sway.d/00-term.conf".text = ''
       # Set terminal

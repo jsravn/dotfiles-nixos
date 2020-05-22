@@ -8,8 +8,7 @@
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "usbhid" "uas" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [  ];
-  boot.kernelModules = [ "kvm-intel" "nvidia" "acpi_call" ];
-  boot.extraModulePackages = with config.boot.kernelPackages; [ nvidia_x11 acpi_call ];
+  boot.kernelModules = [ "kvm-intel" ];
   boot.blacklistedKernelModules = [ "nouveau" ];
 
   ## CPU
@@ -18,7 +17,6 @@
   hardware.cpu.intel.updateMicrocode = true;
 
   ## GPU
-  #services.xserver.videoDrivers = [ "modesetting" ];
   hardware.opengl.enable = true;
   environment.extraInit = "export WLR_DRM_DEVICES=/dev/dri/card0";
 

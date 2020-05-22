@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  # Core packages for all systems.
+  # Core system packages.
   environment.systemPackages = with pkgs; [
     coreutils
     git
@@ -12,6 +12,7 @@
     gnumake
     file
     pciutils
+    libsysfs
     my.cached-nix-shell # for instant nix-shell scripts
   ];
 }
