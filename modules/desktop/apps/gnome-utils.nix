@@ -16,6 +16,9 @@ with lib;
       gnome3.gnome-calculator      # A nice calculator
       gnome3.nautilus              # File browser
       gnome3.seahorse              # Secret browser
+      samba
     ];
+
+    services.gvfs.enable = true;
   };
 }

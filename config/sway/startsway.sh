@@ -9,4 +9,4 @@ export XDG_SESSION_TYPE=wayland
 export XDG_CURRENT_DESKTOP=sway
 
 # Start sway.
-exec sway --unsupported-gpu >~/.cache/sway-out.txt 2>~/.cache/sway-err.txt
+dbus-run-session sway --unsupported-gpu >~/.cache/sway-out.txt 2>~/.cache/sway-err.txt
