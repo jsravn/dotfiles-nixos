@@ -13,6 +13,7 @@
     file
     pciutils
     libsysfs
+    lm_sensors
     my.cached-nix-shell # for instant nix-shell scripts
   ];
 }

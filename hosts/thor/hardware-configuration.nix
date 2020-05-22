@@ -10,6 +10,8 @@
   boot.initrd.kernelModules = [  ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.blacklistedKernelModules = [ "nouveau" ];
+  # Unlocks more sensors.
+  boot.kernelParams = [ "acpi_enforce_resources=lax" ];
 
   ## CPU
   nix.maxJobs = lib.mkDefault 8;

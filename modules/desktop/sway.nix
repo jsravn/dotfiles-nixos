@@ -11,20 +11,25 @@ with lib;
   config = mkIf config.modules.desktop.sway.enable {
     my = {
       packages = with pkgs; [
+        # sway
         sway
         swaybg
         swayidle
         swaylock
         xwayland
-        libappindicator
+
+        # waybar
         waybar
+        libappindicator   # tray icons
+        python3           # used by waybar weather script and mediaplayer script
+
+        # support applications
         grim
         slurp
         imagemagick
         rofi
         mako
         redshift-wlr
-        python3                      # used by waybar script
         gnome3.gnome-settings-daemon # for gsd-xsettings
         polkit_gnome                 # authentication popups
       ];
