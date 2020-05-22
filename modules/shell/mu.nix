@@ -11,7 +11,7 @@ with lib;
   config = mkIf config.modules.shell.mu.enable {
     my = {
       packages = with pkgs; [
-        mu
+        unstable.mu
       ];
     };
   };
