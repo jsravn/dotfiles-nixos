@@ -46,7 +46,7 @@ with lib;
       # xsettingsd for legacy GTK apps to read GTK config via XSETTINGS protocol
       exec ${pkgs.gnome3.gnome-settings-daemon}/libexec/gsd-xsettings
 
-      # polkit authentication agent
+      # polkit authentication agent - e.g. if an app requests root access.
       exec ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
     '';
 
