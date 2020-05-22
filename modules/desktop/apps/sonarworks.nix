@@ -33,7 +33,7 @@ with lib;
 
   config = mkIf config.modules.desktop.apps.sonarworks.enable {
     my.packages = with pkgs; [
-      carla
+      unstable.carla
       jack2
       non
       (writeScriptBin "jack-start" ''

@@ -52,7 +52,11 @@ with lib;
         rustfmt
         rls
         # :term vterm
-        cmake
+        # use shell.nix with libvterm-neovim:
+        # { pkgs ? import <nixpkgs> {} }:
+        # pkgs.mkShell {
+        #   buildInputs = with pkgs; [ cmake libtool gcc libvterm-neovim ];
+        # }
       ];
 
       env.PATH = [ "$XDG_CONFIG_HOME/emacs/bin" ];
