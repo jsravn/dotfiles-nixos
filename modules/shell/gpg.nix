@@ -24,6 +24,7 @@ in {
       #      is cleaner than overriding the systemd unit.
       home.xdg.configFile."gnupg/gpg-agent.conf" = {
         text = ''
+          enable-ssh-support
           default-cache-ttl ${toString gpgCfg.cacheTTL}
           pinentry-program ${pkgs.pinentry.gtk2}/bin/pinentry
         '';
@@ -35,6 +36,7 @@ in {
     };
 
     programs.gnupg.agent.enable = true;
+    programs.gnupg.agent.enableSSHSupport = true;
 #    programs.gnupg.agent.pinentryFlavor = "gtk2";
   };
 }
