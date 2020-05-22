@@ -1,4 +1,5 @@
-#!/bin/bash -e
+#!/usr/bin/env bash
+set -e
 
 Lock_command="$HOME/.config/sway/lock.sh"
 Suspend_command="systemctl suspend"

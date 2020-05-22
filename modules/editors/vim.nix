@@ -15,14 +15,9 @@ with lib;
         neovim
       ];
 
-      home.xdg.configFile."nvim".source = <config/nvim>;
       env.VIMINIT = "let \\$MYVIMRC='\\$XDG_CONFIG_HOME/nvim/init.vim' | source \\$MYVIMRC";
       alias.vim = "nvim";
       alias.v = "nvim";
     };
-
-    system.userActivationScripts.updateNeovim = ''
-      ${pkgs.neovim}/bin/nvim +PlugInstall +qall
-    '';
   };
 }

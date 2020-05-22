@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Copied from https://github.com/Robinhuett/dotfiles/blob/master/.config/waybar/modules/weather.sh.
 
 cachedir=~/.cache/rbn

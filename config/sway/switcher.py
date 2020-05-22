@@ -1,4 +1,4 @@
-#!/bin/env python3
+#!/usr/bin/env python3
 #
 # Modified from https://github.com/varesa/dotfiles/blob/master/.config/sway/switch_window.py.
 

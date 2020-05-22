@@ -10,6 +10,8 @@
     wget
     curl
     gnumake
+    file
+    pciutils
     my.cached-nix-shell # for instant nix-shell scripts
   ];
 }

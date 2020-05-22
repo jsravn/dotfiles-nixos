@@ -12,20 +12,22 @@
   # Modules
   modules = {
     desktop = {
+      apps.discord.enable = true;
       apps.dropbox.enable = true;
       #apps.evolution.enable = true;
       apps.gnome-utils.enable = true;
       apps.keybase.enable = true;
+      apps.slack.enable = true;
       apps.sonarworks.enable = true;
       apps.spotify.enable = true;
-
       browsers.default = "chromium";
       browsers.chromium.enable = true;
-
+      fonts.enable = true;
+      sound.enable = true;
       sway.enable = true;
-
       term.default = "kitty";
       term.kitty.enable = true;
+      xdg-mime.enable = true;
     };
 
     dev = {
@@ -54,7 +56,6 @@
       git.enable = true;
       gpg.enable = true;
       isync.enable = true;
-      keybase.enable = true;
       mu.enable = true;
       scmpuff.enable = true;
       zsh.enable = true;

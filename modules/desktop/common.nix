@@ -1,55 +1,5 @@
 { config, lib, pkgs, ... }:
 {
-  # Sound
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
-  hardware.pulseaudio.daemon.config = {
-    # 5 is good - see https://gitlab.freedesktop.org/pulseaudio/pulseaudio/issues/310
-    resample-method = "speex-float-5";
-    flat-volumes = "no";
-    # fix pa bug with realtime scheduling
-    rlimit-rttime = "-1";
-    default-sample-format = "float32le";
-    default-sample-rate = "48000";
-    alternate-sample-rate = "44100";
-  };
-  my.packages = with pkgs; [
-    pavucontrol
-  ];
-
-  # Fonts
-  fonts = {
-    enableFontDir = true;
-    enableGhostscriptFonts = true;
-    fonts = with pkgs; [
-      dejavu_fonts
-      noto-fonts-emoji
-      font-awesome-ttf
-    ];
-    fontconfig = {
-      defaultFonts = {
-        sansSerif = [ "DejaVu Sans" ];
-        serif = [ "DejaVu Serif" ];
-        monospace = [ "DejaVu Sans Mono" ];
-        emoji = [ "Noto Color Emoji" ];
-      };
-      subpixel = {
-        lcdfilter = "default";
-        rgba = "rgb";
-      };
-      # Ensure missing emojis/unicode characters fallback to Noto.
-      localConf = ''
-        <fontconfig>
-          <match target="pattern">
-              <edit name="family" mode="append">
-                  <string>Noto Color Emoji</string>
-              </edit>
-          </match>
-        </fontconfig>
-      '';
-    };
-  };
-
   # Redshift config
   my.home.xdg.configFile."redshift.conf".text = ''
     [redshift]

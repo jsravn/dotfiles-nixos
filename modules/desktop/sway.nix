@@ -15,6 +15,8 @@ with lib;
         swaybg
         swayidle
         swaylock
+        xwayland
+        libappindicator
         waybar
         grim
         slurp
@@ -32,9 +34,6 @@ with lib;
 
       alias.startsway = "$XDG_CONFIG_HOME/sway/startsway.sh";
     };
-
-    # Enable OpenGL drivers.
-    hardware.opengl.enable = true;
 
     # Use gnome-keyring for SSH and secret management.
     environment.systemPackages = with pkgs; [

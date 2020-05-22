@@ -10,7 +10,20 @@ with lib;
 
   config = mkIf config.modules.desktop.apps.keybase.enable {
     my.packages = with pkgs; [
+      keybase
       keybase-gui
+      kbfs
     ];
+
+    services.kbfs = {
+      enable = true;
+      mountPoint = "%t/kbfs";
+      extraFlags = [ "-label %u" ];
+    };
+
+    systemd.user.services.kbfs = {
+      environment = { KEYBASE_RUN_MODE = "prod"; };
+      serviceConfig.Slice = "keybase.slice";
+    };
   };
 }

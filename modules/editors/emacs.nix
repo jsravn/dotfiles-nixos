@@ -39,15 +39,20 @@ with lib;
         editorconfig-core-c # per-project style config
         # :tools lookup & :lang org +roam
         sqlite
+        clang
         # :lang cc
         ccls
         # :lang javascript
         nodePackages.javascript-typescript-langserver
         # :lang latex & :lang org (latex previews)
         texlive.combined.scheme-medium
+        # :lang nix
+        nixfmt
         # :lang rust
         rustfmt
         rls
+        # :term vterm
+        cmake
       ];
 
       env.PATH = [ "$XDG_CONFIG_HOME/emacs/bin" ];
