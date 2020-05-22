@@ -70,5 +70,8 @@ with lib;
       .fail
       .endif
     '';
+
+    # includes the JACK module
+    hardware.pulseaudio.package = pkgs.pulseaudioFull;
   };
 }
