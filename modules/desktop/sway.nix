@@ -21,7 +21,6 @@ with lib;
         # waybar
         waybar
         libappindicator   # tray icons
-        python3           # used by waybar weather script and mediaplayer script
 
         # support applications
         grim

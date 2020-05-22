@@ -1,4 +1,6 @@
-#!/usr/bin/env python3
+#!/usr/bin/env cached-nix-shell
+#!nix-shell -p "python3.withPackages (pp: [pp.pygobject3])" -p gobjectIntrospection -p playerctl -i python
+
 # Copied from https://github.com/Alexays/Waybar/blob/master/resources/custom_modules/mediaplayer.py
 import argparse
 import logging
