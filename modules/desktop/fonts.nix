@@ -23,18 +23,6 @@ with lib; {
           lcdfilter = "default";
           rgba = "rgb";
         };
-        # Ensure missing emojis/unicode characters fallback to Noto.
-        localConf = ''
-          <?xml version='1.0'?>
-          <!DOCTYPE fontconfig SYSTEM 'fonts.dtd'>
-          <fontconfig>
-            <match target="pattern">
-                <edit name="family" mode="append">
-                    <string>Noto Color Emoji</string>
-                </edit>
-            </match>
-          </fontconfig>
-        '';
       };
     };
   };

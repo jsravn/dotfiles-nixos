@@ -35,7 +35,6 @@ with lib;
 
       home.xdg.configFile."sway".source = <config/sway>;
       home.xdg.configFile."waybar".source = <config/waybar>;
-
       alias.startsway = "$XDG_CONFIG_HOME/sway/startsway.sh";
     };
 
