@@ -20,5 +20,6 @@ with lib;
     ];
 
     services.gvfs.enable = true;
+    services.gnome3.gnome-keyring.enable = true;
   };
 }
