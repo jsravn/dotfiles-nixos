@@ -15,8 +15,10 @@
       apps.discord.enable = true;
       apps.dropbox.enable = true;
       #apps.evolution.enable = true;
+      apps.fastmail.enable = true;
       apps.gnome-utils.enable = true;
       apps.keybase.enable = true;
+      apps.libreoffice.enable = true;
       apps.slack.enable = true;
       apps.sonarworks.enable = true;
       apps.spotify.enable = true;
