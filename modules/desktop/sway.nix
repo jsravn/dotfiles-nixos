@@ -9,16 +9,18 @@ with lib;
   };
 
   config = mkIf config.modules.desktop.sway.enable {
-    programs.sway.enable = true;
-    programs.sway.extraOptions = [ "--verbose" "--unsupported-gpu" ];
-    programs.sway.extraSessionCommands = ''
-      # Fix Java apps.
-      export _JAVA_AWT_WM_NONREPARENTING=1
-      # for xdpw
-      export XDG_SESSION_TYPE=wayland
-      export XDG_CURRENT_DESKTOP=sway
-    '';
-    programs.sway.wrapperFeatures.gtk = true;
+    programs.sway = {
+      enable = true;
+      extraOptions = [ "--verbose" "--unsupported-gpu" ];
+      extraSessionCommands = ''
+        # Fix Java apps.
+        export _JAVA_AWT_WM_NONREPARENTING=1
+        # for xdpw
+        export XDG_SESSION_TYPE=wayland
+        export XDG_CURRENT_DESKTOP=sway
+      '';
+      wrapperFeatures.gtk = true;
+    };
 
     my = {
       packages = with pkgs; [
@@ -45,7 +47,7 @@ with lib;
 
       home.xdg.configFile."sway".source = <config/sway>;
       home.xdg.configFile."waybar".source = <config/waybar>;
-      alias.startsway = "$XDG_CONFIG_HOME/sway/startsway.sh";
+      alias.start-sway = ''sway >~/.cache/sway-out.txt 2>~/.cache/sway-err.txt'';
     };
 
     # Set terminal
