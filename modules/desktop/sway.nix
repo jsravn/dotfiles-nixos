@@ -9,10 +9,20 @@ with lib;
   };
 
   config = mkIf config.modules.desktop.sway.enable {
+    programs.sway.enable = true;
+    programs.sway.extraOptions = [ "--verbose" "--unsupported-gpu" ];
+    programs.sway.extraSessionCommands = ''
+      # Fix Java apps.
+      export _JAVA_AWT_WM_NONREPARENTING=1
+      # for xdpw
+      export XDG_SESSION_TYPE=wayland
+      export XDG_CURRENT_DESKTOP=sway
+    '';
+    programs.sway.wrapperFeatures.gtk = true;
+
     my = {
       packages = with pkgs; [
-        # sway
-        sway
+        # sway extra packages
         swaybg
         swayidle
         swaylock
@@ -52,11 +62,5 @@ with lib;
       # polkit authentication agent - e.g. if an app requests root access.
       exec ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
     '';
-
-    # Enable dconf for the various gnome and gtk services.
-    programs.dconf.enable = true;
-
-    # Let swaylock use PAM for authentication.
-    security.pam.services.swaylock = {};
   };
 }
