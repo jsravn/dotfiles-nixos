@@ -8,7 +8,7 @@ in {
       default = false;
     };
     hwmonTemp = mkOption {
-      type = types.string;
+      type = types.str;
       default = "/sys/class/hwmon/hwmon0/temp1_input";
     };
   };
@@ -49,7 +49,8 @@ in {
         mako
         redshift-wlr
         gnome3.gnome-settings-daemon # for gsd-xsettings
-        polkit_gnome # authentication popups
+        polkit_gnome                 # authentication popups
+        python3                      # switcher
       ];
 
       alias.start-sway = "sway >~/.cache/sway-out.txt 2>~/.cache/sway-err.txt";
