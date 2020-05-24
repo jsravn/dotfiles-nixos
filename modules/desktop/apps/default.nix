@@ -6,8 +6,9 @@
     ./evolution.nix
     ./fastmail.nix
     ./gnome-utils.nix
-    ./libreoffice.nix
     ./keybase.nix
+    ./libreoffice.nix
+    ./lutris.nix
     ./slack.nix
     ./sonarworks.nix
     ./spotify.nix

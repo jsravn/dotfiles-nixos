@@ -19,18 +19,25 @@
       apps.gnome-utils.enable = true;
       apps.keybase.enable = true;
       apps.libreoffice.enable = true;
+      apps.lutris.enable = true;
       apps.slack.enable = true;
       apps.sonarworks.enable = true;
       apps.spotify.enable = true;
+
       browsers.default = "chromium";
       browsers.chromium.enable = true;
       browsers.firefox.enable = true;
       #browsers.chromium.useOzone = true;
+
       fonts.enable = true;
       sound.enable = true;
+
       sway.enable = true;
+      sway.hwmonTemp = "/sys/class/hwmon/hwmon0/temp1_input";
+
       term.default = "kitty";
       term.kitty.enable = true;
+
       xdg-mime.enable = true;
     };
 

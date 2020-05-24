@@ -1,14 +1,19 @@
 { config, lib, pkgs, ... }:
 with lib;
-{
+let cfg = config.modules.desktop.sway;
+in {
   options.modules.desktop.sway = {
     enable = mkOption {
       type = types.bool;
       default = false;
     };
+    hwmonTemp = mkOption {
+      type = types.string;
+      default = "/sys/class/hwmon/hwmon0/temp1_input";
+    };
   };
 
-  config = mkIf config.modules.desktop.sway.enable {
+  config = mkIf cfg.enable {
     programs.sway = {
       enable = true;
       extraOptions = [ "--verbose" "--unsupported-gpu" ];
@@ -34,7 +39,7 @@ with lib;
 
         # waybar
         waybar
-        libappindicator   # tray icons
+        libappindicator # tray icons
 
         # support applications
         grim
@@ -44,12 +49,75 @@ with lib;
         mako
         redshift-wlr
         gnome3.gnome-settings-daemon # for gsd-xsettings
-        polkit_gnome                 # authentication popups
+        polkit_gnome # authentication popups
       ];
 
+      alias.start-sway = "sway >~/.cache/sway-out.txt 2>~/.cache/sway-err.txt";
+
       home.xdg.configFile."sway".source = <config/sway>;
-      home.xdg.configFile."waybar".source = <config/waybar>;
-      alias.start-sway = ''sway >~/.cache/sway-out.txt 2>~/.cache/sway-err.txt'';
+
+      home.xdg.configFile."waybar" = {
+        source = <config/waybar>;
+        recursive = true;
+      };
+      home.xdg.configFile."waybar/config".text = ''
+        {
+          "layer": "top",
+          "modules-left": ["sway/workspaces", "sway/mode"],
+          "modules-center": ["sway/window"],
+          "modules-right": [
+            "custom/spotify",
+            "custom/weather",
+            "memory",
+            "cpu",
+            "temperature",
+            "idle_inhibitor",
+            "clock",
+            "tray"
+          ],
+          "clock": {
+            "format": "{:%a %b %e, %H:%M}"
+          },
+          "memory": {
+            "format": "{percentage}% "
+          },
+          "cpu": {
+            "format": "{usage}% "
+          },
+          "temperature": {
+            "hwmon-path": "${cfg.hwmonTemp}",
+            "critical-threshold": 40,
+            "format-critical": "{temperatureC}°C ",
+            "format": "{temperatureC}°C "
+          },
+          "idle_inhibitor": {
+            "format": "{icon}",
+            "format-icons": {
+              "activated": "",
+              "deactivated": ""
+            }
+          },
+          "tray": {
+            "icon-size": 18
+          },
+          "custom/weather": {
+            "format": "{}",
+            "format-alt": "{alt}: {}",
+            "format-alt-click": "click-right",
+            "interval": 600,
+            "return-type": "json",
+            "exec": "~/.config/waybar/weather.sh Richmond,UK",
+            "exec-if": "ping wttr.in -c1"
+          },
+          "custom/spotify": {
+            "format": "{} ",
+            "return-type": "json",
+            "max-length": 60,
+            "exec": "~/.config/waybar/mediaplayer.py 2> /dev/null",
+            "exec-if": "pgrep spotify"
+          }
+        }
+      '';
     };
 
     # Set terminal
