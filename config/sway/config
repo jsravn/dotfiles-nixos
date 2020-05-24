@@ -49,6 +49,7 @@ assign [class="discord"] $ws6
 assign [class="Keybase"] $ws6
 assign [app_id="evolution"] $ws7
 for_window [app_id="gnome-calculator"] floating enable
+for_window [class="Steam" title="Friends List"] floating enable
 
 # background applications
 exec mako
