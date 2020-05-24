@@ -12,5 +12,6 @@
     ./slack.nix
     ./sonarworks.nix
     ./spotify.nix
+    ./steam.nix
   ];
 }

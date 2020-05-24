@@ -12,11 +12,19 @@ in {
       type = types.bool;
       default = false;
     };
+
+    useVaapi = mkOption {
+      type = types.bool;
+      default = false;
+    };
   };
 
   config = mkIf cfg.enable {
     my.packages = with pkgs; [
-      (chromium.override {useOzone = cfg.useOzone;})
+      (chromium.override {
+        useOzone = cfg.useOzone;
+        useVaapi = cfg.useVaapi;
+      })
     ];
   };
 }

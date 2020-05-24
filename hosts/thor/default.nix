@@ -23,11 +23,13 @@
       apps.slack.enable = true;
       apps.sonarworks.enable = true;
       apps.spotify.enable = true;
+      apps.steam.enable = true;
 
       browsers.default = "chromium";
       browsers.chromium.enable = true;
+      #browsers.chromium.useVaapi = false;    # Requires libva. In 20.03 causes a full rebuild.
+      #browsers.chromium.useOzone = true;     # Wayland native version. In 20.03.causes a full rebuild.
       browsers.firefox.enable = true;
-      #browsers.chromium.useOzone = true;
 
       fonts.enable = true;
       sound.enable = true;

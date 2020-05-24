@@ -21,8 +21,12 @@ with lib;
 
   ## GPU
   services.xserver.videoDrivers = [ "amdgpu" ];
-  hardware.opengl.enable = true;
-  hardware.opengl.driSupport32Bit = true;
+  hardware.opengl = {
+    enable = true;
+    extraPackages = with pkgs; [
+      libva
+    ];
+  };
 
   ## SSDs
   services.fstrim.enable = true;
