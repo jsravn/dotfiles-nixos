@@ -1,6 +1,5 @@
 { config, lib, pkgs, ... }:
-with lib;
-{
+with lib; {
   options.modules.desktop.apps.lutris = {
     enable = mkOption {
       type = types.bool;
@@ -9,8 +8,6 @@ with lib;
   };
 
   config = mkIf config.modules.desktop.apps.lutris.enable {
-    my.packages = with pkgs; [
-      lutris
-    ];
+    my.packages = with pkgs; [ lutris ];
   };
 }

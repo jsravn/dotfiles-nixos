@@ -22,7 +22,7 @@ with lib;
   ## GPU
   services.xserver.videoDrivers = [ "amdgpu" ];
   hardware.opengl.enable = true;
-  environment.extraInit = "export WLR_DRM_DEVICES=/dev/dri/card0";
+  hardware.opengl.driSupport32Bit = true;
 
   ## SSDs
   services.fstrim.enable = true;
