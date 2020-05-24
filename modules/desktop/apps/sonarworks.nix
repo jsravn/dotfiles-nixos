@@ -36,7 +36,8 @@ with lib;
       unstable.carla
       jack2
       non
-      (writeScriptBin "jack-start" ''
+      gnome3.zenity # Used by Sonarworks to open file dialogues.
+      (writeScriptBin "start-jack" ''
         #!${stdenv.shell}
 
         # Pre-reqs:
@@ -59,6 +60,13 @@ with lib;
         jack_control dps nperiods 3
         jack_control dps period 256
         jack_control start
+        # create pulseaudio sink
+        pactl load-module module-jack-sink channels=2 connect=no
+      '')
+      (writeScriptBin "carla-sonarworks" ''
+        #!${stdenv.shell}
+        export LD_LIBRARY_PATH=${xorg.libX11}/lib:${xorg.libXext}/lib:$LD_LIBRARY_PATH
+        exec ${unstable.carla}/bin/carla
       '')
     ];
 
@@ -66,7 +74,7 @@ with lib;
     hardware.pulseaudio.extraConfig = ''
       .ifexists module-jackdbus-detect.so
       .nofail
-      load-module module-jackdbus-detect connect=no channels=2
+      unload-module module-jackdbus-detect
       .fail
       .endif
     '';
