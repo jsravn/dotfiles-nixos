@@ -81,7 +81,6 @@ in {
       HISTFILE = "$XDG_DATA_HOME/bash/history";
       INPUTRC = "$XDG_CACHE_HOME/readline/inputrc";
       LESSHISTFILE = "$XDG_CACHE_HOME/lesshst";
-      WGETRC = "$XDG_CACHE_HOME/wgetrc";
     };
 
     # Add the bin folder to the user PATH.
