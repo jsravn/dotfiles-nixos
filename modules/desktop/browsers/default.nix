@@ -3,6 +3,7 @@ with lib;
 {
   imports = [
     ./chromium.nix
+    ./firefox.nix
   ];
 
   options.modules.desktop.browsers = {

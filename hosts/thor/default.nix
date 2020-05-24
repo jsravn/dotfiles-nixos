@@ -24,6 +24,8 @@
       apps.spotify.enable = true;
       browsers.default = "chromium";
       browsers.chromium.enable = true;
+      browsers.firefox.enable = true;
+      #browsers.chromium.useOzone = true;
       fonts.enable = true;
       sound.enable = true;
       sway.enable = true;

@@ -15,9 +15,11 @@ with lib;
       extraSessionCommands = ''
         # Fix Java apps.
         export _JAVA_AWT_WM_NONREPARENTING=1
-        # for xdpw
+        # For xdpw (screen sharing).
         export XDG_SESSION_TYPE=wayland
         export XDG_CURRENT_DESKTOP=sway
+        # For Firefox.
+        export MOZ_ENABLE_WAYLAND=1
       '';
       wrapperFeatures.gtk = true;
     };
