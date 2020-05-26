@@ -27,8 +27,8 @@
 
       browsers.default = "chromium";
       browsers.chromium.enable = true;
-      #browsers.chromium.useVaapi = false;    # Requires libva. In 20.03 causes a full rebuild.
-      #browsers.chromium.useOzone = true;     # Wayland native version. In 20.03.causes a full rebuild.
+      #browsers.chromium.useVaapi = true;  # requires libva. In 20.03 causes a full rebuild.
+      #browsers.chromium.useOzone = true;  # Wayland native version. In 20.03.causes a full rebuild.
       browsers.firefox.enable = true;
 
       fonts.enable = true;
