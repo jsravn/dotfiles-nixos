@@ -16,14 +16,17 @@
       apps.dropbox.enable = true;
       #apps.evolution.enable = true;
       apps.fastmail.enable = true;
+      apps.gitter.enable = true;
       apps.gnome-utils.enable = true;
       apps.keybase.enable = true;
       apps.libreoffice.enable = true;
       apps.lutris.enable = true;
+      apps.outlook.enable = true;
       apps.slack.enable = true;
       apps.sonarworks.enable = true;
       apps.spotify.enable = true;
       apps.steam.enable = true;
+      apps.whatsapp.enable = true;
 
       browsers.default = "chromium";
       browsers.chromium.enable = true;

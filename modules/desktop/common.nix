@@ -26,6 +26,7 @@
       gtk3.extraConfig = {
         gtk-application-prefer-dark-theme = 1;
         gtk-cursor-theme-size = 0;
+        gtk-cursor-theme-name = "Aidwata";
         gtk-toolbar-style = "GTK_TOOLBAR_BOTH";
         gtk-toolbar-icon-size = "GTK_ICON_SIZE_LARGE_TOOLBAR";
         gtk-button-images = 1;
@@ -38,5 +39,10 @@
         gtk-xft-rgba = "rgb";
       };
     };
+
+    home.home.file.".icons/default/index.theme".text = ''
+      [Icon Theme]
+      Inherits=Aidwata
+    '';
   };
 }

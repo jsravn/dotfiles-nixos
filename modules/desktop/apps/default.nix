@@ -5,13 +5,16 @@
     ./dropbox.nix
     ./evolution.nix
     ./fastmail.nix
+    ./gitter.nix
     ./gnome-utils.nix
     ./keybase.nix
     ./libreoffice.nix
     ./lutris.nix
+    ./outlook.nix
     ./slack.nix
     ./sonarworks.nix
     ./spotify.nix
     ./steam.nix
+    ./whatsapp.nix
   ];
 }
