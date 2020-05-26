@@ -44,6 +44,7 @@ in {
         # support applications
         grim
         slurp
+        wl-clipboard
         imagemagick
         rofi
         mako
