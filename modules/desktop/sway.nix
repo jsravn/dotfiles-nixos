@@ -29,6 +29,12 @@ in {
       wrapperFeatures.gtk = true;
     };
 
+    # For some reason, nm-applet can't find icons as a user package.
+    environment.systemPackages = with pkgs; [
+      gnome3.networkmanagerapplet
+      hicolor-icon-theme
+    ];
+
     my = {
       packages = with pkgs; [
         # sway extra packages
@@ -52,6 +58,8 @@ in {
         gnome3.gnome-settings-daemon # for gsd-xsettings
         polkit_gnome # authentication popups
         python3 # switcher
+        # gnome3.networkmanagerapplet
+        # hicolor-icon-theme
       ];
 
       alias.start-sway = "sway >~/.cache/sway-out.txt 2>~/.cache/sway-err.txt";
@@ -139,8 +147,8 @@ in {
       # Set up mako.
       home.xdg.configFile."mako/config".text = ''
         # Make notifications stick until manually dismissed, so we don't accidentally miss any.
-        ignore-timeout = 1;
-        default-timeout = 0;
+        ignore-timeout=1
+        default-timeout=0
       '';
     };
   };

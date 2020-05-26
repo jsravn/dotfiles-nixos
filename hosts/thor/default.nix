@@ -8,6 +8,10 @@
 
   # General configuration
   time.timeZone = "Europe/London";
+  # Autostart JACK on sway.
+  my.home.xdg.configFile."sway.d/00-jack.conf".text = ''
+    exec start-jack USB20
+  '';
 
   # Modules
   modules = {

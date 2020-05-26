@@ -53,6 +53,7 @@ for_window [class="Steam" title="Friends List"] floating enable
 
 # background applications
 exec mako
+exec nm-applet --indicator
 exec redshift -m wayland
 exec swaymsg \
 	"workspace $ws8; exec spotify; \
