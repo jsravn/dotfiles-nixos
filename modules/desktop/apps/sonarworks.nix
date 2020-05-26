@@ -22,8 +22,7 @@
 # Run non-session-manager, and select the Sonarworks session.
 # 
 { config, lib, pkgs, ... }:
-with lib;
-{
+with lib; {
   options.modules.desktop.apps.sonarworks = {
     enable = mkOption {
       type = types.bool;
@@ -79,7 +78,46 @@ with lib;
       .endif
     '';
 
-    # includes the JACK module
+    # Includes the JACK module.
     hardware.pulseaudio.package = pkgs.pulseaudioFull;
+
+    # Enable realtime priority and remove memlock limit for the audio group.
+    security.pam.loginLimits = [
+      {
+        domain = "@audio";
+        item = "memlock";
+        type = "-";
+        value = "unlimited";
+      }
+      {
+        domain = "@audio";
+        item = "rtprio";
+        type = "-";
+        value = "99";
+      }
+      {
+        domain = "@audio";
+        item = "nofile";
+        type = "soft";
+        value = "99999";
+      }
+      {
+        domain = "@audio";
+        item = "nofile";
+        type = "hard";
+        value = "99999";
+      }
+    ];
+
+    # Enable rtc and hpet also used by JACK.
+    services = {
+      udev = {
+        extraRules = ''
+          KERNEL=="rtc0", GROUP="audio"
+          KERNEL=="hpet", GROUP="audio"
+        '';
+      };
+    };
+
   };
 }
