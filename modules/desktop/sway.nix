@@ -49,8 +49,8 @@ in {
         mako
         redshift-wlr
         gnome3.gnome-settings-daemon # for gsd-xsettings
-        polkit_gnome                 # authentication popups
-        python3                      # switcher
+        polkit_gnome # authentication popups
+        python3 # switcher
       ];
 
       alias.start-sway = "sway >~/.cache/sway-out.txt 2>~/.cache/sway-err.txt";
@@ -119,21 +119,28 @@ in {
           }
         }
       '';
-    };
 
-    # Set terminal
-    my.home.xdg.configFile."sway.d/00-term.conf".text = ''
       # Set terminal
-      set $term ${config.modules.desktop.term.default}
-    '';
+      home.xdg.configFile."sway.d/00-term.conf".text = ''
+        # Set terminal
+        set $term ${config.modules.desktop.term.default}
+      '';
 
-    # Add some additional useful services.
-    my.home.xdg.configFile."sway.d/00-gnome.conf".text = ''
-      # xsettingsd for legacy GTK apps to read GTK config via XSETTINGS protocol
-      exec ${pkgs.gnome3.gnome-settings-daemon}/libexec/gsd-xsettings
+      # Add some additional useful services.
+      home.xdg.configFile."sway.d/00-gnome.conf".text = ''
+        # xsettingsd for legacy GTK apps to read GTK config via XSETTINGS protocol
+        exec ${pkgs.gnome3.gnome-settings-daemon}/libexec/gsd-xsettings
 
-      # polkit authentication agent - e.g. if an app requests root access.
-      exec ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
-    '';
+        # polkit authentication agent - e.g. if an app requests root access.
+        exec ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
+      '';
+
+      # Set up mako.
+      home.xdg.configFile."mako/config".text = ''
+        # Make notifications stick until manually dismissed, so we don't accidentally miss any.
+        ignore-timeout = 1;
+        default-timeout = 0;
+      '';
+    };
   };
 }
