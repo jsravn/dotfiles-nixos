@@ -10,7 +10,6 @@ with lib;
   boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "usbhid" "uas" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [  ];
   boot.kernelModules = [ "kvm-intel" "nct6775" ];
-  boot.blacklistedKernelModules = [ "nouveau" ];
   # Unlocks more sensors.
   boot.kernelParams = mkBefore [ "acpi_enforce_resources=lax" ];
 
