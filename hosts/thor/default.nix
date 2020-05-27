@@ -69,6 +69,7 @@
 
     services = {
       docker.enable = true;
+      mullvad.enable = true;
     };
 
     shell = {
