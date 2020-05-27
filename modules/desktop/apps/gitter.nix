@@ -10,12 +10,7 @@ with lib;
 
   config = mkIf config.modules.desktop.apps.gitter.enable {
     my.packages = with pkgs; [
-      (makeDesktopItem {
-        name = "gitter";
-        desktopName = "Gitter";
-        exec = "chromium --app=https://gitter.im";
-        categories = "Productivity";
-      })
+      gitter
     ];
   };
 }
