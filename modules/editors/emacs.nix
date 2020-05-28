@@ -51,6 +51,8 @@ with lib;
         # :lang rust
         rustfmt
         rls
+        # :lang yaml
+        unstable.yaml-language-server
         # :term vterm
         # use shell.nix with libvterm-neovim:
         # { pkgs ? import <nixpkgs> {} }:
