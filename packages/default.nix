@@ -3,6 +3,7 @@
     # Custom packages.
     my = {
       scmpuff = (callPackage ./scmpuff.nix {});
+      notify-send-sh = (callPackage ./notify-send-sh.nix {});
       cached-nix-shell =
         (callPackage
           (builtins.fetchTarball

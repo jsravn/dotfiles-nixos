@@ -53,13 +53,16 @@ in {
         wl-clipboard
         imagemagick
         rofi
-        mako
+        mako                         # notifications
+        libnotify
+        my.notify-send-sh
+        playerctl                    # music control
+        unstable.pasystray
+        pamixer
         redshift-wlr
         gnome3.gnome-settings-daemon # for gsd-xsettings
-        polkit_gnome # authentication popups
-        python3 # switcher
-        # gnome3.networkmanagerapplet
-        # hicolor-icon-theme
+        polkit_gnome                 # authentication popups
+        python3                      # switcher
       ];
 
       alias.start-sway = "sway >~/.cache/sway-out.txt 2>~/.cache/sway-err.txt";
@@ -146,9 +149,8 @@ in {
 
       # Set up mako.
       home.xdg.configFile."mako/config".text = ''
-        # Make notifications stick until manually dismissed, so we don't accidentally miss any.
-        ignore-timeout=1
-        default-timeout=0
+        icons=1
+        icon-path=${pkgs.gnome3.adwaita-icon-theme}/share/icons/Adwaita
       '';
     };
   };

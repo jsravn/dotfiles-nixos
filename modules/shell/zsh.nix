@@ -46,6 +46,8 @@ in {
         tldr
         trash-cli
         htop
+        libnotify
+        notify-send-sh
       ];
 
       # Bind ls to exa, and add additional useful aliases.

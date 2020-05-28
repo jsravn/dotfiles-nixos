@@ -33,6 +33,7 @@ set $ws8 "8:"
 set $ws9 "9:"
 set $ws10 "10:"
 set $lock "$HOME/.config/sway/lock.sh"
+set $audio "$HOME/.config/sway/audio.sh"
 set $term xterm  # should be overridden in ../sway.d/ appropriately
 
 # dbus activation - needs DISPLAY for things like lastpass to work
@@ -55,6 +56,9 @@ for_window [class="Steam" title="Friends List"] floating enable
 exec mako
 exec nm-applet --indicator
 exec redshift -m wayland
+exec pasystray
+
+# start up applications
 exec swaymsg \
 	"workspace $ws8; exec spotify; \
      workspace $ws2; exec emacs; \
@@ -112,6 +116,14 @@ bindsym Shift+$mod+Print exec grim -g "$(slurp)" - | wl-copy
 
 # capture the focused monitor to clipboard
 bindsym Shift+Control+$mod+Print exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | wl-copy
+
+# control volume and songs
+bindsym XF86AudioRaiseVolume exec $audio raiseVolume
+bindsym XF86AudioLowerVolume exec $audio lowerVolume
+bindsym XF86AudioMute exec $audio mute
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioNext exec playerctl next
 
 # kill focused window
 bindsym $mod+Shift+q kill
