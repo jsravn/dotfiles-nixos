@@ -15,7 +15,6 @@ with lib; {
       resample-method = "speex-float-5";
       flat-volumes = "no";
       realtime-scheduling = "yes";
-      avoid-resampling = "yes";
       default-sample-format = "float32le";
       default-sample-rate = "48000";
       alternate-sample-rate = "44100";
