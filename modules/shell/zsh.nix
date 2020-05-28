@@ -47,7 +47,7 @@ in {
         trash-cli
         htop
         libnotify
-        notify-send-sh
+        my.notify-send-sh
       ];
 
       # Bind ls to exa, and add additional useful aliases.
