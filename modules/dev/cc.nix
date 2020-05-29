@@ -12,10 +12,11 @@ with lib;
     my = {
       packages = with pkgs; [
         cmake
-        binutils
+        gnumake
         libtool
         clang
         gcc
+        gdb
       ];
     };
   };
