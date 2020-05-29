@@ -79,6 +79,7 @@
       gpg.enable = true;
       isync.enable = true;
       kubernetes.enable = true;
+      manpages.enable = true;
       mu.enable = true;
       scmpuff.enable = true;
       zsh.enable = true;
