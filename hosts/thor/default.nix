@@ -81,6 +81,7 @@
       kubernetes.enable = true;
       manpages.enable = true;
       mu.enable = true;
+      netutils.enable = true;
       scmpuff.enable = true;
       zsh.enable = true;
     };

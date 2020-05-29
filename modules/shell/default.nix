@@ -9,6 +9,7 @@
     ./kubernetes.nix
     ./manpages.nix
     ./mu.nix
+    ./netutils.nix
     ./scmpuff.nix
     ./zsh.nix
   ];
