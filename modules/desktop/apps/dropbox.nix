@@ -14,8 +14,8 @@ with lib;
     ];
 
     # Start up automatically in Sway.
-    my.home.xdg.configFile."sway.d/50-dropbox.conf".text = ''
-      exec dropbox
-    '';
+      my.home.xdg.configFile."sway.d/50-dropbox.conf".text = mkIf config.modules.desktop.sway.enable ''
+        exec dropbox
+      '';
   };
 }
