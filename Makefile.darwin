@@ -1,0 +1,41 @@
+NIXOS_VERSION	:= 20.03
+USER            := james
+FLAGS			:= -I "config=$$(pwd)/config" \
+				   -I "modules=$$(pwd)/modules" \
+				   -I "bin=$$(pwd)/bin" \
+				   $(FLAGS)
+
+all: add-channels build
+
+test:
+	darwin-rebuild $(FLAGS) test
+
+check-host:
+	@[ -f hosts/$(HOST)/default.nix ] || (echo "error: hosts/$(HOST) does not exist - did you export HOST?" && exit 1)
+
+update: add-channels
+	nix-channel --update
+
+up: upgrade
+upgrade: update switch
+
+s: switch
+switch:
+	darwin-rebuild $(FLAGS) switch
+
+build:
+	darwin-rebuild $(FLAGS) build
+
+boot:
+	darwin-rebuild $(FLAGS) boot
+
+gc:
+	nix-collect-garbage -d
+
+rollback:
+	nixos-rebuild $(FLAGS) --rollback $(COMMAND)
+
+add-channels:
+	nix-channel --add "https://nixos.org/channels/nixos-${NIXOS_VERSION}" nixos
+	nix-channel --add "https://github.com/rycee/home-manager/archive/release-${NIXOS_VERSION}.tar.gz" home-manager
+	nix-channel --add "https://nixos.org/channels/nixos-unstable" nixos-unstable

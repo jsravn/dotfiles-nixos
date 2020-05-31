@@ -1,10 +1,14 @@
 # Loki is a macbook (experimental).
 # See https://lnl7.github.io/nix-darwin/manual/index.html#sec-options for nix-darwin options.
 
-{ ... }:
+{ pkgs, ... }:
 {
   # General configuration
   time.timeZone = "Europe/London";
+
+  # Auto upgrade nix package and the daemon service.
+  services.nix-daemon.enable = true;
+  nix.package = pkgs.nix;
 
   # Modules
   modules = {
@@ -25,6 +29,8 @@
 
       term.default = "kitty";
       term.kitty.enable = true;
+
+      osx.enable = true;
     };
 
     dev = {
