@@ -18,6 +18,9 @@ check-host:
 
 install: check-host add-channels update install-config
 	nixos-install --root "$(PREFIX)" $(FLAGS)
+# Fix for home-manager which relies on nix-env having created the profile store first.
+# But in our case, we use home-manager as a system module, so this folder won't exist.
+	mkdir -p "$(PREFIX)/nix/var/nix/profiles/per-user/$(USER)"
 
 update: add-channels
 	sudo nix-channel --update

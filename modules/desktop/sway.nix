@@ -59,7 +59,6 @@ in {
         playerctl                    # music control
         unstable.pasystray
         pamixer
-        redshift-wlr
         gnome3.gnome-settings-daemon # for gsd-xsettings
         polkit_gnome                 # authentication popups
         python3                      # switcher

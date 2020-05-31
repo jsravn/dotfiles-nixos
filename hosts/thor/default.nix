@@ -26,6 +26,8 @@
       apps.libreoffice.enable = true;
       apps.lutris.enable = true;
       apps.outlook.enable = true;
+      apps.redshift.enable = true;
+      apps.redshift.wayland = true;
       apps.slack.enable = true;
       apps.sonarworks.enable = true;
       apps.spotify.enable = true;
@@ -46,6 +48,8 @@
 
       term.default = "kitty";
       term.kitty.enable = true;
+
+      themes.gnome.enable = true;
 
       xdg-mime.enable = true;
     };
@@ -73,6 +77,7 @@
     };
 
     shell = {
+      cached-nix-shell.enable = true;
       chezmoi.enable = true;
       direnv.enable = true;
       git.enable = true;
@@ -85,6 +90,14 @@
       scmpuff.enable = true;
       zsh.enable = true;
     };
+
+    system = {
+      inspect.enable = true;
+      network-manager.enable = true;
+      tmp-tmpfs.enable = true;
+    };
+
+    users.james.enable = true;
 
     work = {
       sky.enable = true;

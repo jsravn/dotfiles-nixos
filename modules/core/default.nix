@@ -7,9 +7,7 @@
 {
   imports = [
     ./home.nix
-    ./networking.nix
-    ./nixos.nix
+    ./nixpkgs.nix
     ./packages.nix
-    ./system.nix
   ];
 }

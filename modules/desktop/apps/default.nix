@@ -11,6 +11,7 @@
     ./libreoffice.nix
     ./lutris.nix
     ./outlook.nix
+    ./redshift.nix
     ./slack.nix
     ./sonarworks.nix
     ./spotify.nix

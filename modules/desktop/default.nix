@@ -4,7 +4,7 @@
     ./apps
     ./browsers
     ./term
-    ./common.nix
+    ./themes
     ./fonts.nix
     ./sound.nix
     ./sway.nix

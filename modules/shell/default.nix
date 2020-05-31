@@ -1,6 +1,7 @@
 { ... }:
 {
   imports = [
+    ./cached-nix-shell.nix
     ./chezmoi.nix
     ./direnv.nix
     ./git.nix

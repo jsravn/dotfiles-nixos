@@ -45,23 +45,6 @@ in {
     users.users.${config.my.username} = mkAliasDefinitions options.my.user;
     my.user.packages = config.my.packages;
 
-    # Fix home manager loading before the user has a profile (from nix-env).
-    systemd.services."before-home-manager-${config.my.username}" = {
-      script = "mkdir -p /nix/var/nix/profiles/per-user/${config.my.username}";
-      path = [ pkgs.coreutils ];
-      before = [ "home-manager-${config.my.username}.service" ];
-      wantedBy = [ "multi-user.target" ];
-    };
-
-    # My user.
-    my.user = {
-      isNormalUser = true;
-      uid = 1000;
-      extraGroups = [ "wheel" "audio" "video" "networkmanager" ];
-      description = "James Ravn";
-      shell = pkgs.zsh;
-    };
-
     # Obey XDG.
     my.home.xdg.enable = true;
     environment.variables = {
