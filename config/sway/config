@@ -56,7 +56,6 @@ for_window [class="Steam" title="Friends List"] floating enable
 exec mako
 exec nm-applet --indicator
 exec redshift -m wayland
-exec pasystray
 
 # start up applications
 exec swaymsg \

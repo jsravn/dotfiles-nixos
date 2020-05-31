@@ -57,7 +57,6 @@ in {
         libnotify
         my.notify-send-sh
         playerctl                    # music control
-        unstable.pasystray
         pamixer
         gnome3.gnome-settings-daemon # for gsd-xsettings
         polkit_gnome                 # authentication popups
