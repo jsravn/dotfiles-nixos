@@ -22,6 +22,7 @@ in {
   config = mkIf cfg.enable {
     my.packages = with pkgs; [
       (chromium.override {
+        enableWideVine = true;
         useOzone = cfg.useOzone;
         useVaapi = cfg.useVaapi;
       })
