@@ -59,6 +59,8 @@
       zsh.enable = true;
     };
 
+    users.james-darwin.enable = true;
+
     work = {
       sky.enable = true;
     };
