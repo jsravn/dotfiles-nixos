@@ -20,7 +20,6 @@ with lib; {
 
     services.gvfs.enable = true;
     # unlock gnome-keyring on login. requires a keyring called "login".
-    security.pam.services.login.enableGnomeKeyring = true;
     services.gnome3.gnome-keyring.enable = true;
   };
 }

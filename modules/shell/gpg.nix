@@ -37,6 +37,5 @@ in {
 
     programs.gnupg.agent.enable = true;
     programs.gnupg.agent.enableSSHSupport = true;
-#    programs.gnupg.agent.pinentryFlavor = "gtk2";
   };
 }

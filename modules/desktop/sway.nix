@@ -137,8 +137,12 @@ in {
         set $term ${config.modules.desktop.term.default}
       '';
 
-      # Add some additional useful services.
+      # Start some gnome services.
       home.xdg.configFile."sway.d/00-gnome.conf".text = ''
+        # gnome-keyring-daemon provides the secrets API for storing secrets
+        # relies on the wrapper created by services.gnome3.gnome-keyring.enable = true
+        exec /run/wrappers/bin/gnome-keyring-daemon --start --components=secrets,pkcs11
+
         # xsettingsd for legacy GTK apps to read GTK config via XSETTINGS protocol
         exec ${pkgs.gnome3.gnome-settings-daemon}/libexec/gsd-xsettings
 
