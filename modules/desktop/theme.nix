@@ -12,7 +12,7 @@ with lib; {
           name = "Adwaita";
           package = pkgs.gnome3.gnome_themes_standard;
         };
-        font.name = "sans 11";
+        font.name = "DejaVu Sans 11";
         gtk3.extraConfig = {
           gtk-application-prefer-dark-theme = 1;
           gtk-cursor-theme-size = 0;
