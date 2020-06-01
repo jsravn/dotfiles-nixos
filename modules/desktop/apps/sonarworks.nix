@@ -23,14 +23,7 @@
 # 
 { config, lib, pkgs, ... }:
 with lib; {
-  options.modules.desktop.apps.sonarworks = {
-    enable = mkOption {
-      type = types.bool;
-      default = false;
-    };
-  };
-
-  config = mkIf config.modules.desktop.apps.sonarworks.enable {
+  config = mkIf config.modules.desktop.apps.enable {
     my.packages = with pkgs; [
       unstable.carla
       jack2
