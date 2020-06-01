@@ -8,7 +8,7 @@ with lib;
     };
   };
 
-  config = mkIf config.modules.shell.scmpuff.enable {
+  config = mkIf config.modules.shell.enable {
     my = {
       packages = with pkgs; [
         my.scmpuff

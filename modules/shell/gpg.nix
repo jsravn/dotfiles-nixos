@@ -1,21 +1,16 @@
 { config, options, lib, pkgs, ... }:
 with lib;
-let cfg = config.modules;
-    gpgCfg = cfg.shell.gpg;
+let cfg = config.modules.shell.gpg;
     homedir = "$XDG_CONFIG_HOME/gnupg";
 in {
   options.modules.shell.gpg = {
-    enable = mkOption {
-      type = types.bool;
-      default = false;
-    };
     cacheTTL = mkOption {
       type = types.int;
       default = 1800;
     };
   };
 
-  config = mkIf gpgCfg.enable {
+  config = mkIf config.modules.shell.enable {
     my = {
       env.GNUPGHOME = homedir;
 
@@ -25,7 +20,7 @@ in {
       home.xdg.configFile."gnupg/gpg-agent.conf" = {
         text = ''
           enable-ssh-support
-          default-cache-ttl ${toString gpgCfg.cacheTTL}
+          default-cache-ttl ${toString cfg.cacheTTL}
           pinentry-program ${pkgs.pinentry.gtk2}/bin/pinentry
         '';
       };

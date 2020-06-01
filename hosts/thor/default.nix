@@ -14,6 +14,7 @@
     desktop = {
       enable = true;
       sway.hwmonTemp = "/sys/class/hwmon/hwmon0/temp1_input";
+      browsers.default = "chromium";
     };
 
     dev = {
@@ -27,34 +28,17 @@
       vim.enable = true;
     };
 
-    security = {
-      # make-linux-fast-again.com
-      mitigations.disable = true;
-      mitigations.acceptRisk = true;
-    };
+    # make-linux-fast-again.com
+    security.mitigations.disable = true;
+    security.mitigations.acceptRisk = true;
 
     services = {
       docker.enable = true;
       mullvad.enable = true;
     };
 
-    shell = {
-      cached-nix-shell.enable = true;
-      chezmoi.enable = true;
-      direnv.enable = true;
-      git.enable = true;
-      gpg.enable = true;
-      isync.enable = true;
-      kubernetes.enable = true;
-      manpages.enable = true;
-      mu.enable = true;
-      netutils.enable = true;
-      scmpuff.enable = true;
-      zsh.enable = true;
-    };
+    shell.enable = true;
 
-    work = {
-      sky.enable = true;
-    };
+    work.sky.enable = true;
   };
 }

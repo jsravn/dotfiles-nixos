@@ -1,15 +1,6 @@
 { pkgs, config, lib, ... }:
-with lib;
-let cfg = config.modules.shell.zsh;
-in {
+with lib; {
   options = {
-    modules.shell.zsh = {
-      enable = mkOption {
-        type = types.bool;
-        default = false;
-      };
-    };
-
     # My additional zsh configuration, used by other modules.
     my = {
       zsh = {
@@ -33,7 +24,7 @@ in {
     };
   };
 
-  config = mkIf cfg.enable {
+  config = mkIf config.modules.shell.enable {
     my = {
       packages = with pkgs; [
         zsh

@@ -1,14 +1,7 @@
 { config, lib, pkgs, ... }:
 with lib;
 {
-  options.modules.shell.git = {
-    enable = mkOption {
-      type = types.bool;
-      default = false;
-    };
-  };
-
-  config = mkIf config.modules.shell.git.enable {
+  config = mkIf config.modules.shell.enable {
     my = {
       packages = with pkgs; [
         gitAndTools.hub

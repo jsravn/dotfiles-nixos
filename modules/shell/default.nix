@@ -1,17 +1,22 @@
-{ ... }:
-{
+{ lib, ... }:
+with lib; {
   imports = [
-    ./cached-nix-shell.nix
     ./chezmoi.nix
     ./direnv.nix
     ./git.nix
     ./gpg.nix
-    ./isync.nix
     ./kubernetes.nix
     ./manpages.nix
-    ./mu.nix
-    ./netutils.nix
+    ./mail.nix
+    ./packages.nix
     ./scmpuff.nix
     ./zsh.nix
   ];
+
+  options.modules.shell = {
+    enable = mkOption {
+      type = types.bool;
+      default = false;
+    };
+  };
 }

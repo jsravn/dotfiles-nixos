@@ -1,20 +1,12 @@
 { pkgs, config, lib, ... }:
 with lib;
 {
-  options.modules.shell.kubernetes = {
-    enable = mkOption {
-      type = types.bool;
-      default = false;
-    };
-  };
-
-  config = mkIf config.modules.shell.kubernetes.enable {
+  config = mkIf config.modules.shell.enable {
     my = {
       packages = with pkgs; [
         kubectl
         kubectx
       ];
-
 
       alias.k = "kubectl";
       alias.kgpo = "k get pod";

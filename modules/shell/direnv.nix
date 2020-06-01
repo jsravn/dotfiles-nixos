@@ -1,16 +1,17 @@
-{ config, options, lib, pkgs, ... }:
+{ pkgs, config, lib, ... }:
 with lib;
 {
-  options.modules.shell.direnv = {
-    enable = mkOption { type = types.bool; default = false; };
-  };
-
-  config = mkIf config.modules.shell.direnv.enable {
+  config = mkIf config.modules.shell.enable {
     my = {
-      packages = [ pkgs.direnv ];
+      packages = with pkgs; [
+        direnv
+      ];
+
+      # Enable direnv.
       zsh.rc = ''eval "$(direnv hook zsh)"'';
     };
 
+    # Use lorri/direnv integration.
     services.lorri.enable = true;
   };
 }

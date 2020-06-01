@@ -7,22 +7,22 @@ in {
       type = types.str;
       default = "chromium";
     };
-  };
 
-   options.modules.desktop.browsers.chromium = {
-    enable = mkOption {
-      type = types.bool;
-      default = false;
-    };
+    chromium = {
+      enable = mkOption {
+        type = types.bool;
+        default = false;
+      };
 
-    useOzone = mkOption {
-      type = types.bool;
-      default = false;
-    };
+      useOzone = mkOption {
+        type = types.bool;
+        default = false;
+      };
 
-    useVaapi = mkOption {
-      type = types.bool;
-      default = false;
+      useVaapi = mkOption {
+        type = types.bool;
+        default = false;
+      };
     };
   };
 
