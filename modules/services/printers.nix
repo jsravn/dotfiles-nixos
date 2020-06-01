@@ -16,7 +16,7 @@ with lib; {
       description = "Brother HL-2135W";
       deviceUri = "ipp://192.168.82.5";
       location = "Home Office";
-      ppdOptions = { PageSize = "A4"; };
+      ppdOptions = { PageSize = "A4"; brlaserEconomode = "True"; };
       model = "drv:///brlaser.drv/br2140.ppd";
     }];
   };
