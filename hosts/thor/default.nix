@@ -35,6 +35,7 @@
     services = {
       docker.enable = true;
       mullvad.enable = true;
+      printers.enable = true;
     };
 
     shell.enable = true;
