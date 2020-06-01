@@ -7,6 +7,9 @@ with lib;
     <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
   ];
 
+  # Use latest kernel to better support 5500XT.
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "usbhid" "uas" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [  ];
   boot.kernelModules = [ "kvm-intel" "nct6775" ];
