@@ -2,6 +2,7 @@
   (self: super: with super; {
     # Custom packages.
     my = {
+      firmwareLinuxNonfree = (callPackage ./firmware-linux-nonfree.nix {});
       scmpuff = (callPackage ./scmpuff.nix {});
       notify-send-sh = (callPackage ./notify-send-sh.nix {});
       cached-nix-shell =

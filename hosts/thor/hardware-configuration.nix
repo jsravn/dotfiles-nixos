@@ -7,6 +7,9 @@ with lib;
     <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
   ];
 
+  # Use custom linux firmware that has the more recent amdgpu firmware (navi14).
+  hardware.firmware = with pkgs; [ my.firmwareLinuxNonfree ];
+
   # Use latest kernel to better support 5500XT.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
