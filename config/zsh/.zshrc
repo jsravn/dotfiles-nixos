@@ -9,7 +9,6 @@ if ! zgen saved; then
   zgen load zsh-users/zsh-history-substring-search
   zgen load zsh-users/zsh-completions src
   zgen load zsh-users/zsh-autosuggestions
-  zgen load zpm-zsh/title
   zgen load junegunn/fzf shell/completion.zsh
   zgen load junegunn/fzf shell/key-bindings.zsh
   zgen load zdharma/fast-syntax-highlighting
@@ -23,6 +22,14 @@ if [[ $TERM != dumb ]]; then
   source $ZDOTDIR/completion.zsh
   source $ZDOTDIR/aliases.zsh
   source $ZDOTDIR/p10k.zsh
+
+  ##
+  function _show_title(){
+    print -Pn "\033]0;$USER@$HOST:${PWD/#$HOME/~}\007"
+  }
+  autoload -Uz add-zsh-hook
+  add-zsh-hook precmd _show_title
+  _show_title
 
   ##
   function _cache {
