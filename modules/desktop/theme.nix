@@ -1,13 +1,6 @@
 { pkgs, config, lib, ... }:
 with lib; {
-  options.modules.desktop.themes.gnome = {
-    enable = mkOption {
-      type = types.bool;
-      default = false;
-    };
-  };
-
-  config = mkIf config.modules.desktop.themes.gnome.enable {
+  config = mkIf config.modules.desktop.enable {
     my = {
       home.gtk = {
         enable = true;
@@ -19,7 +12,7 @@ with lib; {
           name = "Adwaita";
           package = pkgs.gnome3.gnome_themes_standard;
         };
-        font.name = "DejaVu Sans 11";
+        font.name = "sans 11";
         gtk3.extraConfig = {
           gtk-application-prefer-dark-theme = 1;
           gtk-cursor-theme-size = 0;

@@ -13,6 +13,9 @@ with lib;
       packages = with pkgs; [
         ldns
         lsof
+        pciutils
+        libsysfs
+        lm_sensors
       ];
     };
   };

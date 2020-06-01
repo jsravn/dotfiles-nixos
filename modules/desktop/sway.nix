@@ -3,17 +3,13 @@ with lib;
 let cfg = config.modules.desktop.sway;
 in {
   options.modules.desktop.sway = {
-    enable = mkOption {
-      type = types.bool;
-      default = false;
-    };
     hwmonTemp = mkOption {
       type = types.str;
       default = "/sys/class/hwmon/hwmon0/temp1_input";
     };
   };
 
-  config = mkIf cfg.enable {
+  config = mkIf config.modules.desktop.enable {
     programs.sway = {
       enable = true;
       extraOptions = [ "--verbose" "--unsupported-gpu" ];

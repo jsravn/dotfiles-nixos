@@ -1,14 +1,7 @@
 { config, lib, pkgs, ... }:
 with lib;
 {
-  options.modules.desktop.apps.fastmail = {
-    enable = mkOption {
-      type = types.bool;
-      default = false;
-    };
-  };
-
-  config = mkIf config.modules.desktop.apps.fastmail.enable {
+  config = mkIf config.modules.desktop.enable {
     my.packages = with pkgs; [
       (makeDesktopItem {
         name = "fastmail";

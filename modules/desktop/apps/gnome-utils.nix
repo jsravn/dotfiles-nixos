@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 with lib; {
-  config = mkIf config.modules.desktop.apps.enable {
+  config = mkIf config.modules.desktop.enable {
     my.packages = with pkgs; [
       gnome3.eog # Image viewer
       gnome3.evince # PDF/Document Viewer

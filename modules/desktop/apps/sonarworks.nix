@@ -23,7 +23,7 @@
 # 
 { config, lib, pkgs, ... }:
 with lib; {
-  config = mkIf config.modules.desktop.apps.enable {
+  config = mkIf config.modules.desktop.enable {
     my.packages = with pkgs; [
       unstable.carla
       jack2

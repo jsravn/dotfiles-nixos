@@ -1,13 +1,6 @@
 { config, lib, pkgs, ... }:
 with lib; {
-  options.modules.desktop.sound = {
-    enable = mkOption {
-      type = types.bool;
-      default = false;
-    };
-  };
-
-  config = mkIf config.modules.desktop.sound.enable {
+  config = mkIf config.modules.desktop.enable {
     sound.enable = true;
     hardware.pulseaudio.enable = true;
     hardware.pulseaudio.daemon.config = {

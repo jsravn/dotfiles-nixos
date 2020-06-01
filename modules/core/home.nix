@@ -45,6 +45,14 @@ in {
     users.users.${config.my.username} = mkAliasDefinitions options.my.user;
     my.user.packages = config.my.packages;
 
+    my.user = {
+      isNormalUser = true;
+      uid = 1000;
+      extraGroups = [ "wheel" "audio" "video" "networkmanager" ];
+      description = "James Ravn";
+      shell = pkgs.zsh;
+    };
+
     # Obey XDG.
     my.home.xdg.enable = true;
     environment.variables = {
