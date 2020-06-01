@@ -33,6 +33,7 @@
       apps.spotify.enable = true;
       apps.steam.enable = true;
       apps.whatsapp.enable = true;
+      apps.zoom.enable = true;
 
       browsers.default = "chromium";
       browsers.chromium.enable = true;

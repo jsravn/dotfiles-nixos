@@ -17,5 +17,6 @@
     ./spotify.nix
     ./steam.nix
     ./whatsapp.nix
+    ./zoom.nix
   ];
 }
