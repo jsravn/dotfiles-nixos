@@ -9,6 +9,7 @@ if ! zgen saved; then
   zgen load zsh-users/zsh-history-substring-search
   zgen load zsh-users/zsh-completions src
   zgen load zsh-users/zsh-autosuggestions
+  zgen load zpm-zsh/title
   zgen load junegunn/fzf shell/completion.zsh
   zgen load junegunn/fzf shell/key-bindings.zsh
   zgen load zdharma/fast-syntax-highlighting
