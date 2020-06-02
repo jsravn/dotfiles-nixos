@@ -14,6 +14,7 @@ with lib; {
         spotify
         steam
         thunderbird
+        wireshark
         zoom-us
 
         # Browser apps.
