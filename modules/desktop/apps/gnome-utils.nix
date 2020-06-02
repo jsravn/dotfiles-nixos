@@ -10,8 +10,10 @@ with lib; {
       gnome3.seahorse # Secret browser
     ];
 
+    # Add support for mounting network filesystems to Nautilus.
     services.gvfs.enable = true;
-    # unlock gnome-keyring on login. requires a keyring called "login".
+
+    # Unlock gnome-keyring on login. Requires a keyring called "login".
     services.gnome3.gnome-keyring.enable = true;
   };
 }

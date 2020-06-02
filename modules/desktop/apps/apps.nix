@@ -8,11 +8,12 @@ with lib; {
         gitter
         libreoffice
         lutris
+        redshift-wlr
         samba
         slack
         spotify
         steam
-        redshift-wlr
+        thunderbird
         zoom-us
 
         # Browser apps.
