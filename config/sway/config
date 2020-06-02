@@ -65,6 +65,7 @@ exec swaymsg \
 
 # monitors
 output DP-1 mode 2560x1440@165Hz
+output DP-1 subpixel rgb
 
 # background
 output * bg ~/.config/sway/publicenemy1HDfree.jpg fill
