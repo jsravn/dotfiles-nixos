@@ -18,9 +18,8 @@
     };
 
     dev = {
-      # Use shell.nix to avoid polluting the dev environment.
       # cc.enable = true;
-      # go.enable = true;
+      go.enable = true;
     };
 
     editors = {

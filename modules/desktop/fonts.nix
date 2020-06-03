@@ -1,13 +1,6 @@
 { config, lib, pkgs, ... }:
 with lib; {
-  options.modules.desktop.fonts = {
-    enable = mkOption {
-      type = types.bool;
-      default = false;
-    };
-  };
-
-  config = mkIf config.modules.desktop.fonts.enable {
+  config = mkIf config.modules.desktop.enable {
     fonts = {
       enableFontDir = true;
       enableGhostscriptFonts = true;

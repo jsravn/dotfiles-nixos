@@ -9,6 +9,7 @@ with lib;
         # net utils
         ldns
         lsof
+        sipcalc
 
         # system utils
         pciutils
