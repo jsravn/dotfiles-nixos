@@ -1,6 +1,5 @@
 { pkgs, lib, config, ... }:
-with lib;
-{
+with lib; {
   options.modules.dev.cc = {
     enable = mkOption {
       type = types.bool;
@@ -9,15 +8,6 @@ with lib;
   };
 
   config = mkIf config.modules.dev.cc.enable {
-    my = {
-      packages = with pkgs; [
-        cmake
-        gnumake
-        libtool
-        clang
-        gcc
-        gdb
-      ];
-    };
+    my = { packages = with pkgs; [ cmake gnumake libtool clang gcc gdb ]; };
   };
 }

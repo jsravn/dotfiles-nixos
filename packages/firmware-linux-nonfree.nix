@@ -5,8 +5,9 @@ stdenv.mkDerivation rec {
   version = "2020-05-19";
 
   src = fetchgit {
-    url = "https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git";
-    rev = lib.replaceStrings ["-"] [""] version;
+    url =
+      "https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git";
+    rev = lib.replaceStrings [ "-" ] [ "" ] version;
     sha256 = "13yrpgfqxp5l457p3s1c61is410nv0kv6picx9r0m8h1b0v6aym3";
   };
 

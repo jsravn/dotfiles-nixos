@@ -3,8 +3,7 @@
 let
   baseName = "notify-send.sh";
   version = "1.1";
-in
-stdenv.mkDerivation rec {
+in stdenv.mkDerivation rec {
   name = "${baseName}-${version}";
 
   src = fetchFromGitHub {

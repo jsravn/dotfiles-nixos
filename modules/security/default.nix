@@ -1,6 +1,1 @@
-{ ... }:
-{
-  imports = [
-    ./mitigations.nix
-  ];
-}
+{ ... }: { imports = [ ./mitigations.nix ]; }

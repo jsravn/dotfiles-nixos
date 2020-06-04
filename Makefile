@@ -60,3 +60,6 @@ $(HOME)/.nixfiles:
 	sudo mv /etc/nixfiles $(HOME)/.nixfiles
 	sudo ln -s $(HOME)/.nixfiles /etc/nixfiles
 	chown -R $(USER):users $(HOME) $(HOME)/.nixfiles
+
+format:
+	nixfmt $(shell find . -name '*.nix')

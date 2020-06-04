@@ -1,6 +1,1 @@
-{ ... }:
-{
-  imports = [
-    ./sky.nix
-  ];
-}
+{ ... }: { imports = [ ./sky.nix ]; }

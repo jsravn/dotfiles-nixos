@@ -2,11 +2,8 @@
 #
 # It is intended mostly for testing, but also installing on Windows/MacOS systems.
 
-{ ... }:
-{
-  imports = [
-    ./hardware-configuration.nix
-  ];
+{ ... }: {
+  imports = [ ./hardware-configuration.nix ];
 
   # General configuration
   time.timeZone = "Europe/London";
@@ -30,9 +27,7 @@
       term.kitty.enable = true;
     };
 
-    dev = {
-      go.enable = true;
-    };
+    dev = { go.enable = true; };
 
     editors = {
       default = "vim";
@@ -46,9 +41,7 @@
       mitigations.acceptRisk = true;
     };
 
-    services = {
-      docker.enable = true;
-    };
+    services = { docker.enable = true; };
 
     shell = {
       chezmoi.enable = true;
@@ -62,8 +55,6 @@
       zsh.enable = true;
     };
 
-    work = {
-      sky.enable = true;
-    };
+    work = { sky.enable = true; };
   };
 }

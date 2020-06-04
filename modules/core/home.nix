@@ -1,13 +1,14 @@
 # modulues/core/home.nix -- configures my user's home
 { config, lib, options, pkgs, ... }:
 with lib;
-let mkOptionStr = value: mkOption
-  { type = types.str;
-    default = value; };
+let
+  mkOptionStr = value:
+    mkOption {
+      type = types.str;
+      default = value;
+    };
 in {
-  imports = [
-    <home-manager/nixos>
-  ];
+  imports = [ <home-manager/nixos> ];
 
   options = {
     # Contains my user configuration.
@@ -19,17 +20,20 @@ in {
       longitude = mkOptionStr "-0.075971";
 
       # Convenience aliases.
-      home = mkOption { type = options.home-manager.users.type.functor.wrapped; };
+      home =
+        mkOption { type = options.home-manager.users.type.functor.wrapped; };
       user = mkOption { type = types.submodule; };
       packages = mkOption { type = with types; listOf package; };
 
       # Global environment.
       env = mkOption {
-        type = with types; attrsOf (either (either str path) (listOf (either str path)));
-        apply = mapAttrs
-          (n: v: if isList v
-                then concatMapStringsSep ":" (x: toString x) v
-                else (toString v));
+        type = with types;
+          attrsOf (either (either str path) (listOf (either str path)));
+        apply = mapAttrs (n: v:
+          if isList v then
+            concatMapStringsSep ":" (x: toString x) v
+          else
+            (toString v));
       };
 
       # Global aliases.
@@ -41,7 +45,8 @@ in {
 
   config = {
     # Convenience aliases
-    home-manager.users.${config.my.username} = mkAliasDefinitions options.my.home;
+    home-manager.users.${config.my.username} =
+      mkAliasDefinitions options.my.home;
     users.users.${config.my.username} = mkAliasDefinitions options.my.user;
     my.user.packages = config.my.packages;
 
@@ -59,9 +64,9 @@ in {
       # These are the defaults, but some applications are buggy when these lack
       # explicit values.
       XDG_CONFIG_HOME = "$HOME/.config";
-      XDG_CACHE_HOME  = "$HOME/.cache";
-      XDG_DATA_HOME   = "$HOME/.local/share";
-      XDG_BIN_HOME    = "$HOME/.local/bin";
+      XDG_CACHE_HOME = "$HOME/.cache";
+      XDG_DATA_HOME = "$HOME/.local/share";
+      XDG_BIN_HOME = "$HOME/.local/bin";
     };
 
     # Conform more programs to XDG conventions. The rest are handled by their
@@ -78,11 +83,11 @@ in {
     my.env.PATH = [ <bin> "$PATH" ];
 
     # Configure environment.
-    environment.extraInit =
-      let exportLines = mapAttrsToList (n: v: "export ${n}=\"${v}\"") config.my.env;
-      in ''
-        ${concatStringsSep "\n" exportLines}
-      '';
+    environment.extraInit = let
+      exportLines = mapAttrsToList (n: v: ''export ${n}="${v}"'') config.my.env;
+    in ''
+      ${concatStringsSep "\n" exportLines}
+    '';
 
     # SSH configuration.
     my.home.programs.ssh = {
@@ -91,9 +96,7 @@ in {
         compression = true;
         user = "${config.my.username}";
       };
-      matchBlocks."hamster.lan" = {
-        user = "root";
-      };
+      matchBlocks."hamster.lan" = { user = "root"; };
     };
 
     # Clean up leftovers, as much as we can

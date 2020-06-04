@@ -12,11 +12,7 @@ in {
   config = mkIf cfg.enable {
     my = {
       home.programs.ssh.extraConfig = "Include sky";
-      packages = with pkgs; [
-        aws
-        openconnect
-        networkmanager-openconnect
-      ];
+      packages = with pkgs; [ aws openconnect networkmanager-openconnect ];
     };
   };
 }

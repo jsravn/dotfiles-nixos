@@ -1,12 +1,7 @@
 { config, lib, pkgs, ... }:
-with lib;
-{
+with lib; {
   config = mkIf config.modules.desktop.enable {
-    my.packages = with pkgs; [
-      keybase
-      keybase-gui
-      kbfs
-    ];
+    my.packages = with pkgs; [ keybase keybase-gui kbfs ];
 
     services.kbfs = {
       enable = true;

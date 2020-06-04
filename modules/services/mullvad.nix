@@ -1,6 +1,5 @@
 { config, options, pkgs, lib, ... }:
-with lib;
-{
+with lib; {
   options.modules.services.mullvad = {
     enable = mkOption {
       type = types.bool;
@@ -9,9 +8,7 @@ with lib;
   };
 
   config = mkIf config.modules.services.mullvad.enable {
-    environment.systemPackages = with pkgs; [
-      unstable.mullvad-vpn
-    ];
+    environment.systemPackages = with pkgs; [ unstable.mullvad-vpn ];
     # Taken from unstable: https://github.com/NixOS/nixpkgs/blob/master/nixos/modules/services/networking/mullvad-vpn.nix.
     boot.kernelModules = [ "tun" ];
     systemd.services.mullvad-daemon = {
@@ -31,7 +28,8 @@ with lib;
       serviceConfig = {
         StartLimitBurst = 5;
         StartLimitIntervalSec = 20;
-        ExecStart = "${pkgs.unstable.mullvad-vpn}/bin/mullvad-daemon -v --disable-stdout-timestamps";
+        ExecStart =
+          "${pkgs.unstable.mullvad-vpn}/bin/mullvad-daemon -v --disable-stdout-timestamps";
         Restart = "always";
         RestartSec = 1;
       };

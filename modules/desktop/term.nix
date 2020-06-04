@@ -9,11 +9,9 @@ with lib; {
 
   config = mkIf config.modules.desktop.enable {
     my = {
-     packages = with pkgs; [
-       kitty
-     ];
+      packages = with pkgs; [ kitty ];
 
-     home.xdg.configFile."kitty".source = <config/kitty>;
+      home.xdg.configFile."kitty".source = <config/kitty>;
     };
   };
 }

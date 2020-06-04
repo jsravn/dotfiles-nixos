@@ -1,7 +1,8 @@
 { config, options, lib, pkgs, ... }:
 with lib;
-let cfg = config.modules.shell.gpg;
-    homedir = "$XDG_CONFIG_HOME/gnupg";
+let
+  cfg = config.modules.shell.gpg;
+  homedir = "$XDG_CONFIG_HOME/gnupg";
 in {
   options.modules.shell.gpg = {
     cacheTTL = mkOption {

@@ -1,6 +1,5 @@
 { pkgs, config, lib, ... }:
-with lib;
-{
+with lib; {
   options.modules.dev.go = {
     enable = mkOption {
       type = types.bool;
@@ -10,9 +9,7 @@ with lib;
 
   config = mkIf config.modules.dev.go.enable {
     my = {
-      packages = with pkgs; [
-        go
-      ];
+      packages = with pkgs; [ go ];
 
       env.GOPATH = "$HOME/go:$HOME/godev";
       env.PATH = [ "$HOME/go/bin" ];

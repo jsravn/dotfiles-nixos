@@ -1,8 +1,7 @@
 # Loki is a macbook (experimental).
 # See https://lnl7.github.io/nix-darwin/manual/index.html#sec-options for nix-darwin options.
 
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   # General configuration
   time.timeZone = "Europe/London";
 
@@ -61,8 +60,6 @@
 
     users.james-darwin.enable = true;
 
-    work = {
-      sky.enable = true;
-    };
+    work = { sky.enable = true; };
   };
 }

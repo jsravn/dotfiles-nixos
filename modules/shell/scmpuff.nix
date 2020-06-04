@@ -1,6 +1,5 @@
 { pkgs, config, lib, ... }:
-with lib;
-{
+with lib; {
   options.modules.shell.scmpuff = {
     enable = mkOption {
       type = types.bool;
@@ -10,9 +9,7 @@ with lib;
 
   config = mkIf config.modules.shell.enable {
     my = {
-      packages = with pkgs; [
-        my.scmpuff
-      ];
+      packages = with pkgs; [ my.scmpuff ];
 
       zsh.rc = ''eval "$(scmpuff init -s)"'';
     };

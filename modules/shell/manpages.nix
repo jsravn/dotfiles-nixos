@@ -1,6 +1,5 @@
 { config, lib, pkgs, ... }:
-with lib;
-{
+with lib; {
   options.modules.shell.manpages = {
     enable = mkOption {
       type = types.bool;

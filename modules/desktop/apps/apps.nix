@@ -26,17 +26,17 @@ with lib; {
           categories = "Productivity";
         })
         (makeDesktopItem {
-            name = "outlook";
-            desktopName = "Outlook";
-            icon = "emblem-mail";
-            exec = "chromium --app=https://outlook.office.com";
-            categories = "Productivity";
+          name = "outlook";
+          desktopName = "Outlook";
+          icon = "emblem-mail";
+          exec = "chromium --app=https://outlook.office.com";
+          categories = "Productivity";
         })
         (makeDesktopItem {
-            name = "whatsapp";
-            desktopName = "Whatsapp";
-            exec = "chromium --app=https://web.whatsapp.com";
-            categories = "Productivity";
+          name = "whatsapp";
+          desktopName = "Whatsapp";
+          exec = "chromium --app=https://web.whatsapp.com";
+          categories = "Productivity";
         })
       ];
 

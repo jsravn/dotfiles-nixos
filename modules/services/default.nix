@@ -1,8 +1,1 @@
-{ ... }:
-{
-  imports = [
-    ./docker.nix
-    ./mullvad.nix
-    ./printers.nix
-  ];
-}
+{ ... }: { imports = [ ./docker.nix ./mullvad.nix ./printers.nix ]; }
