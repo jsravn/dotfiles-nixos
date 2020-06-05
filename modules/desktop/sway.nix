@@ -18,8 +18,8 @@ in {
         export _JAVA_AWT_WM_NONREPARENTING=1
         # For xdpw (screen sharing).
         # Disable these for now - as they break a lot of apps (like zoom).
-        #export XDG_SESSION_TYPE=wayland
-        #export XDG_CURRENT_DESKTOP=sway
+        export XDG_SESSION_TYPE=wayland
+        export XDG_CURRENT_DESKTOP=sway
         # For Firefox.
         export MOZ_ENABLE_WAYLAND=1
       '';
@@ -32,6 +32,16 @@ in {
       hicolor-icon-theme
     ];
 
+    # Wayland screen sharing.
+    # services.pipewire.enable = true;
+    systemd.packages = with pkgs; [ unstable.pipewire ];
+    systemd.user.sockets.pipewire.wantedBy = [ "sockets.target" ];
+    xdg.portal = {
+      enable = true;
+      extraPortals = with pkgs; [ my.xdg-desktop-portal-wlr ];
+      gtkUsePortal = true;
+    };
+
     my = {
       packages = with pkgs; [
         # sway extra packages
@@ -43,6 +53,10 @@ in {
         # waybar
         waybar
         libappindicator # tray icons
+
+        # screen sharing
+        unstable.pipewire_0_2
+        my.xdg-desktop-portal-wlr
 
         # support applications
         grim
