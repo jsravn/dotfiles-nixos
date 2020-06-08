@@ -9,6 +9,7 @@
         firmwareLinuxNonfree = (callPackage ./firmware-linux-nonfree.nix { });
         notify-send-sh = (callPackage ./notify-send-sh.nix { });
         scmpuff = (callPackage ./scmpuff.nix { });
+        xdg-desktop-portal = (callPackage ./xdg-desktop-portal.nix { });
         xdg-desktop-portal-wlr = (callPackage ./xdg-desktop-portal-wlr.nix { });
       };
 

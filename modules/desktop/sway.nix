@@ -34,13 +34,33 @@ in {
 
     # Wayland screen sharing.
     # services.pipewire.enable = true;
-    systemd.packages = with pkgs; [ unstable.pipewire ];
+    systemd.packages = with pkgs; [
+      (unstable.pipewire.overrideAttrs (oldAttrs: rec {
+       patches = [ (fetchpatch {
+         # https://gitlab.freedesktop.org/pipewire/pipewire/-/merge_requests/263
+         url = "https://gitlab.freedesktop.org/flokli/pipewire/-/commit/b099f58b9e0a159926f2f66c72eae1b9ef7650d7.patch";
+         sha256 = "0345y5lfjl98208jcysyqvj0yw6x977msr33p02dcjzyh8chp0w5";
+       })];
+      }))
+      my.xdg-desktop-portal
+      my.xdg-desktop-portal-wlr
+    ];
     systemd.user.sockets.pipewire.wantedBy = [ "sockets.target" ];
-    xdg.portal = {
-      enable = true;
-      extraPortals = with pkgs; [ my.xdg-desktop-portal-wlr ];
-      gtkUsePortal = true;
+    services.dbus.packages = with pkgs; [
+      my.xdg-desktop-portal
+      my.xdg-desktop-portal-wlr
+    ];
+    environment.variables = {
+      XDG_DESKTOP_PORTAL_DIR = pkgs.symlinkJoin {
+        name = "xdg-portals";
+        paths = [ pkgs.my.xdg-desktop-portal-wlr ];
+      } + "/share/xdg-desktop-portal/portals";
     };
+    # xdg.portal = {
+    #   enable = true;
+    #   extraPortals = with pkgs; [ my.xdg-desktop-portal-wlr ];
+    #   gtkUsePortal = false;
+    # };
 
     my = {
       packages = with pkgs; [
@@ -53,10 +73,6 @@ in {
         # waybar
         waybar
         libappindicator # tray icons
-
-        # screen sharing
-        unstable.pipewire_0_2
-        my.xdg-desktop-portal-wlr
 
         # support applications
         grim
@@ -140,7 +156,6 @@ in {
           }
         }
       '';
-
       # Set terminal
       home.xdg.configFile."sway.d/00-term.conf".text = ''
         # Set terminal
