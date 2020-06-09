@@ -15,7 +15,12 @@ with lib; {
         steam
         thunderbird
         wireshark
-        zoom-us
+        (zoom-us.overrideAttrs (oldAttrs: rec {
+          qtWrapperArgs = oldAttrs.qtWrapperArgs ++ [
+            # zoom breaks if XDG_SESSION_TYPE is set to wayland
+            ''--unset XDG_SESSION_TYPE''
+          ];
+        }))
 
         # Browser apps.
         (makeDesktopItem {
