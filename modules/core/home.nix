@@ -106,5 +106,12 @@ in {
       [ -s .xsession-errors ] || rm -f .xsession-errors*
       popd
     '';
+
+    # Clean up mesa cache - can change when versions update.
+    system.userActivationScripts.cleanupMesaCache = ''
+      pushd /home/${config.my.username}/.cache
+      rm -rf mesa_shader_cache
+      popd
+    '';
   };
 }
