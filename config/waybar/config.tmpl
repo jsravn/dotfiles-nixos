@@ -1,0 +1,56 @@
+{
+  "layer": "top",
+  "modules-left": ["sway/workspaces", "sway/mode"],
+  "modules-center": ["sway/window"],
+  "modules-right": [
+    "custom/spotify",
+    "custom/weather",
+    "memory",
+    "cpu",
+    "temperature",
+    "idle_inhibitor",
+    "clock",
+    "tray"
+  ],
+  "clock": {
+    "format": "{:%a %b %e, %H:%M}"
+  },
+  "memory": {
+    "format": "{percentage}% "
+  },
+  "cpu": {
+    "format": "{usage}% "
+  },
+  "temperature": {
+    "hwmon-path": "HWMON_TEMP",
+    "critical-threshold": 40,
+    "format-critical": "{temperatureC}°C ",
+    "format": "{temperatureC}°C "
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
+    }
+  },
+  "tray": {
+    "icon-size": 18
+  },
+  "custom/weather": {
+    "format": "{}",
+    "format-alt": "{alt}: {}",
+    "format-alt-click": "click-right",
+    "interval": 600,
+    "return-type": "json",
+    "exec": "~/.config/waybar/weather.sh Richmond,UK",
+    "exec-if": "ping wttr.in -c1"
+  },
+  "custom/spotify": {
+    "format": "{} ",
+    "return-type": "json",
+    "max-length": 60,
+    "exec": "~/.config/waybar/mediaplayer.py 2> /dev/null",
+    "exec-if": "pgrep spotify"
+  }
+}

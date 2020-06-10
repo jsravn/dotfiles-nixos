@@ -9,6 +9,7 @@ with lib; {
     ./term.nix
     ./theme.nix
     ./xdg-mime.nix
+    ./wayland-screensharing.nix
   ];
 
   options.modules.desktop = {

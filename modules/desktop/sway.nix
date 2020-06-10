@@ -26,42 +26,6 @@ in {
       wrapperFeatures.gtk = true;
     };
 
-    # For some reason, nm-applet can't find icons as a user package.
-    environment.systemPackages = with pkgs; [
-      gnome3.networkmanagerapplet
-      hicolor-icon-theme
-    ];
-
-    # Wayland screen sharing.
-    # services.pipewire.enable = true;
-    systemd.packages = with pkgs; [
-      (unstable.pipewire.overrideAttrs (oldAttrs: rec {
-       patches = [ (fetchpatch {
-         # https://gitlab.freedesktop.org/pipewire/pipewire/-/merge_requests/263
-         url = "https://gitlab.freedesktop.org/flokli/pipewire/-/commit/b099f58b9e0a159926f2f66c72eae1b9ef7650d7.patch";
-         sha256 = "0345y5lfjl98208jcysyqvj0yw6x977msr33p02dcjzyh8chp0w5";
-       })];
-      }))
-      my.xdg-desktop-portal
-      my.xdg-desktop-portal-wlr
-    ];
-    systemd.user.sockets.pipewire.wantedBy = [ "sockets.target" ];
-    services.dbus.packages = with pkgs; [
-      my.xdg-desktop-portal
-      my.xdg-desktop-portal-wlr
-    ];
-    environment.variables = {
-      XDG_DESKTOP_PORTAL_DIR = pkgs.symlinkJoin {
-        name = "xdg-portals";
-        paths = [ pkgs.my.xdg-desktop-portal-wlr ];
-      } + "/share/xdg-desktop-portal/portals";
-    };
-    # xdg.portal = {
-    #   enable = true;
-    #   extraPortals = with pkgs; [ my.xdg-desktop-portal-wlr ];
-    #   gtkUsePortal = false;
-    # };
-
     my = {
       packages = with pkgs; [
         # sway extra packages
@@ -90,73 +54,22 @@ in {
         python3 # switcher
       ];
 
+      # Provide a convenient alias to log outputs.
       alias.start-sway = "sway >~/.cache/sway-out.txt 2>~/.cache/sway-err.txt";
 
+      # Sway config.
       home.xdg.configFile."sway".source = <config/sway>;
 
+      # Waybar config.
       home.xdg.configFile."waybar" = {
         source = <config/waybar>;
         recursive = true;
       };
-      home.xdg.configFile."waybar/config".text = ''
-        {
-          "layer": "top",
-          "modules-left": ["sway/workspaces", "sway/mode"],
-          "modules-center": ["sway/window"],
-          "modules-right": [
-            "custom/spotify",
-            "custom/weather",
-            "memory",
-            "cpu",
-            "temperature",
-            "idle_inhibitor",
-            "clock",
-            "tray"
-          ],
-          "clock": {
-            "format": "{:%a %b %e, %H:%M}"
-          },
-          "memory": {
-            "format": "{percentage}% "
-          },
-          "cpu": {
-            "format": "{usage}% "
-          },
-          "temperature": {
-            "hwmon-path": "${cfg.hwmonTemp}",
-            "critical-threshold": 40,
-            "format-critical": "{temperatureC}°C ",
-            "format": "{temperatureC}°C "
-          },
-          "idle_inhibitor": {
-            "format": "{icon}",
-            "format-icons": {
-              "activated": "",
-              "deactivated": ""
-            }
-          },
-          "tray": {
-            "icon-size": 18
-          },
-          "custom/weather": {
-            "format": "{}",
-            "format-alt": "{alt}: {}",
-            "format-alt-click": "click-right",
-            "interval": 600,
-            "return-type": "json",
-            "exec": "~/.config/waybar/weather.sh Richmond,UK",
-            "exec-if": "ping wttr.in -c1"
-          },
-          "custom/spotify": {
-            "format": "{} ",
-            "return-type": "json",
-            "max-length": 60,
-            "exec": "~/.config/waybar/mediaplayer.py 2> /dev/null",
-            "exec-if": "pgrep spotify"
-          }
-        }
-      '';
-      # Set terminal
+      home.xdg.configFile."waybar/config".text =
+        replaceStrings [ "HWMON_TEMP" ] [ cfg.hwmonTemp ]
+        (readFile <config/waybar/config.tmpl>);
+
+      # Set terminal.
       home.xdg.configFile."sway.d/00-term.conf".text = ''
         # Set terminal
         set $term ${config.modules.desktop.term.default}
@@ -181,5 +94,12 @@ in {
         icon-path=${pkgs.gnome3.adwaita-icon-theme}/share/icons/Adwaita
       '';
     };
+
+    # Add NetworkManager applet.
+    # For some reason, nm-applet can't find icons as a user package so install it as a system package.
+    environment.systemPackages = with pkgs; [
+      gnome3.networkmanagerapplet
+      hicolor-icon-theme
+    ];
   };
 }
