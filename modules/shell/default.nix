@@ -10,6 +10,7 @@ with lib; {
     ./mail.nix
     ./packages.nix
     ./scmpuff.nix
+    ./ssh.nix
     ./zsh.nix
   ];
 

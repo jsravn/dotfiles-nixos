@@ -50,6 +50,7 @@ in {
     users.users.${config.my.username} = mkAliasDefinitions options.my.user;
     my.user.packages = config.my.packages;
 
+    # Login user.
     my.user = {
       isNormalUser = true;
       uid = 1000;
@@ -88,16 +89,6 @@ in {
     in ''
       ${concatStringsSep "\n" exportLines}
     '';
-
-    # SSH configuration.
-    my.home.programs.ssh = {
-      enable = true;
-      matchBlocks."*" = {
-        compression = true;
-        user = "${config.my.username}";
-      };
-      matchBlocks."hamster.lan" = { user = "root"; };
-    };
 
     # Clean up leftovers, as much as we can
     system.userActivationScripts.cleanupHome = ''
