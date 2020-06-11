@@ -23,7 +23,7 @@
       unstable = import <nixos-unstable> { inherit config; };
     })
 
-  # emacs git
+  # Provides emacsUnstable.
   (import (builtins.fetchTarball
     "https://github.com/nix-community/emacs-overlay/archive/master.tar.gz"))
 ]

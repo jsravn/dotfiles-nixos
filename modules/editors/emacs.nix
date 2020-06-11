@@ -11,9 +11,14 @@ with lib; {
 
   config = mkIf config.modules.editors.emacs.enable {
     my = {
+      home.programs.emacs = {
+        enable = true;
+        package = pkgs.emacsUnstable;
+        extraPackages = epkgs: [ epkgs.emacs-libvterm ];
+      };
+
       packages = with pkgs; [
         ## Doom dependencies
-        emacsUnstable
         git
         (ripgrep.override { withPCRE2 = true; })
         gnutls # for TLS connectivity
