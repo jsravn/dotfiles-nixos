@@ -27,6 +27,7 @@ with lib; {
           gtk-xft-hinting = 1;
           gtk-xft-hintstyle = "hintfull";
           gtk-xft-rgba = "rgb";
+          gtk-key-theme-name = "Emacs";
         };
       };
 
