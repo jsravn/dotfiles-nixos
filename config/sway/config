@@ -129,8 +129,8 @@ bindsym XF86AudioRaiseVolume exec $audio raiseVolume
 bindsym $mod+F12 exec $audio raiseVolume
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym $mod+Home exec playerctl play-pause
-bindsym $mod+Prior exec playerctl previous
-bindsym $mod+Next exec playerctl next
+bindsym $mod+Prior exec playerctl previous    # PageUp
+bindsym $mod+Next exec playerctl next         # PageDown
 
 # kill focused window
 bindsym $mod+Shift+q kill
