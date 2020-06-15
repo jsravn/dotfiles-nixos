@@ -121,12 +121,16 @@ bindsym Shift+$mod+Print exec grim -g "$(slurp)" - | wl-copy
 bindsym Shift+Control+$mod+Print exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | wl-copy
 
 # control volume and songs
-bindsym XF86AudioRaiseVolume exec $audio raiseVolume
-bindsym XF86AudioLowerVolume exec $audio lowerVolume
 bindsym XF86AudioMute exec $audio mute
+bindsym $mod+F10 exec $audio mute
+bindsym XF86AudioLowerVolume exec $audio lowerVolume
+bindsym $mod+F11 exec $audio lowerVolume
+bindsym XF86AudioRaiseVolume exec $audio raiseVolume
+bindsym $mod+F12 exec $audio raiseVolume
 bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioPrev exec playerctl previous
-bindsym XF86AudioNext exec playerctl next
+bindsym $mod+Home exec playerctl play-pause
+bindsym $mod+Prior exec playerctl previous
+bindsym $mod+Next exec playerctl next
 
 # kill focused window
 bindsym $mod+Shift+q kill
