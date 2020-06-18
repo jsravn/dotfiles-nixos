@@ -1,6 +1,6 @@
 { config, options, lib, pkgs, ... }:
 with lib; {
-  imports = [ ./emacs.nix ./vim.nix ];
+  imports = [ ./emacs.nix ./intellij.nix ./vim.nix ];
 
   options.modules.editors = {
     default = mkOption {

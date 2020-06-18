@@ -22,6 +22,7 @@
     editors = {
       default = "vim";
       emacs.enable = true;
+      intellij.enable = true;
       vim.enable = true;
     };
 
