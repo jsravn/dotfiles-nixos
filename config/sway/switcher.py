@@ -1,4 +1,5 @@
-#!/usr/bin/env python
+#!/usr/bin/env cached-nix-shell
+#!nix-shell -p python3 -i python
 #
 # Modified from https://github.com/varesa/dotfiles/blob/master/.config/sway/switch_window.py.
 

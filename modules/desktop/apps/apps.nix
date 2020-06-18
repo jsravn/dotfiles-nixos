@@ -9,6 +9,7 @@ with lib; {
         libreoffice
         lutris
         redshift-wlr
+        mpv
         samba
         slack
         spotify

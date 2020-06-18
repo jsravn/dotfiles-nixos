@@ -35,7 +35,7 @@ in {
         xwayland
 
         # waybar
-        waybar
+        unstable.waybar # unstable contains a sleep/resume fix
         libappindicator # tray icons
 
         # support applications
@@ -51,7 +51,6 @@ in {
         pamixer
         gnome3.gnome-settings-daemon # for gsd-xsettings
         polkit_gnome # authentication popups
-        python3 # switcher
       ];
 
       # Provide a convenient alias to log outputs.
