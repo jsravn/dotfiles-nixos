@@ -6,11 +6,8 @@
         cached-nix-shell = (callPackage (builtins.fetchTarball
           "https://github.com/xzfc/cached-nix-shell/archive/master.tar.gz")
           { });
-        firmwareLinuxNonfree = (callPackage ./firmware-linux-nonfree.nix { });
         notify-send-sh = (callPackage ./notify-send-sh.nix { });
         scmpuff = (callPackage ./scmpuff.nix { });
-        xdg-desktop-portal = (callPackage ./xdg-desktop-portal.nix { });
-        xdg-desktop-portal-wlr = (callPackage ./xdg-desktop-portal-wlr.nix { });
       };
 
       # Make nur packages available.

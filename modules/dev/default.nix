@@ -1,1 +1,1 @@
-{ ... }: { imports = [ ./cc.nix ./go.nix ]; }
+{ ... }: { imports = [ ./cc.nix ./go.nix ./node.nix ]; }

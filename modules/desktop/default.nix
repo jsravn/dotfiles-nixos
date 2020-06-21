@@ -4,6 +4,7 @@ with lib; {
     ./apps
     ./browsers.nix
     ./fonts.nix
+    ./xorg.nix
     ./sound.nix
     ./sway.nix
     ./term.nix

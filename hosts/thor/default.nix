@@ -17,6 +17,7 @@
     dev = {
       # cc.enable = true;
       go.enable = true;
+      node.enable = true;
     };
 
     editors = {

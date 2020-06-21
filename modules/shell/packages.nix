@@ -14,6 +14,7 @@ with lib; {
         pciutils
         libsysfs
         lm_sensors
+        gdb
       ];
     };
 

@@ -7,7 +7,7 @@ with lib; {
   ];
 
   # Use custom linux firmware that has the more recent amdgpu firmware (navi14).
-  hardware.firmware = with pkgs; [ my.firmwareLinuxNonfree ];
+  hardware.firmware = with pkgs; [ firmwareLinuxNonfree ];
 
   # Use latest kernel to better support 5500XT.
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -15,7 +15,8 @@ with lib; {
   boot.initrd.availableKernelModules =
     [ "xhci_pci" "ehci_pci" "ahci" "usbhid" "uas" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" "nct6775" ];
+  boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
+  boot.kernelModules = [ "kvm-intel" "nct6775" "v4l2loopback" ];
   # Unlocks more sensors.
   boot.kernelParams = mkBefore [ "acpi_enforce_resources=lax" ];
 

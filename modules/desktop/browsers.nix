@@ -28,10 +28,10 @@ in {
 
   config = mkIf config.modules.desktop.enable {
     my.packages = with pkgs; [
-      (chromium.override {
+      (unstable.chromium.override {
         enableWideVine = true;
         useOzone = cfg.useOzone;
-        useVaapi = cfg.useVaapi;
+        enableVaapi = cfg.useVaapi;
       })
       firefox-bin
     ];
