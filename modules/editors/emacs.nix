@@ -55,6 +55,9 @@ with lib; {
         # :lang rust
         rustfmt
         rls
+        # :lang sh
+        shfmt
+        shellcheck
         # :lang yaml
         unstable.yaml-language-server
         # :term vterm
