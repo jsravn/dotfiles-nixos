@@ -2,7 +2,7 @@
 # Not working at the moment - there are various issues w/ Nix packages.
 { config, lib, pkgs, ... }:
 with lib;
-let xdp = pkgs.enableDebugging pkgs.unstable.xdg-desktop-portal;
+let xdp = pkgs.enableDebugging pkgs.my.xdg-desktop-portal;
 in {
   config = mkIf config.modules.desktop.enable {
     systemd.packages = with pkgs; [

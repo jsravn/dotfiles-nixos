@@ -8,6 +8,7 @@
           { });
         notify-send-sh = (callPackage ./notify-send-sh.nix { });
         scmpuff = (callPackage ./scmpuff.nix { });
+        xdg-desktop-portal = (callPackage ./xdg-desktop-portal.nix { });
       };
 
       # Make nur packages available.

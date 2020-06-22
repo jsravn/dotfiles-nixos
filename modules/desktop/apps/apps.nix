@@ -10,6 +10,7 @@ with lib; {
         lutris
         redshift-wlr
         mpv
+        pinta
         samba
         slack
         spotify
