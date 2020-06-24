@@ -33,6 +33,7 @@
 
     services = {
       docker.enable = true;
+      libvirtd.enable = true;
       mullvad.enable = true;
       printers.enable = true;
     };
