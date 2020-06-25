@@ -50,6 +50,8 @@ with lib; {
         nodePackages.javascript-typescript-langserver
         # :lang latex & :lang org (latex previews)
         texlive.combined.scheme-medium
+        # :lang markdown
+        pandoc
         # :lang nix
         nixfmt
         # :lang rust

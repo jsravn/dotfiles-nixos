@@ -81,7 +81,7 @@ in {
     };
 
     # Add the bin folder to the user PATH.
-    my.env.PATH = [ <bin> "$PATH" ];
+    my.env.PATH = [ <bin> "$XDG_BIN_HOME" "$PATH" ];
 
     # Configure environment.
     environment.extraInit = let
