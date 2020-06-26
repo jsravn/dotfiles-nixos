@@ -8,7 +8,7 @@ alias -- -='cd -'
 alias q=exit
 
 # Make watch/sudo work with aliases and other expansions.
-alias watch='watch '
+alias watch='watch -n0.5 '
 alias sudo='sudo '
 
 # Interactive versions - will prompt if something will be overwritten.
@@ -41,5 +41,5 @@ zman() {
 # Set a reminder in the future.
 r() {
   local time=$1; shift
-  sched "$time" "notify-send --urgency=critical 'Reminder' '$@'; ding";
+  sched "$time" "notify-send --urgency=critical 'Reminder' '$@'";
 }; compdef r=sched
