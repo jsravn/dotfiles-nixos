@@ -43,7 +43,6 @@ in {
   config = mkIf config.modules.desktop.enable {
     programs.obs-studio.plugins = with pkgs; [
       obs-wlrobs             # capture wayland desktop
-      unstable.obs-v4l2sink  # send output to a virtual webcam for e.g. Zoom
     ];
     my = {
       packages = [ package ];

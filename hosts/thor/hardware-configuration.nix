@@ -15,8 +15,8 @@ with lib; {
   boot.initrd.availableKernelModules =
     [ "xhci_pci" "ehci_pci" "ahci" "usbhid" "uas" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
-  boot.kernelModules = [ "kvm-intel" "nct6775" "v4l2loopback" ];
+  boot.extraModulePackages = [ ];
+  boot.kernelModules = [ "kvm-intel" "nct6775" ];
   # Unlocks more sensors.
   boot.kernelParams = mkBefore [ "acpi_enforce_resources=lax" ];
 
