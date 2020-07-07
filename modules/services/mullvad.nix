@@ -11,6 +11,8 @@ with lib; {
     environment.systemPackages = with pkgs; [ unstable.mullvad-vpn ];
     # Taken from unstable: https://github.com/NixOS/nixpkgs/blob/master/nixos/modules/services/networking/mullvad-vpn.nix.
     boot.kernelModules = [ "tun" ];
+    # mullvad 2020.5 requires this: https://github.com/NixOS/nixpkgs/issues/91923
+    networking.iproute2.enable = true;
     systemd.services.mullvad-daemon = {
       description = "Mullvad VPN daemon";
       wantedBy = [ "multi-user.target" ];

@@ -9,6 +9,7 @@ with lib; {
       home.xdg.mimeApps = {
         enable = true;
         defaultApplications = {
+          "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = [ "writer.desktop" ];
           "application/pdf" = [ "org.gnome.Evince.desktop" ];
           "x-scheme-handler/http" = [ "chromium-browser.desktop" ];
           "x-scheme-handler/https" = [ "chromium-browser.desktop" ];
