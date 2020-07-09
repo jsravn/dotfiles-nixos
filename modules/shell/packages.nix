@@ -9,6 +9,7 @@ with lib; {
         ldns
         lsof
         sipcalc
+        bind
 
         # system utils
         pciutils
