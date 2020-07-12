@@ -58,5 +58,5 @@
 	user = jsravn
 [http]
 	cookiefile = /home/james/.gitcookies
-[url "ssh://git@github.com/"]
-	insteadOf = https://github.com/
+# [url "ssh://git@github.com/"]
+# 	insteadOf = https://github.com/
