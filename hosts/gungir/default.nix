@@ -8,7 +8,7 @@
   # General configuration
   time.timeZone = "Europe/London";
   # Needed to support VMWare in Sway.
-  my.env.WLR_NO_HARDWARE_CURSORS = 1;
+  my.env.WLR_NO_HARDWARE_CURSORS = "1";
 
   # Modules
   modules = {
