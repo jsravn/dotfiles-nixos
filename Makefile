@@ -51,7 +51,6 @@ add-channels:
 
 install-config: $(NIXOS_PREFIX)/configuration.nix
 $(NIXOS_PREFIX)/configuration.nix:
-	nixos-generate-config --root $(PREFIX)
 	echo "import ../nixfiles \"$(HOST)\"" > $(NIXOS_PREFIX)/configuration.nix
 
 move-nixfiles: $(HOME)/.nixfiles

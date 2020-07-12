@@ -13,6 +13,9 @@
     desktop = {
       enable = true;
       browsers.default = "chromium";
+      sway.extraConfig = [
+        "output Virtual-1 mode 2560x1600"
+      ];
     };
 
     dev = {

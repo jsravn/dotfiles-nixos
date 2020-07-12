@@ -7,6 +7,10 @@ in {
       type = types.str;
       default = "/sys/class/hwmon/hwmon0/temp1_input";
     };
+    extraConfig = mkOption {
+      type = with types; listOf str;
+      default = [];
+    };
   };
 
   config = mkIf config.modules.desktop.enable {
@@ -29,18 +33,6 @@ in {
 
     my = {
       packages = with pkgs; [
-        # sway start script
-        # (writeScriptBin "start-sway" ''
-        #   #!${pkgs.stdenv.shell}
-        #   # Fix Java apps.
-        #   export _JAVA_AWT_WM_NONREPARENTING=1
-        #   # For xdpw (screen sharing).
-        #   export XDG_SESSION_TYPE=wayland
-        #   export XDG_CURRENT_DESKTOP=sway
-        #   # For Firefox.
-        #   export MOZ_ENABLE_WAYLAND=1
-        #   exec sway >~/.cache/sway-out.txt 2>~/.cache/sway-err.txt
-        # '')
         # sway extra packages
         swaybg
         swayidle
@@ -81,6 +73,11 @@ in {
         replaceStrings [ "HWMON_TEMP" ] [ cfg.hwmonTemp ]
         (readFile <config/waybar/config.tmpl>);
 
+      # Machine specific config.
+      home.xdg.configFile."sway.d/00-extra.conf".text = ''
+        ${concatStringsSep "\n" config.modules.desktop.sway.extraConfig}
+      '';
+      
       # Set terminal.
       home.xdg.configFile."sway.d/00-term.conf".text = ''
         # Set terminal

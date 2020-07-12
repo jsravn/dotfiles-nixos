@@ -14,6 +14,9 @@
   ## CPU
   nix.maxJobs = lib.mkDefault 8;
 
+  ## Virtualisation
+  virtualisation.vmware.guest.enable = true;
+
   ## Boot with UEFI.
   boot.loader = {
     timeout = 3;
