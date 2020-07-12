@@ -17,6 +17,7 @@
       browsers.default = "chromium";
       sway.extraConfig = [
         "output Virtual-1 mode 2560x1600"
+        "output Virtual-1 scale 2"
       ];
     };
 
