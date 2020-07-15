@@ -10,7 +10,7 @@
   modules = {
     desktop = {
       enable = true;
-      sway.hwmonTemp = "/sys/class/hwmon/hwmon0/temp1_input";
+      sway.hwmonTemp = "/sys/class/hwmon/hwmon1/temp1_input";
       sway.extraConfig = [
         "output DP-1 mode 2560x1440@165Hz"
         "output DP-1 subpixel rgb"
