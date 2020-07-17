@@ -3,6 +3,7 @@
   imports = [
     # Enables non-free firmware.
     <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
+    <nixpkgs/nixos/modules/profiles/qemu-guest.nix>
   ];
 
   boot.initrd.availableKernelModules =
