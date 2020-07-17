@@ -9,7 +9,7 @@
         notify-send-sh = (callPackage ./notify-send-sh.nix { });
         prl-tools = (callPackage ./prl-tools.nix { });
         scmpuff = (callPackage ./scmpuff.nix { });
-        xdg-desktop-portal = (callPackage ./xdg-desktop-portal.nix { });
+        xdg-desktop-portal = (callPackage ./xdg-desktop-portal.nix { kernel = config.boot.kernelPackages.kernel; });
       };
 
       # Make nur packages available.
