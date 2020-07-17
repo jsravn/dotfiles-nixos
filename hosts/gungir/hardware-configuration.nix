@@ -5,7 +5,8 @@
     <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
   ];
 
-  boot.initrd.availableKernelModules = [ "uchi_hcd" "xhci_pci" "ehci_pci" "ata_piix" "sd_mod" "sr_mod" ];
+  boot.initrd.availableKernelModules =
+    [ "uchi_hcd" "xhci_pci" "ehci_pci" "ata_piix" "sd_mod" "sr_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
@@ -16,6 +17,15 @@
   ## Virtualisation
   hardware.parallels.enable = true;
 
+  ## Boot
+  boot.loader = {
+    timeout = 3;
+    grub = {
+      device = "/dev/disk/by-label/nixos";
+      configurationLimit = 10;
+    };
+  };
+
   ## Storage.
   fileSystems = {
     "/" = {
@@ -24,10 +34,8 @@
     };
   };
 
-  swapDevices = [
-    {
-      device = "/swapfile";
-      size = 8192;
-    }
-  ];
+  swapDevices = [{
+    device = "/swapfile";
+    size = 8192;
+  }];
 }
