@@ -29,13 +29,13 @@ up: upgrade
 upgrade: update switch
 
 s: switch
-switch:
+switch: add-channels
 	sudo nixos-rebuild $(FLAGS) switch
 
-build:
+build: add-channels
 	sudo nixos-rebuild $(FLAGS) build
 
-boot:
+boot: add-channels
 	sudo nixos-rebuild $(FLAGS) boot
 
 gc:
