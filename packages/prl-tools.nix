@@ -21,7 +21,7 @@ stdenv.mkDerivation rec {
   # => ${dmg}/Parallels\ Desktop.app/Contents/Resources/Tools/prl-tools-lin.iso
   src = fetchurl {
     url =  "https://download.parallels.com/desktop/v${prl_major}/${version}/ParallelsDesktop-${version}.dmg";
-    sha256 = "1jwzwif69qlhmfky9kigjaxpxfj0lyrl1iyrpqy4iwqvajdgbbym";
+    sha256 = "1z9rlvbkpzmsvgr676zc6l5r4a4yn1cw65v1c920fz1mb9n8f2ks";
   };
 
   hardeningDisable = [ "pic" "format" ];
@@ -39,7 +39,6 @@ stdenv.mkDerivation rec {
     if test -z "$libsOnly"; then
       ( cd $sourceRoot/kmods; tar -xaf prl_mod.tar.gz )
     fi
-    ( cd $sourceRoot/tools; tar -xaf prltools${if x64 then ".x64" else ""}.tar.gz )
   '';
 
   kernelVersion = if libsOnly then "" else (builtins.parseDrvName kernel.name).version;
@@ -81,7 +80,7 @@ stdenv.mkDerivation rec {
     fi
 
     ( # tools
-      cd tools
+      cd tools/tools64
       mkdir -p $out/lib
 
       if test -z "$libsOnly"; then
@@ -102,7 +101,7 @@ stdenv.mkDerivation rec {
         done
 
         mkdir -p $out/bin
-        install -Dm755 ../installer/prlfsmountd.sh $out/sbin/prlfsmountd
+        install -Dm755 ../prlfsmountd.sh $out/sbin/prlfsmountd
         wrapProgram $out/sbin/prlfsmountd \
           --prefix PATH ':' "$scriptPath"
 
@@ -115,7 +114,7 @@ stdenv.mkDerivation rec {
         done
 
         mkdir -p $out/lib/udev/rules.d
-        for i in *.rules; do
+        for i in ../*.rules; do
           sed 's,/bin/bash,${stdenv.shell},g' $i > $out/lib/udev/rules.d/$i
         done
 

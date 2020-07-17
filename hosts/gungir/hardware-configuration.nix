@@ -24,7 +24,7 @@
   boot.loader = {
     timeout = 3;
     grub = {
-      device = "/dev/disk/by-label/nixos";
+      device = "/dev/sda";
       configurationLimit = 10;
     };
   };
