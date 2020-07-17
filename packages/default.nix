@@ -7,7 +7,7 @@
           "https://github.com/xzfc/cached-nix-shell/archive/master.tar.gz")
           { });
         notify-send-sh = (callPackage ./notify-send-sh.nix { });
-        prl-tools = (callPackage ./prl-tools.nix { kernel = config.boot.kernelPackages.kernel; });
+        prl-tools = (callPackage ./prl-tools.nix { kernel = pkgs.linux; });
         scmpuff = (callPackage ./scmpuff.nix { });
         xdg-desktop-portal = (callPackage ./xdg-desktop-portal.nix { });
       };

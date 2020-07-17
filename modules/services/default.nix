@@ -1,1 +1,9 @@
-{ ... }: { imports = [ ./docker.nix ./libvirtd.nix ./mullvad.nix ./printers.nix ]; }
+{ ... }: {
+  imports = [
+    ./docker.nix
+    ./libvirtd.nix
+    ./mullvad.nix
+    ./parallels-guest.nix
+    ./printers.nix
+  ];
+}

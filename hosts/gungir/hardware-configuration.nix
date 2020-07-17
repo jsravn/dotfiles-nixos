@@ -15,8 +15,10 @@
   nix.maxJobs = lib.mkDefault 4;
 
   ## Virtualisation
-  hardware.parallels.enable = true;
-  hardware.parallels.package = pkgs.my.prl-tools;
+  modules.services.parallels = {
+    enable = true;
+    package = pkgs.my.prl-tools;
+  };
 
   ## Boot
   boot.loader = {
