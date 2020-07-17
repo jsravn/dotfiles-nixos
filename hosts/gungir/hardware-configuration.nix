@@ -16,6 +16,7 @@
 
   ## Virtualisation
   hardware.parallels.enable = true;
+  hardware.parallels.package = pkgs.my.prl-tools;
 
   ## Boot
   boot.loader = {
