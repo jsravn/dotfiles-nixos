@@ -5,29 +5,16 @@
     <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
   ];
 
-  boot.initrd.availableKernelModules =
-    [ "ata_pixx" "mptspi" "uchi_hcd" "ehci_pci" "sd_mod" "sr_mod" ];
+  boot.initrd.availableKernelModules = [ "uchi_hcd" "xhci_pci" "ehci_pci" "ata_piix" "sd_mod" "sr_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
+  boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
   ## CPU
-  nix.maxJobs = lib.mkDefault 8;
+  nix.maxJobs = lib.mkDefault 4;
 
   ## Virtualisation
-  virtualisation.vmware.guest.enable = true;
-
-  ## Boot with UEFI.
-  boot.loader = {
-    timeout = 3;
-    efi.canTouchEfiVariables = true;
-    systemd-boot = {
-      enable = true;
-      # Disable when working - as this allows root access.
-      editor = true;
-      configurationLimit = 10;
-    };
-  };
+  hardware.parallels.enable = true;
 
   ## Storage.
   fileSystems = {
@@ -35,10 +22,12 @@
       device = "/dev/disk/by-label/nixos";
       fsType = "ext4";
     };
-    "/boot" = {
-      device = "/dev/disk/by-label/BOOT";
-      fsType = "vfat";
-    };
   };
-  swapDevices = [ ];
+
+  swapDevices = [
+    {
+      device = "/swapfile";
+      size = 8192;
+    }
+  ];
 }
