@@ -13,6 +13,7 @@ with lib; {
           "application/pdf" = [ "org.gnome.Evince.desktop" ];
           "x-scheme-handler/http" = [ "chromium-browser.desktop" ];
           "x-scheme-handler/https" = [ "chromium-browser.desktop" ];
+          "application/xhtml+xml" = [ "chromium-browser.desktop" ];
           "x-scheme-handler/slack" = [ "slack.desktop" ];
           "text/plain" = [ "org.gnome.gedit.desktop" ];
           "image/jpeg" = [ "eog.desktop" ];
