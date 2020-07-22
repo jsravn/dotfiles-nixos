@@ -5,8 +5,6 @@ with lib; {
       packages = with pkgs; [ unstable.chezmoi lastpass-cli ];
       home.xdg.configFile."chezmoi/chezmoi.toml".text = ''
         sourceDir = "/home/${config.my.username}/.dotfiles/chezmoi"
-        [sourceVCS]
-        autoCommit = true
       '';
 
       # Don't use pinentry in lastpass-cli - always use console.

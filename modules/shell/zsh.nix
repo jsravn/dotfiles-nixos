@@ -41,13 +41,6 @@ with lib; {
         my.notify-send-sh
       ];
 
-      # Bind ls to exa, and add additional useful aliases.
-      alias.exa = "exa --group-directories-first";
-      alias.l = "exa -1";
-      alias.ll = "exa -lg";
-      alias.la = "LC_COLLATE=C exa -la";
-      alias.ls = "exa";
-
       # Store zsh config and cache in XDG directories.
       env.ZDOTDIR = "$XDG_CONFIG_HOME/zsh";
       env.ZSH_CACHE = "$XDG_CACHE_HOME/zsh";
@@ -56,13 +49,6 @@ with lib; {
         # I avoid programs.zsh.*Init variables because they initialize too soon. My
         # zsh config is particular about load order.
         xdg.configFile = {
-          # zsh config directory.
-          "zsh" = {
-            source = <config/zsh>;
-            # Allow other modules to write files to it.
-            recursive = true;
-          };
-
           # Contains aliases and extra zshrc from other modules.
           "zsh/extra.zshrc".text = let
             aliasLines =
@@ -92,14 +78,5 @@ with lib; {
       enableGlobalCompInit = false;
       promptInit = "";
     };
-
-    # Remove zsh cache files.
-    # Remove zgen files when NixOS configuration changes so it reconfigures.
-    system.userActivationScripts.cleanupZsh = ''
-      pushd /home/${config.my.username}/.cache
-      rm -rf zsh/*
-      rm -f zgen/init.zsh
-      popd
-    '';
   };
 }

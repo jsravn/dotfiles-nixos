@@ -71,7 +71,6 @@ with lib; {
       ];
 
       env.PATH = [ "$XDG_CONFIG_HOME/emacs/bin" ];
-      zsh.rc = lib.readFile <config/emacs/aliases.zsh>;
 
       # Prefer GB spellings.
       home.home.file.".aspell.conf".text = ''

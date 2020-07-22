@@ -43,3 +43,26 @@ r() {
   local time=$1; shift
   sched "$time" "notify-send --urgency=critical 'Reminder' '$@'";
 }; compdef r=sched
+
+# exa
+alias exa="exa --group-directories-first"
+alias l="exa -1"
+alias la="LC_COLLATE=C exa -la"
+alias ll="exa -lg"
+alias ls="exa"
+
+# vim
+alias v="nvim"
+alias vim="nvim"
+
+# emacs
+alias ec='emacsclient -n'
+alias e='emacs -nw'
+
+# Clear cache and regenerate zgen files.
+zcc() {
+  pushd $HOME/.cache
+  rm -rf zsh/*
+  rm -f zgen/init.zsh
+  popd
+}
