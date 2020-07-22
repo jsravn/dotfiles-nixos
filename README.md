@@ -1,8 +1,11 @@
-# nixfiles
+# dotfiles
 
-My NixOS configuration.
+My dotfiles. It is primarily a NixOS configuration for setting up an entire machine from scratch. In addition it manages my user
+dotfiles using chezmoi, for use on both NixOS and non-NixOS systems.
 
-# Installing
+# NixOS
+
+## Installing
 
 From the NixOS install image use parted or similar to create the destination partition and filesystem. Then mount the root
 to `/mnt` and the ESP partition to `/mnt/boot` (for UEFI systems).
@@ -17,13 +20,13 @@ HOST=myhost make install
 
 After rebooting, use `make move-nixfiles` to move the config into `$HOME/.nixfiles`.
 
-## Post-install
+### Post-install
 
 A few manual steps are required to finish setting up a fresh system:
 
 ``` sh
 # load transient dotfiles
-git clone https://github.com/jsravn/secretdotfiles ~/.local/share/chezmoi; chezmoi apply
+chezmoi apply
 # add ssh key to gpg-agent
 ssh-add
 # import pgp key
@@ -36,7 +39,7 @@ git clone https://github.com/hlissner/doom-emacs ~/.config/emacs; doom up
 git clone https://github.com/hlissner/.nvim ~/.vim; cd ~/.vim; make install
 ```
 
-## Tips
+### Tips
 
 To fix the resolution on the install image:
 
