@@ -1,6 +1,5 @@
 NIXOS_VERSION	:= 20.03
 USER            := james
-HOME			:= /home/$(USER)
 PREFIX          := /mnt
 NIXOS_PREFIX	:= $(PREFIX)/etc/nixos
 FLAGS			:= -I "config=$$(pwd)/config" \
