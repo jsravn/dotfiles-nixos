@@ -8,7 +8,4 @@
 host:
 { ... }: {
   imports = [ ./modules "${./hosts}/${host}" ];
-
-  # Set host based on passed in host.
-  networking.hostName = host;
 }

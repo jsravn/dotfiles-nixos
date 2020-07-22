@@ -48,7 +48,7 @@ with lib; {
     };
   };
 
-  ## Storage.
+  ## Storage
   fileSystems = {
     "/" = {
       device = "/dev/disk/by-label/nixos";
@@ -60,4 +60,7 @@ with lib; {
     };
   };
   swapDevices = [ ];
+
+  ## Networking
+  networking.hostName = "thor";
 }

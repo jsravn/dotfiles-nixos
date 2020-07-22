@@ -36,7 +36,7 @@ keybase pgp export -s | gpg --allow-secret-key-import --import
 git clone git@github.com:jsravn/emacs-config ~/.config/doom
 git clone https://github.com/hlissner/doom-emacs ~/.config/emacs; doom up
 # setup vim
-git clone https://github.com/hlissner/.nvim ~/.vim; cd ~/.vim; make install
+git clone https://github.com/hlissner/.vim ~/.vim; cd ~/.vim; make install
 ```
 
 ### Tips
