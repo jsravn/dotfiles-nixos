@@ -7,13 +7,19 @@ with lib; {
       type = types.bool;
       default = false;
     };
+
+    package = mkOption {
+      type = types.package;
+      default = pkgs.emacsUnstable;
+      description = "The Emacs package to use.";
+    };
   };
 
   config = mkIf config.modules.editors.emacs.enable {
     my = {
       home.programs.emacs = {
         enable = true;
-        package = pkgs.emacsUnstable;
+        package = config.modules.editors.emacs.package;
         extraPackages = epkgs: [ epkgs.emacs-libvterm ];
       };
 
@@ -47,16 +53,16 @@ with lib; {
         # :lang cc
         ccls
         # :lang javascript
-        nodePackages.javascript-typescript-langserver
-        # :lang latex & :lang org (latex previews)
-        texlive.combined.scheme-medium
+        # nodePackages.javascript-typescript-langserver
+        # # :lang latex & :lang org (latex previews)
+        # texlive.combined.scheme-medium
         # :lang markdown
         pandoc
         # :lang nix
         nixfmt
         # :lang rust
-        rustfmt
-        rls
+        # rustfmt
+        # rls
         # :lang sh
         shfmt
         shellcheck

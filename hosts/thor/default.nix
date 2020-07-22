@@ -1,6 +1,6 @@
 # Thor is my desktop machine.
 
-{ ... }: {
+{ pkgs, ... }: {
   imports = [ <platform/nixos> ./hardware-configuration.nix ];
 
   # General configuration
@@ -19,6 +19,8 @@
       browsers.default = "chromium";
     };
 
+    term.kitty.enable = true;
+
     dev = {
       # cc.enable = true;
       go.enable = true;
@@ -27,9 +29,9 @@
 
     editors = {
       default = "nvim";
-      emacs.enable = true;
       intellij.enable = true;
       vim.enable = true;
+      emacs.enable = true;
     };
 
     # make-linux-fast-again.com

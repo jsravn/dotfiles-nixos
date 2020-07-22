@@ -81,7 +81,7 @@ in {
       # Set terminal.
       home.xdg.configFile."sway.d/00-term.conf".text = ''
         # Set terminal
-        set $term ${config.modules.desktop.term.default}
+        set $term ${config.modules.term.default}
       '';
 
       # Start some gnome services.

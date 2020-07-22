@@ -11,6 +11,7 @@
     ./shell # Shell apps
     ./security # Security settings
     ./services # Background services
+    ./term     # Terminals
     ./work # Work specific settings to enable on work computers
   ];
 }

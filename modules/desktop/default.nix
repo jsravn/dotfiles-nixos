@@ -7,7 +7,6 @@ with lib; {
     ./xorg.nix
     ./sound.nix
     ./sway.nix
-    ./term.nix
     ./theme.nix
     ./xdg-mime.nix
     ./wayland-screensharing.nix
