@@ -4,7 +4,7 @@ with lib; {
     # Default applications and xdg-open.
     # See https://wiki.archlinux.org/index.php/XDG_MIME_Applications for details.
     my = {
-      packages = with pkgs; [ xdg_utils desktop-file-utils ];
+      packages = with pkgs; [ xdg_utils desktop-file-utils perl530Packages.FileMimeInfo ];
       home.xdg.mime.enable = true;
       home.xdg.mimeApps = {
         enable = true;
@@ -14,6 +14,7 @@ with lib; {
           "x-scheme-handler/http" = [ "chromium-browser.desktop" ];
           "x-scheme-handler/https" = [ "chromium-browser.desktop" ];
           "application/xhtml+xml" = [ "chromium-browser.desktop" ];
+          "text/html" = [ "chromium-browser.desktop" ];
           "x-scheme-handler/slack" = [ "slack.desktop" ];
           "text/plain" = [ "org.gnome.gedit.desktop" ];
           "image/jpeg" = [ "eog.desktop" ];

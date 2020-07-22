@@ -51,14 +51,14 @@ add-channels:
 
 install-config: $(NIXOS_PREFIX)/configuration.nix
 $(NIXOS_PREFIX)/configuration.nix:
-	echo "import ../nixfiles \"$(HOST)\"" > $(NIXOS_PREFIX)/configuration.nix
+	echo "import ../dotfiles \"$(HOST)\"" > $(NIXOS_PREFIX)/configuration.nix
 
-move-nixfiles: $(HOME)/.nixfiles
-$(HOME)/.nixfiles:
+move-dotfiles: $(HOME)/.dotfiles
+$(HOME)/.dotfiles:
 	mkdir -p $(HOME)
-	sudo mv /etc/nixfiles $(HOME)/.nixfiles
-	sudo ln -s $(HOME)/.nixfiles /etc/nixfiles
-	chown -R $(USER):users $(HOME) $(HOME)/.nixfiles
+	sudo mv /etc/dotfiles $(HOME)/.dotfiles
+	sudo ln -s $(HOME)/.dotfiles /etc/dotfiles
+	chown -R $(USER):users $(HOME) $(HOME)/.dotfiles
 
 format:
 	nixfmt $(shell find . -name '*.nix')
