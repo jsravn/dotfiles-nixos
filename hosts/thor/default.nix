@@ -1,7 +1,7 @@
 # Thor is my desktop machine.
 
 { ... }: {
-  imports = [ ./hardware-configuration.nix ];
+  imports = [ <platform/nixos> ./hardware-configuration.nix ];
 
   # General configuration
   time.timeZone = "Europe/London";

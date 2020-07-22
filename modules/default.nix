@@ -4,7 +4,6 @@
 
 { ... }: {
   imports = [
-    <home-manager/nixos>
     ./core # core module is always loaded and includes the basics
     ./desktop # X11/Wayland desktop apps
     ./dev # Development tools

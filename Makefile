@@ -6,6 +6,7 @@ NIXOS_PREFIX	:= $(PREFIX)/etc/nixos
 FLAGS			:= -I "config=$$(pwd)/config" \
 				   -I "modules=$$(pwd)/modules" \
 				   -I "bin=$$(pwd)/bin" \
+				   -I "platform=$$(pwd)/platform" \
 				   $(FLAGS)
 
 all: add-channels build
@@ -62,3 +63,15 @@ $(HOME)/.dotfiles:
 
 format:
 	nixfmt $(shell find . -name '*.nix')
+
+## Darwin
+darwin-add-channels:
+	nix-channel --add "https://github.com/LnL7/nix-darwin/archive/master.tar.gz" darwin
+	nix-channel --add "https://nixos.org/channels/nixpkgs-unstable" nixpkgs
+	nix-channel --add "https://github.com/rycee/home-manager/archive/master.tar.gz" home-manager
+
+darwin-update: darwin-add-channels
+	nix-channel --update
+
+darwin-switch:
+	darwin-rebuild $(FLAGS) switch

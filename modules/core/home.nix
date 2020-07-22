@@ -1,4 +1,4 @@
-# modulues/core/home.nix -- configures my user's home
+# modules/core/default.nix -- configures my user's home
 { config, lib, options, pkgs, ... }:
 with lib;
 let
@@ -8,8 +8,6 @@ let
       default = value;
     };
 in {
-  imports = [ <home-manager/nixos> ];
-
   options = {
     # Contains my user configuration.
     my = {
@@ -48,61 +46,41 @@ in {
     home-manager.users.${config.my.username} =
       mkAliasDefinitions options.my.home;
     users.users.${config.my.username} = mkAliasDefinitions options.my.user;
-    my.user.packages = config.my.packages;
 
-    # Login user.
-    my.user = {
-      isNormalUser = true;
-      uid = 1000;
-      extraGroups = [ "wheel" "audio" "video" "networkmanager" ];
-      description = "James Ravn";
-      shell = pkgs.zsh;
+    my = {
+      user.packages = config.my.packages;
+
+      # Obey XDG.
+      home.xdg.enable = true;
+
+      # Conform more programs to XDG conventions. The rest are handled by their
+      # respective modules.
+      env = {
+        __GL_SHADER_DISK_CACHE_PATH = "$XDG_CACHE_HOME/nv";
+        CUDA_CACHE_PATH = "$XDG_CACHE_HOME/nv";
+        HISTFILE = "$XDG_DATA_HOME/bash/history";
+        INPUTRC = "$XDG_CACHE_HOME/readline/inputrc";
+        LESSHISTFILE = "$XDG_CACHE_HOME/lesshst";
+      };
+
+      # Add the bin folder to the user PATH.
+      env.PATH = [ <bin> "$XDG_BIN_HOME" "$PATH" ];
     };
 
-    # Obey XDG.
-    my.home.xdg.enable = true;
     environment.variables = {
-      # These are the defaults, but some applications are buggy when these lack
-      # explicit values.
-      XDG_CONFIG_HOME = "$HOME/.config";
-      XDG_CACHE_HOME = "$HOME/.cache";
-      XDG_DATA_HOME = "$HOME/.local/share";
-      XDG_BIN_HOME = "$HOME/.local/bin";
+        # These are the defaults, but some applications are buggy when these lack
+        # explicit values.
+        XDG_CONFIG_HOME = "$HOME/.config";
+        XDG_CACHE_HOME = "$HOME/.cache";
+        XDG_DATA_HOME = "$HOME/.local/share";
+        XDG_BIN_HOME = "$HOME/.local/bin";
     };
-
-    # Conform more programs to XDG conventions. The rest are handled by their
-    # respective modules.
-    my.env = {
-      __GL_SHADER_DISK_CACHE_PATH = "$XDG_CACHE_HOME/nv";
-      CUDA_CACHE_PATH = "$XDG_CACHE_HOME/nv";
-      HISTFILE = "$XDG_DATA_HOME/bash/history";
-      INPUTRC = "$XDG_CACHE_HOME/readline/inputrc";
-      LESSHISTFILE = "$XDG_CACHE_HOME/lesshst";
-    };
-
-    # Add the bin folder to the user PATH.
-    my.env.PATH = [ <bin> "$XDG_BIN_HOME" "$PATH" ];
 
     # Configure environment.
     environment.extraInit = let
       exportLines = mapAttrsToList (n: v: ''export ${n}="${v}"'') config.my.env;
     in ''
       ${concatStringsSep "\n" exportLines}
-    '';
-
-    # Clean up leftovers, as much as we can
-    system.userActivationScripts.cleanupHome = ''
-      pushd /home/${config.my.username}
-      rm -rf .compose-cache .nv .pki .dbus .fehbg
-      [ -s .xsession-errors ] || rm -f .xsession-errors*
-      popd
-    '';
-
-    # Clean up mesa cache - can change when versions update.
-    system.userActivationScripts.cleanupMesaCache = ''
-      pushd /home/${config.my.username}/.cache
-      rm -rf mesa_shader_cache
-      popd
     '';
   };
 }
