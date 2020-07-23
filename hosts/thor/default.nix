@@ -23,6 +23,7 @@
     };
 
     term.kitty.enable = true;
+    term.tmux.enable = true;
 
     dev = {
       # cc.enable = true;
