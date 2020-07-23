@@ -12,6 +12,7 @@ in {
 
     extraInit = mkOption {
       type = with types; listOf str;
+      default = [];
     };
   };
 
