@@ -1,8 +1,7 @@
 # NixOS specific configuration and modules.
 
 { config, lib, options, pkgs, stdenv, ... }:
-with lib;
-{
+with lib; {
   imports = [
     <home-manager/nixos>
     ./desktop # X11/Wayland desktop apps
@@ -71,4 +70,15 @@ with lib;
 
   # Enable all the dev documentation.
   documentation.dev.enable = true;
+
+  # Enable the zsh interactive module.
+  programs.zsh = {
+    enable = true;
+    promptInit = "";
+    enableCompletion = true;
+    # I init completion myself, because enableGlobalCompInit initializes it too
+    # soon, which means commands initialized later in my config won't get
+    # completion, and running compinit twice is slow.
+    enableGlobalCompInit = false;
+  };
 }
