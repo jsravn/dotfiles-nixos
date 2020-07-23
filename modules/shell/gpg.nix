@@ -9,6 +9,10 @@ in {
       type = types.int;
       default = 1800;
     };
+
+    extraInit = mkOption {
+      type = with types; listOf str;
+    };
   };
 
   config = mkIf config.modules.shell.enable {
@@ -22,7 +26,7 @@ in {
         text = ''
           enable-ssh-support
           default-cache-ttl ${toString cfg.cacheTTL}
-          pinentry-program ${pkgs.pinentry.gtk2}/bin/pinentry
+          ${concatStringsSep "\n" config.modules.shell.gpg.extraInit}
         '';
       };
 

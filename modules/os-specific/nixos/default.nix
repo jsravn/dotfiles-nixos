@@ -81,4 +81,7 @@ with lib; {
     # completion, and running compinit twice is slow.
     enableGlobalCompInit = false;
   };
+
+  # Use pinentry for gpg-agent.
+  modules.shell.gpg.extraInit = [ "pinentry-program ${pkgs.pinentry.gtk2}/bin/pinentry" ];
 }
