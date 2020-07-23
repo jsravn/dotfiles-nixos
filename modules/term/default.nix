@@ -9,5 +9,5 @@ with lib; {
     };
   };
 
-  imports = [ ./kitty.nix ];
+  imports = [ ./kitty.nix ./tmux.nix ];
 }
