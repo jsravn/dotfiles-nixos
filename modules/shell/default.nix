@@ -6,7 +6,6 @@ with lib; {
     ./git.nix
     ./gpg.nix
     ./kubernetes.nix
-    ./manpages.nix
     ./mail.nix
     ./packages.nix
     ./scmpuff.nix
