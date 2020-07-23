@@ -44,6 +44,11 @@ with lib; {
     lm_sensors
   ];
 
+  # NixOS specific packages for my user.
+  my.packages = with pkgs; [
+    my.cached-nix-shell
+  ];
+
   # Dotfiles location.
   my.dotfiles = "/etc/dotfiles";
 

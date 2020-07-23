@@ -3,8 +3,6 @@ with lib; {
   config = mkIf config.modules.shell.enable {
     my = {
       packages = with pkgs; [
-        my.cached-nix-shell
-
         # net utils
         ldns
         lsof
