@@ -45,9 +45,7 @@ with lib; {
   ];
 
   # NixOS specific packages for my user.
-  my.packages = with pkgs; [
-    my.cached-nix-shell
-  ];
+  my.packages = with pkgs; [ my.cached-nix-shell ];
 
   # Dotfiles location.
   my.dotfiles = "/etc/dotfiles";
@@ -76,6 +74,15 @@ with lib; {
     popd
   '';
 
+  # Remove zsh cache files.
+  # Remove zgen files when NixOS configuration changes so it reconfigures.
+  system.userActivationScripts.cleanupZsh = ''
+    pushd /home/${config.my.username}/.cache
+    rm -rf zsh/*
+    rm -f zgen/init.zsh
+    popd
+  '';
+
   # Enable all the dev documentation.
   documentation.dev.enable = true;
 
@@ -94,5 +101,6 @@ with lib; {
   # HACK Without this config file you get "No pinentry program" on 20.03.
   #      program.gnupg.agent.pinentryFlavor doesn't appear to work, and this
   #      is cleaner than overriding the systemd unit.
-  modules.shell.gpg.extraInit = [ "pinentry-program ${pkgs.pinentry.gtk2}/bin/pinentry" ];
+  modules.shell.gpg.extraInit =
+    [ "pinentry-program ${pkgs.pinentry.gtk2}/bin/pinentry" ];
 }

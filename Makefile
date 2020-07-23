@@ -71,5 +71,5 @@ darwin-add-channels:
 darwin-update: darwin-add-channels
 	nix-channel --update
 
-darwin-switch:
+darwin-switch: darwin-add-channels
 	darwin-rebuild $(FLAGS) switch
