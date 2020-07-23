@@ -2,7 +2,7 @@
 with lib; {
   config = mkIf config.modules.shell.enable {
     my = {
-      packages = with pkgs; [ gitAndTools.hub gitAndTools.diff-so-fancy ];
+      packages = with pkgs; [ gitAndTools.gitFull gitAndTools.hub gitAndTools.diff-so-fancy ];
     };
   };
 }

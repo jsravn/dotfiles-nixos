@@ -31,7 +31,6 @@ with lib; {
   # Core system packages for NixOS.
   environment.systemPackages = with pkgs; [
     coreutils
-    git
     killall
     unzip
     vim

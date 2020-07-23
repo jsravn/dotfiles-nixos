@@ -25,7 +25,6 @@ with lib; {
 
       packages = with pkgs; [
         ## Doom dependencies
-        git
         (ripgrep.override { withPCRE2 = true; })
         gnutls # for TLS connectivity
 
