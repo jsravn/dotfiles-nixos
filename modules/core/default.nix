@@ -39,6 +39,7 @@ in {
       # Global aliases.
       alias = mkOption {
         type = with types; nullOr (attrsOf (nullOr (either str path)));
+        default = {};
       };
 
       # Dotfiles location.
