@@ -6,6 +6,10 @@
         cached-nix-shell = (callPackage (builtins.fetchTarball
           "https://github.com/xzfc/cached-nix-shell/archive/master.tar.gz")
           { });
+        emacsMacport = callPackage ./emacsMacport {
+          inherit (pkgs.darwin.apple_sdk.frameworks) AppKit GSS ImageIO;
+          stdenv = pkgs.clangStdenv;
+        };
         notify-send-sh = (callPackage ./notify-send-sh.nix { });
         prl-tools = (callPackage ./prl-tools.nix { kernel = pkgs.linux; });
         scmpuff = (callPackage ./scmpuff.nix { });
@@ -19,8 +23,10 @@
         };
 
       # Make unstable packages available. On darwin, pkgs is always unstable.
-      unstable = if super.pkgs.stdenv.isLinux then import <nixos-unstable> { inherit config; }
-                 else pkgs;
+      unstable = if super.pkgs.stdenv.isLinux then
+        import <nixos-unstable> { inherit config; }
+      else
+        pkgs;
     })
 
   # Provides emacsUnstable.

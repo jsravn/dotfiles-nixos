@@ -11,7 +11,7 @@
       vim.enable = true;
       emacs = {
         enable = true;
-        package = pkgs.emacsMacport;
+        package = pkgs.my.emacsMacport;
       };
     };
 
