@@ -7,8 +7,5 @@ with lib; {
       # Enable direnv.
       zsh.rc = ''eval "$(direnv hook zsh)"'';
     };
-
-    # Use lorri/direnv integration.
-    services.lorri.enable = true;
   };
 }

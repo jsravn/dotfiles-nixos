@@ -44,6 +44,7 @@
     services = {
       docker.enable = true;
       libvirtd.enable = true;
+      lorri.enable = true;
       mullvad.enable = true;
       printers.enable = true;
     };
