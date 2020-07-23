@@ -40,6 +40,9 @@ in {
       alias = mkOption {
         type = with types; nullOr (attrsOf (nullOr (either str path)));
       };
+
+      # Dotfiles location.
+      dotfiles = mkOptionStr "/etc/dotfiles";
     };
   };
 
@@ -70,12 +73,12 @@ in {
     };
 
     environment.variables = {
-        # These are the defaults, but some applications are buggy when these lack
-        # explicit values.
-        XDG_CONFIG_HOME = "$HOME/.config";
-        XDG_CACHE_HOME = "$HOME/.cache";
-        XDG_DATA_HOME = "$HOME/.local/share";
-        XDG_BIN_HOME = "$HOME/.local/bin";
+      # These are the defaults, but some applications are buggy when these lack
+      # explicit values.
+      XDG_CONFIG_HOME = "$HOME/.config";
+      XDG_CACHE_HOME = "$HOME/.cache";
+      XDG_DATA_HOME = "$HOME/.local/share";
+      XDG_BIN_HOME = "$HOME/.local/bin";
     };
 
     # Configure environment.
@@ -84,5 +87,23 @@ in {
     in ''
       ${concatStringsSep "\n" exportLines}
     '';
+
+    # Add search paths so they can be referenced directly in modules.
+    nix.nixPath = options.nix.nixPath.default
+                  ++ [ "bin=${config.my.dotfiles}/bin" "config=${config.my.dotfiles}/config" ];
+
+    # Add custom overlays to override packages.
+    # See https://nixos.org/nixpkgs/manual/#chap-overlays for details.
+    nixpkgs.overlays = import ../../packages;
+
+    # Allow unfree packages.
+    nixpkgs.config.allowUnfree = true;
+
+    # Aliases for nixos.
+    environment.shellAliases = {
+      nix-env = "NIXPKGS_ALLOW_UNFREE=1 nix-env";
+      nix-shell = ''
+        NIX_PATH="nixpkgs-overlays=${config.my.dotfiles}/packages/default.nix:$NIX_PATH" nix-shell'';
+    };
   };
 }

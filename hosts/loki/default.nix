@@ -1,7 +1,7 @@
 # Loki is a macbook that relies on nix-darwin.
 
 { pkgs, ... }: {
-  imports = [ <platform/darwin> ];
+  imports = [ <modules/os-specific/darwin> ];
 
   time.timeZone = "Europe/London";
 

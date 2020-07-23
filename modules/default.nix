@@ -1,17 +1,11 @@
-# Entry point to all of the modules.
-#
-# Each module is guarded by a config flag and is enabled by the host configuration.
-
-{ ... }: {
+## Common modules
+{ lib, pkgs, ... }: {
   imports = [
     ./core # core module is always loaded and includes the basics
-    ./desktop # X11/Wayland desktop apps
     ./dev # Development tools
     ./editors # General purpose editors for editing stuff
     ./shell # Shell apps
-    ./security # Security settings
-    ./services # Background services
-    ./term     # Terminals
+    ./term # Terminals
     ./work # Work specific settings to enable on work computers
   ];
 }
