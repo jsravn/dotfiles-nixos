@@ -68,15 +68,22 @@ with lib; {
       };
     };
 
-    # Enable the nix zsh interactive module.
-    programs.zsh = {
-      enable = true;
-      enableCompletion = true;
-      # I init completion myself, because enableGlobalCompInit initializes it too
-      # soon, which means commands initialized later in my config won't get
-      # completion, and running compinit twice is slow.
-      enableGlobalCompInit = false;
-      promptInit = "";
-    };
+    # Enable the zsh interactive module.
+    programs.zsh = mkMerge [
+      {
+        enable = true;
+        promptInit = "";
+      }
+
+      (mkIf pkgs.stdenv.isLinux {
+        enableCompletion = true;
+        # I init completion myself, because enableGlobalCompInit initializes it too
+        # soon, which means commands initialized later in my config won't get
+        # completion, and running compinit twice is slow.
+        enableGlobalCompInit = false;
+      })
+
+      (mkIf pkgs.stdenv.isDarwin { enableCompletion = false; })
+    ];
   };
 }
