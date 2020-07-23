@@ -21,6 +21,5 @@ with lib; {
 
     # Give us all the manpages.
     environment.systemPackages = [ pkgs.manpages ];
-    documentation.dev.enable = true;
   };
 }

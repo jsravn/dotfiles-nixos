@@ -68,4 +68,7 @@ with lib;
     rm -rf mesa_shader_cache
     popd
   '';
+
+  # Enable all the dev documentation.
+  documentation.dev.enable = true;
 }
