@@ -31,7 +31,7 @@
     # Link home-manager packages to ~/Applications.
     system.build.applications = pkgs.lib.mkForce (pkgs.buildEnv {
       name = "system-applications";
-      paths = config.my.packages ++ config.environment.systemPackages;
+      paths = config.my.packages ++ config.home-manager.users.${config.my.username}.home.packages ++ config.environment.systemPackages;
       pathsToLink = "/Applications";
     });
   };
