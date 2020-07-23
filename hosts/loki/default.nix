@@ -17,6 +17,7 @@
 
     shell.enable = true;
     term.kitty.enable = true;
+    term.tmux.enable = true;
   };
 }
 
