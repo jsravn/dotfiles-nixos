@@ -8,7 +8,6 @@
   modules = {
     editors = {
       default = "nvim";
-      intellij.enable = true;
       vim.enable = true;
       emacs = {
         enable = true;
@@ -17,7 +16,6 @@
     };
 
     shell.enable = true;
-
     term.kitty.enable = true;
   };
 }

@@ -86,5 +86,8 @@ with lib; {
   };
 
   # Use pinentry for gpg-agent.
+  # HACK Without this config file you get "No pinentry program" on 20.03.
+  #      program.gnupg.agent.pinentryFlavor doesn't appear to work, and this
+  #      is cleaner than overriding the systemd unit.
   modules.shell.gpg.extraInit = [ "pinentry-program ${pkgs.pinentry.gtk2}/bin/pinentry" ];
 }

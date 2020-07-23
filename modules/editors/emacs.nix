@@ -32,7 +32,7 @@ with lib; {
         ## Optional dependencies
         fd # faster projectile indexing
         imagemagick # for image-dired
-        (lib.mkIf (config.programs.gnupg.agent.enable)
+        (lib.mkIf (pkgs.stdenv.isLinux)
           pinentry_emacs) # in-emacs gnupg prompts
         zstd # for undo-tree compression
 

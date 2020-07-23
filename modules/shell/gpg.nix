@@ -20,9 +20,6 @@ in {
     my = {
       env.GNUPGHOME = homedir;
 
-      # HACK Without this config file you get "No pinentry program" on 20.03.
-      #      program.gnupg.agent.pinentryFlavor doesn't appear to work, and this
-      #      is cleaner than overriding the systemd unit.
       home.xdg.configFile."gnupg/gpg-agent.conf" = {
         text = ''
           enable-ssh-support
