@@ -39,6 +39,9 @@ with lib; {
     curl
     gnumake
     file
+    pciutils
+    libsysfs
+    lm_sensors
   ];
 
   # Dotfiles location.

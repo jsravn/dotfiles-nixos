@@ -10,12 +10,6 @@ with lib; {
         lsof
         sipcalc
         bind
-
-        # system utils
-        pciutils
-        libsysfs
-        lm_sensors
-        gdb
       ];
     };
 
