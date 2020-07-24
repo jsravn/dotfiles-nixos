@@ -46,6 +46,13 @@ with lib; {
       env.ZSH_CACHE = "$XDG_CACHE_HOME/zsh";
 
       home = {
+        # zsh config.
+        xdg.configFile."zsh" = {
+          source = <config/zsh>;
+          # recursive to allow the extra files to be managed separately.
+          recursive = true;
+        };
+
         # I avoid programs.zsh.*Init variables because they initialize too soon. My
         # zsh config is particular about load order.
         xdg.configFile = {

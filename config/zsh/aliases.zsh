@@ -50,19 +50,3 @@ alias l="exa -1"
 alias la="LC_COLLATE=C exa -la"
 alias ll="exa -lg"
 alias ls="exa"
-
-# vim
-alias v="nvim"
-alias vim="nvim"
-
-# emacs
-alias ec='emacsclient -n'
-alias e='emacs -nw'
-
-# Clear cache and regenerate zgen files.
-zcc() {
-  pushd $HOME/.cache
-  rm -rf zsh/*
-  rm -f zgen/init.zsh
-  popd
-}

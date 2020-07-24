@@ -13,6 +13,9 @@ with lib; {
 
       env.VIMINIT =
         "let \\$MYVIMRC='\\$XDG_CONFIG_HOME/nvim/init.vim' | source \\$MYVIMRC";
+
+      alias.v = "nvim";
+      alias.vim = "nvim";
     };
   };
 }

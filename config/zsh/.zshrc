@@ -21,7 +21,6 @@ if [[ $TERM != dumb ]]; then
   source $ZDOTDIR/keybinds.zsh
   source $ZDOTDIR/completion.zsh
   source $ZDOTDIR/aliases.zsh
-  source $ZDOTDIR/kubernetes.zsh
   source $ZDOTDIR/p10k.zsh
 
   ##

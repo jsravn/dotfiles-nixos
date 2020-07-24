@@ -82,6 +82,9 @@ with lib; {
         master en_GB
         extra-dicts en_US
       '';
+
+      alias.ec = "emacsclient -n";
+      alias.e = "emacs -nw";
     };
 
     fonts.fonts = [ pkgs.emacs-all-the-icons-fonts ];

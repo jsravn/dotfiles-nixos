@@ -10,11 +10,7 @@ with lib; {
   config = mkIf config.modules.term.kitty.enable {
     my = {
       packages = with pkgs; [ kitty ];
-
-      # Kitty config.
-      home.xdg.configFile."kitty" = {
-        source = <config/kitty>;
-      };
+      home.xdg.configFile."kitty".source = <config/kitty>;
     };
   };
 }
