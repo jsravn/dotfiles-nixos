@@ -11,11 +11,11 @@ with lib; {
   };
   config = mkIf config.modules.shell.enable {
     my = {
-      packages = with pkgs; optional config.modules.shell.git.managePackage [
+      packages = optionals config.modules.shell.git.managePackage (with pkgs; [
         gitAndTools.gitFull
         gitAndTools.hub
         gitAndTools.diff-so-fancy
-      ];
+      ]);
       home.xdg.configFile."git".source = <config/git>;
     };
   };
