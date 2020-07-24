@@ -102,4 +102,7 @@ with lib; {
   #      is cleaner than overriding the systemd unit.
   modules.shell.gpg.extraInit =
     [ "pinentry-program ${pkgs.pinentry.gtk2}/bin/pinentry" ];
+
+  # Use gpg as the ssh agent.
+  programs.gnupg.agent.enableSSHSupport = true;
 }

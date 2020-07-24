@@ -81,5 +81,11 @@
     #      is cleaner than overriding the systemd unit.
     modules.shell.gpg.extraInit =
       [ "pinentry-program ${pkgs.pinentry_mac}/Applications/pinentry-mac.app/Contents/MacOS/pinentry-mac" ];
+
+    # Use keychain for ssh.
+    my.home.programs.ssh.extraConfig = ''
+      UseKeychain yes
+      AddKeysToAgent yes
+    '';
   };
 }
