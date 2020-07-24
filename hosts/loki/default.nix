@@ -18,5 +18,6 @@
     shell.enable = true;
     term.kitty.enable = true;
     term.tmux.enable = true;
+    work.sky.enable = true;
   };
 }
