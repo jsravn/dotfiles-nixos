@@ -87,6 +87,6 @@ with lib; {
       alias.e = "emacs -nw";
     };
 
-    fonts.fonts = [ pkgs.emacs-all-the-icons-fonts ];
+    fonts.fonts = with pkgs; [ emacs-all-the-icons-fonts dejavu_fonts noto-fonts-emoji ];
   };
 }
