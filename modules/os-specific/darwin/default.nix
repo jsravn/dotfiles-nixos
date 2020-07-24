@@ -79,14 +79,34 @@
     # HACK Without this config file you get "No pinentry program" on 20.03.
     #      program.gnupg.agent.pinentryFlavor doesn't appear to work, and this
     #      is cleaner than overriding the systemd unit.
-    modules.shell.gpg.extraInit =
-      [ "pinentry-program ${pkgs.pinentry_mac}/Applications/pinentry-mac.app/Contents/MacOS/pinentry-mac" ];
+    modules.shell.gpg.extraInit = [
+      "pinentry-program ${pkgs.pinentry_mac}/Applications/pinentry-mac.app/Contents/MacOS/pinentry-mac"
+    ];
 
     # Use keychain for ssh.
     my.home.programs.ssh.extraConfig = ''
-      IgnoreUnknown UseKeychain
       UseKeychain yes
       AddKeysToAgent yes
     '';
+
+    # Enable lorri.
+    environment.systemPackages = [ pkgs.lorri ];
+    # XXX: Copied verbatim from https://github.com/iknow/nix-channel/blob/7bf3584e0bef531836050b60a9bbd29024a1af81/darwin-modules/lorri.nix
+    launchd.user.agents = {
+      "lorri" = {
+        serviceConfig = {
+          WorkingDirectory = (builtins.getEnv "HOME");
+          EnvironmentVariables = { };
+          KeepAlive = true;
+          RunAtLoad = true;
+          StandardOutPath = "/var/tmp/lorri.log";
+          StandardErrorPath = "/var/tmp/lorri.log";
+        };
+        script = ''
+          source ${config.system.build.setEnvironment}
+          exec ${pkgs.lorri}/bin/lorri daemon
+        '';
+      };
+    };
   };
 }

@@ -6,6 +6,10 @@
   time.timeZone = "Europe/London";
 
   modules = {
+    dev = {
+      go.enable = true;
+    };
+
     editors = {
       default = "nvim";
       vim.enable = true;
