@@ -4,7 +4,7 @@ with lib; {
     my = {
       packages = with pkgs; [ unstable.chezmoi lastpass-cli ];
       home.xdg.configFile."chezmoi/chezmoi.toml".text = ''
-        sourceDir = "/home/${config.my.username}/.dotfiles/chezmoi"
+        sourceDir = "${config.my.dotfiles}/chezmoi"
       '';
 
       # Don't use pinentry in lastpass-cli - always use console.

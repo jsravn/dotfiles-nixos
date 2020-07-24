@@ -42,10 +42,7 @@ with lib; {
 
         ## Module dependencies
         # :checkers spell
-        aspell
-        aspellDicts.en
-        aspellDicts.en-computers
-        aspellDicts.en-science
+        (aspellWithDicts(ps: [ps.en ps.en-computers ps.en-science]))
         # :checkers grammar
         languagetool
         # :tools lookup
