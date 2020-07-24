@@ -19,6 +19,9 @@
     # Dotfiles location.
     my.dotfiles = "/Users/${config.my.username}/.dotfiles";
 
+    # Enable fonts.
+    fonts.enableFontDir = true;
+
     # Remove zsh cache files.
     # Remove zgen files when NixOS configuration changes so it reconfigures.
     system.activationScripts.cleanupZsh = ''
