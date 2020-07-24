@@ -108,5 +108,8 @@
         '';
       };
     };
+
+    # Kludge to force git to use Apple ssh.
+    my.env.SSH_GIT_COMMAND = "/usr/bin/ssh";
   };
 }

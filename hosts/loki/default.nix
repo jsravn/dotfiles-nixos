@@ -19,7 +19,11 @@
       };
     };
 
-    shell.enable = true;
+    shell = {
+      enable = true;
+      git.managePackage = false;
+    };
+
     term.kitty.enable = true;
     term.tmux.enable = true;
     work.sky.enable = true;
