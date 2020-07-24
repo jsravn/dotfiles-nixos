@@ -84,6 +84,7 @@
 
     # Use keychain for ssh.
     my.home.programs.ssh.extraConfig = ''
+      IgnoreUnknown UseKeychain
       UseKeychain yes
       AddKeysToAgent yes
     '';
