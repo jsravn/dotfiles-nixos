@@ -23,8 +23,8 @@
     fonts.enableFontDir = true;
 
     # Remove zsh cache files.
-    # Remove zgen files when NixOS configuration changes so it reconfigures.
-    system.activationScripts.cleanupZsh = ''
+    # Remove zgen files when configuration changes so it reconfigures.
+    system.activationScripts.extraUserActivation.text = ''
       pushd /Users/${config.my.username}/.cache
       rm -rf zsh/*
       rm -f zgen/init.zsh
@@ -34,8 +34,52 @@
     # Link home-manager packages to ~/Applications.
     system.build.applications = pkgs.lib.mkForce (pkgs.buildEnv {
       name = "system-applications";
-      paths = config.my.packages ++ config.home-manager.users.${config.my.username}.home.packages ++ config.environment.systemPackages;
+      paths = config.my.packages
+        ++ config.home-manager.users.${config.my.username}.home.packages
+        ++ config.environment.systemPackages;
       pathsToLink = "/Applications";
     });
+
+    system.activationScripts.applications.text = pkgs.lib.mkForce (''
+      echo "setting up ~/Applications/NixApps..."
+      mkdir -p ~/Applications
+      rm -rf ~/Applications/NixApps
+      mkdir -p ~/Applications/NixApps
+      chown ${config.my.username} ~/Applications/NixApps
+      find ${config.system.build.applications}/Applications -maxdepth 1 -type l | while read f; do
+        echo "Linking $f"
+        src=$(/usr/bin/stat -f%Y $f)
+        osascript -e "tell app \"Finder\" to make alias file at POSIX file \"/Users/${config.my.username}/Applications/NixApps/\" to POSIX file \"$src\"";
+      done
+    '');
+
+    # OS Settings.
+    system.defaults = {
+      dock = { autohide = true; };
+
+      finder = {
+        AppleShowAllExtensions = true;
+        _FXShowPosixPathInTitle = true;
+        FXEnableExtensionChangeWarning = false;
+      };
+
+      NSGlobalDomain = {
+        InitialKeyRepeat = 15;
+        KeyRepeat = 2;
+      };
+    };
+
+    system.keyboard = {
+      enableKeyMapping = true;
+      remapCapsLockToControl = true;
+      nonUS.remapTilde = true;
+    };
+
+    # Use pinentry for gpg-agent.
+    # HACK Without this config file you get "No pinentry program" on 20.03.
+    #      program.gnupg.agent.pinentryFlavor doesn't appear to work, and this
+    #      is cleaner than overriding the systemd unit.
+    modules.shell.gpg.extraInit =
+      [ "pinentry-program ${pkgs.pinentry_mac}/Applications/pinentry-mac.app/Contents/MacOS/pinentry-mac" ];
   };
 }

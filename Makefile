@@ -72,4 +72,4 @@ darwin-update: darwin-add-channels
 	nix-channel --update
 
 darwin-switch: darwin-add-channels
-	darwin-rebuild $(FLAGS) switch
+	TERM=xterm-256color darwin-rebuild $(FLAGS) switch
