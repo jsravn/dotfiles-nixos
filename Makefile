@@ -68,8 +68,10 @@ darwin-add-channels:
 	nix-channel --add "https://nixos.org/channels/nixpkgs-unstable" nixpkgs
 	nix-channel --add "https://github.com/rycee/home-manager/archive/master.tar.gz" home-manager
 
+du: darwin-update
 darwin-update: darwin-add-channels
 	nix-channel --update
 
+ds: darwin-switch
 darwin-switch: darwin-add-channels
 	TERM=xterm-256color darwin-rebuild $(FLAGS) switch

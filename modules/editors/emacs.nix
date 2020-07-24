@@ -8,6 +8,11 @@ with lib; {
       default = false;
     };
 
+    managePackage = mkOption {
+      type = types.bool;
+      default = true;
+    };
+
     package = mkOption {
       type = types.package;
       default = pkgs.emacsUnstable;
@@ -18,7 +23,7 @@ with lib; {
   config = mkIf config.modules.editors.emacs.enable {
     my = {
       home.programs.emacs = {
-        enable = true;
+        enable = config.modules.editors.emacs.managePackage;
         package = config.modules.editors.emacs.package;
         extraPackages = epkgs: [ epkgs.emacs-libvterm ];
       };
