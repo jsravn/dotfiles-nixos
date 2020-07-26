@@ -1,8 +1,9 @@
 # Screensharing configuration for Wayland/Sway.
-# Not working at the moment - there are various issues w/ Nix packages.
+#
+# This enables chromium to do screensharing when the pipewire flag is enabled in chrome://flags.
 { config, lib, pkgs, ... }:
 with lib;
-let xdp = pkgs.enableDebugging pkgs.my.xdg-desktop-portal;
+let xdp = pkgs.my.xdg-desktop-portal;
 in {
   config = mkIf config.modules.desktop.enable {
     systemd.packages = with pkgs; [
