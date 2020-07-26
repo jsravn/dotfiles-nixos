@@ -63,7 +63,7 @@ with lib; {
     pushd /home/${config.my.username}
     rm -rf .compose-cache .nv .pki .dbus .fehbg
     [ -s .xsession-errors ] || rm -f .xsession-errors*
-
+    popd
   '';
 
   # Clean up mesa cache - can change when versions update.
