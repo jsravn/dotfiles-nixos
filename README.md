@@ -1,7 +1,7 @@
 # dotfiles
 
-My dotfiles. It is primarily a NixOS configuration for setting up an entire machine from scratch. In addition it manages my user
-dotfiles using chezmoi, for use on both NixOS and non-NixOS systems.
+My dotfiles. It is primarily a NixOS configuration for setting up an entire machine from scratch. In addition it also manages
+an OS X system with Nix installed.
 
 # NixOS
 
@@ -13,19 +13,19 @@ to `/mnt` and the ESP partition to `/mnt/boot` (for UEFI systems).
 ``` sh
 sudo -i
 nix-env -iA nixos.git nixos.gnumake
-git clone https://github.com/jsravn/nixfiles.git /mnt/etc/nixfiles
-cd /mnt/etc/nixfiles
+git clone https://github.com/jsravn/dotfiles.git /mnt/etc/dotfiles
+cd /mnt/etc/dotfiles
 HOST=myhost make install
 ```
 
-After rebooting, use `make move-nixfiles` to move the config into `$HOME/.nixfiles`.
+After rebooting, use `make move-dotfiles` to move the config into `$HOME/.dotfiles`.
 
 ### Post-install
 
 A few manual steps are required to finish setting up a fresh system:
 
 ``` sh
-# load transient dotfiles
+# load secure dotfiles
 chezmoi apply
 # add ssh key to gpg-agent
 ssh-add
@@ -39,15 +39,31 @@ git clone https://github.com/hlissner/doom-emacs ~/.config/emacs; doom up
 git clone https://github.com/hlissner/.vim ~/.vim; cd ~/.vim; make install
 ```
 
-### Tips
+# OS X
 
-To fix the resolution on the install image:
+Follow the [https://nixos.org/nix/manual/#sect-macos-installation](Nix manual) to install Nix as a single user install on OS X. Then
+install [https://github.com/LnL7/nix-darwin](nix-darwin). Create `~/.nixpkgs/darwin-configuration.nix`:
+
+``` nix
+import "../.dotfiles" loki
+```
+
+Then clone this repo:
 
 ``` sh
-sudo -i
-kill $(pidof kscreen_backend_launcher)
-xrandr --output <Output> --mode <widthxheight>
+git clone https://github.com/jsravn/dotfiles.git .dotfiles
 ```
+
+And install it:
+
+``` sh
+cd ~/.dotfiles
+make darwin-switch
+```
+
+Unfortunately most GUI packages are not well handled on Nix, so the best option is to use homebrew to install those. This repo
+will manage all the dotfiles and shell configuration, and also enable `shell.nix` with lorri/direnv. It also installs a few graphical
+applications that can be installed from Nix (like kitty).
 
 # Credit
 
