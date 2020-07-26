@@ -41,8 +41,8 @@ git clone https://github.com/hlissner/.vim ~/.vim; cd ~/.vim; make install
 
 # OS X
 
-Follow the [https://nixos.org/nix/manual/#sect-macos-installation](Nix manual) to install Nix as a single user install on OS X. Then
-install [https://github.com/LnL7/nix-darwin](nix-darwin). Create `~/.nixpkgs/darwin-configuration.nix`:
+Follow the [Nix manual](https://nixos.org/nix/manual/#sect-macos-installation) to install Nix as a single user install on OS X. Then
+install [nix-darwin](https://github.com/LnL7/nix-darwin). Create `~/.nixpkgs/darwin-configuration.nix`:
 
 ``` nix
 import "../.dotfiles" loki
