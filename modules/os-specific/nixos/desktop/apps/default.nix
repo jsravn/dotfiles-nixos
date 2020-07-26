@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 with lib; {
   imports =
-    [ ./gnome-utils.nix ./keybase.nix ./obs-studio.nix ./sonarworks.nix ];
+    [ ./keybase.nix ./obs-studio.nix ./sonarworks.nix ];
 
   config = mkIf config.modules.desktop.enable {
     my = {
@@ -12,9 +12,9 @@ with lib; {
         gitter
         libreoffice
         lutris
-        redshift-wlr
         mpv
         pinta
+        redshift-wlr
         samba
         slack
         spotify
@@ -49,7 +49,21 @@ with lib; {
           exec = "chromium --app=https://web.whatsapp.com";
           categories = "Productivity";
         })
+
+        # Gnome utility apps.
+        gnome3.eog # Image viewer
+        gnome3.evince # PDF/Document Viewer
+        gnome3.gedit # A generic text editor
+        gnome3.gnome-calculator # A nice calculator
+        gnome3.nautilus # File browser
+        gnome3.seahorse # Secret browser
       ];
+
+      # Add support for mounting network filesystems to Nautilus.
+      services.gvfs.enable = true;
+
+      # Unlock gnome-keyring on login. Requires a keyring called "login".
+      services.gnome3.gnome-keyring.enable = true;
 
       # Start up dropbox automatically in Sway.
       home.xdg.configFile."sway.d/50-dropbox.conf".text = ''
