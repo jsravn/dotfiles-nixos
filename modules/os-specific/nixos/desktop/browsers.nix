@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 with lib;
-let cfg = config.modules.desktop.browsers.chromium;
+let cfg = config.modules.desktop;
 in {
   options.modules.desktop.browsers = {
     default = mkOption {
@@ -26,16 +26,16 @@ in {
     };
   };
 
-  config = mkIf config.modules.desktop.enable {
+  config = mkIf cfg.enable {
     my.packages = with pkgs; [
       (unstable.chromium.override {
         enableWideVine = true;
-        useOzone = cfg.useOzone;
-        enableVaapi = cfg.useVaapi;
+        useOzone = cfg.browsers.chromium.useOzone;
+        enableVaapi = cfg.browsers.chromium.useVaapi;
       })
       firefox-bin
     ];
 
-    my.env.BROWSER = config.moduels.desktop.browsers.default;
+    my.env.BROWSER = cfg.browsers.default;
   };
 }
