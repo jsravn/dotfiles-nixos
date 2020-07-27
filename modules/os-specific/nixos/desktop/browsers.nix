@@ -35,5 +35,7 @@ in {
       })
       firefox-bin
     ];
+
+    my.env.BROWSER = config.moduels.desktop.browsers.default;
   };
 }

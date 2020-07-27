@@ -1,6 +1,15 @@
 { config, lib, pkgs, ... }:
-with lib; {
-  config = mkIf config.modules.desktop.enable {
+with lib;
+let cfg = config.modules.desktop;
+in {
+  options.modules.desktop.defaultApplications = {
+    browser = mkOption {
+      type = types.str;
+      default = "chromium-browser.desktop";
+    }; 
+  };
+
+  config = mkIf cfg.enable {
     # Default applications and xdg-open.
     # See https://wiki.archlinux.org/index.php/XDG_MIME_Applications for details.
     my = {
@@ -11,10 +20,12 @@ with lib; {
         defaultApplications = {
           "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = [ "writer.desktop" ];
           "application/pdf" = [ "org.gnome.Evince.desktop" ];
-          "x-scheme-handler/http" = [ "chromium-browser.desktop" ];
-          "x-scheme-handler/https" = [ "chromium-browser.desktop" ];
-          "application/xhtml+xml" = [ "chromium-browser.desktop" ];
-          "text/html" = [ "chromium-browser.desktop" ];
+          "x-scheme-handler/http" = [ cfg.defaultApplications.browser ];
+          "x-scheme-handler/https" = [ cfg.defaultApplications.browser ];
+          "scheme-handler/http" = [ cfg.defaultApplications.browser ];
+          "scheme-handler/https" = [ cfg.defaultApplications.browser ];
+          "application/xhtml+xml" = [ cfg.defaultApplications.browser ];
+          "text/html" = [ cfg.defaultApplications.browser ];
           "x-scheme-handler/slack" = [ "slack.desktop" ];
           "text/plain" = [ "org.gnome.gedit.desktop" ];
           "image/jpeg" = [ "eog.desktop" ];
