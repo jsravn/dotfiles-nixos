@@ -11,14 +11,12 @@ with lib; {
         dropbox
         gitter
         libreoffice
-        lutris
         mpv
         pinta
         redshift-wlr
         samba
         slack
         spotify
-        steam
         thunderbird
         wireshark
         (zoom-us.overrideAttrs (oldAttrs: rec {
@@ -27,6 +25,10 @@ with lib; {
             "--unset XDG_SESSION_TYPE"
           ];
         }))
+
+        # Games.
+        unstable.lutris
+        unstable.steam
 
         # Browser apps.
         (makeDesktopItem {
@@ -59,12 +61,6 @@ with lib; {
         gnome3.seahorse # Secret browser
       ];
 
-      # Add support for mounting network filesystems to Nautilus.
-      services.gvfs.enable = true;
-
-      # Unlock gnome-keyring on login. Requires a keyring called "login".
-      services.gnome3.gnome-keyring.enable = true;
-
       # Start up dropbox automatically in Sway.
       home.xdg.configFile."sway.d/50-dropbox.conf".text = ''
         exec dropbox
@@ -82,7 +78,13 @@ with lib; {
       '';
     };
 
-    # For lutris and steam.
+    # Add support for mounting network filesystems to Nautilus.
+    services.gvfs.enable = true;
+
+    # Unlock gnome-keyring on login. Requires a keyring called "login".
+    services.gnome3.gnome-keyring.enable = true;
+
+    # For games.
     hardware.opengl.driSupport32Bit = true;
     hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ libva ];
     hardware.pulseaudio.support32Bit = true;
