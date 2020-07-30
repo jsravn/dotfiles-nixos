@@ -14,5 +14,7 @@ with lib; {
       sddm.theme = "sugar-dark";
       defaultSession = "sway";
     };
+    # Unlock gnome keyring.
+    security.pam.services.sddm.enableGnomeKeyring = true;
   };
 }
