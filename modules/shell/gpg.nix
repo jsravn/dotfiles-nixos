@@ -24,7 +24,6 @@ in {
 
       home.xdg.configFile."gnupg/gpg-agent.conf" = {
         text = ''
-          enable-ssh-support
           default-cache-ttl ${toString cfg.cacheTTL}
           ${concatStringsSep "\n" config.modules.shell.gpg.extraInit}
         '';
@@ -35,6 +34,9 @@ in {
       '';
     };
 
-    programs.gnupg.agent.enable = true;
+    programs.gnupg = {
+      agent.enable = true;
+      agent.enableSSHSupport = true;
+    };
   };
 }
