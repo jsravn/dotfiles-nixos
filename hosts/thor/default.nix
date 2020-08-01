@@ -48,6 +48,7 @@
       lorri.enable = true;
       mullvad.enable = true;
       printers.enable = true;
+      ssh.enable = true;
     };
 
     shell.enable = true;

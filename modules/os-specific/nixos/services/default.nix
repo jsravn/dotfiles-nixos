@@ -6,5 +6,6 @@
     ./mullvad.nix
     ./parallels-guest.nix
     ./printers.nix
+    ./ssh.nix
   ];
 }

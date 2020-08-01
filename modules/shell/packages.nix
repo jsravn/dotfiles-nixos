@@ -8,6 +8,10 @@ with lib; {
         lsof
         sipcalc
         bind
+
+        # serial
+        screen
+        uucp
       ];
     };
 

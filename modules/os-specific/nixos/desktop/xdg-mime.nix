@@ -26,6 +26,7 @@ in {
           "scheme-handler/https" = [ cfg.defaultApplications.browser ];
           "application/xhtml+xml" = [ cfg.defaultApplications.browser ];
           "text/html" = [ cfg.defaultApplications.browser ];
+          "text/markdown" = [ "org.gnome.gedit.desktop" ];
           "x-scheme-handler/slack" = [ "slack.desktop" ];
           "text/plain" = [ "org.gnome.gedit.desktop" ];
           "image/jpeg" = [ "eog.desktop" ];
