@@ -62,4 +62,7 @@ if [[ $TERM != dumb ]]; then
 
   # If you have host-local configuration, this is where you'd put it
   [ -f ~/.zshrc ] && source ~/.zshrc
+
+  # Source home-manager session variables.
+  . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
 fi

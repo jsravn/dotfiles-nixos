@@ -12,5 +12,6 @@ with lib; {
       enable = true;
       startWhenNeeded = true;
     };
+    programs.mosh.enable = true;
   };
 }
