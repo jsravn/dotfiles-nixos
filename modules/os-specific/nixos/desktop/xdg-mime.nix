@@ -5,7 +5,7 @@ in {
   options.modules.desktop.defaultApplications = {
     browser = mkOption {
       type = types.str;
-      default = "chromium-browser.desktop";
+      default = "firefox.desktop";
     }; 
   };
 
