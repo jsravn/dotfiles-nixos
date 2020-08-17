@@ -1,5 +1,5 @@
 let
-  pkgs = import <nixpkgs> {};
+  pkgs = import <nixpkgs-unstable> {};
 in
 pkgs.mkShell {
   buildInputs = with pkgs; [
@@ -12,5 +12,6 @@ pkgs.mkShell {
     kustomize
     gradle
     jq
+    keepassx2
   ];
 }
