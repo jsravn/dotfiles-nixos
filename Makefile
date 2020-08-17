@@ -47,6 +47,8 @@ add-channels:
 	sudo nix-channel --add "https://nixos.org/channels/nixos-${NIXOS_VERSION}" nixos
 	sudo nix-channel --add "https://github.com/rycee/home-manager/archive/release-${NIXOS_VERSION}.tar.gz" home-manager
 	sudo nix-channel --add "https://nixos.org/channels/nixos-unstable" nixos-unstable
+	# Used by shell.nix files.
+	sudo nix-channel --add "https://nixos.org/channels/nixpkgs-unstable" nixpkgs-unstable
 
 install-config: $(NIXOS_PREFIX)/configuration.nix
 $(NIXOS_PREFIX)/configuration.nix:
@@ -67,6 +69,8 @@ darwin-add-channels:
 	nix-channel --add "https://github.com/LnL7/nix-darwin/archive/master.tar.gz" darwin
 	nix-channel --add "https://nixos.org/channels/nixpkgs-unstable" nixpkgs
 	nix-channel --add "https://github.com/rycee/home-manager/archive/master.tar.gz" home-manager
+	# Used by shell.nix files.
+	nix-channel --add "https://nixos.org/channels/nixpkgs-unstable" nixpkgs-unstable
 
 du: darwin-update
 darwin-update: darwin-add-channels

@@ -43,6 +43,8 @@ in {
     security.pam.services.swaylock = { };
     # To make a Sway session available if a display manager like SDDM is enabled:
     services.xserver.displayManager.sessionPackages = [ swayPackage ];
+    fonts.enableDefaultFonts = true;
+    programs.dconf.enable = true;
 
     my = {
       packages = with pkgs; [
