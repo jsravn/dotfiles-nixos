@@ -1,6 +1,22 @@
 { config, lib, pkgs, ... }:
 with lib;
-let cfg = config.modules.desktop.sway;
+let
+  cfg = config.modules.desktop.sway;
+  swayPackage = pkgs.unstable.sway.override {
+    extraOptions = [ "--verbose" "--unsupported-gpu" ];
+    extraSessionCommands = ''
+      # Fix Java apps.
+      export _JAVA_AWT_WM_NONREPARENTING=1
+      # For xdpw (screen sharing).
+      # Disable these for now - as they break a lot of apps (like zoom).
+      export XDG_SESSION_TYPE=wayland
+      export XDG_CURRENT_DESKTOP=sway
+      # For Firefox.
+      export MOZ_ENABLE_WAYLAND=1
+    '';
+    withBaseWrapper = true;
+    withGtkWrapper = true;
+  };
 in {
   options.modules.desktop.sway = {
     hwmonTemp = mkOption {
@@ -9,47 +25,44 @@ in {
     };
     extraConfig = mkOption {
       type = with types; listOf str;
-      default = [];
+      default = [ ];
     };
   };
 
   config = mkIf config.modules.desktop.enable {
-    programs.sway = {
-      enable = true;
-      extraOptions = [ "--verbose" "--unsupported-gpu" ];
-      extraSessionCommands = ''
-        # Fix Java apps.
-        export _JAVA_AWT_WM_NONREPARENTING=1
-        # For xdpw (screen sharing).
-        # Disable these for now - as they break a lot of apps (like zoom).
-        export XDG_SESSION_TYPE=wayland
-        export XDG_CURRENT_DESKTOP=sway
-        # For Firefox.
-        export MOZ_ENABLE_WAYLAND=1
-      '';
-      wrapperFeatures.base = true;
-      wrapperFeatures.gtk = true;
-    };
+    environment.systemPackages = with pkgs; [
+      # sway is a system package so it can be found by graphical session managers.
+      swayPackage
+
+      # Add NetworkManager applet.
+      # For some reason, nm-applet can't find icons as a user package so install it as a system package.
+      gnome3.networkmanagerapplet
+      hicolor-icon-theme
+    ];
+
+    security.pam.services.swaylock = { };
+    # To make a Sway session available if a display manager like SDDM is enabled:
+    services.xserver.displayManager.sessionPackages = [ swayPackage ];
 
     my = {
       packages = with pkgs; [
         # sway extra packages
-        swaybg
-        swayidle
-        swaylock
-        xwayland
+        unstable.swaybg
+        unstable.swayidle
+        unstable.swaylock
+        unstable.xwayland
 
         # waybar
         unstable.waybar # unstable contains a sleep/resume fix
         libappindicator # tray icons
 
         # support applications
-        grim
-        slurp
+        unstable.grim
+        unstable.slurp
+        unstable.mako # notifications
         wl-clipboard
         imagemagick
         rofi
-        mako # notifications
         libnotify
         my.notify-send-sh
         playerctl # music control
@@ -77,7 +90,7 @@ in {
       home.xdg.configFile."sway.d/00-extra.conf".text = ''
         ${concatStringsSep "\n" config.modules.desktop.sway.extraConfig}
       '';
-      
+
       # Set terminal.
       home.xdg.configFile."sway.d/00-term.conf".text = ''
         # Set terminal
@@ -103,12 +116,5 @@ in {
         icon-path=${pkgs.gnome3.adwaita-icon-theme}/share/icons/Adwaita
       '';
     };
-
-    # Add NetworkManager applet.
-    # For some reason, nm-applet can't find icons as a user package so install it as a system package.
-    environment.systemPackages = with pkgs; [
-      gnome3.networkmanagerapplet
-      hicolor-icon-theme
-    ];
   };
 }
