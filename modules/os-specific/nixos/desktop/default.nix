@@ -5,7 +5,7 @@ with lib; {
     ./browsers.nix
     ./fonts.nix
     ./xorg.nix
-    ./sddm.nix
+    # ./sddm.nix
     ./sound.nix
     ./sway.nix
     ./theme.nix
