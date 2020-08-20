@@ -14,7 +14,6 @@
         prl-tools = (callPackage ./prl-tools.nix { kernel = pkgs.linux; });
         scmpuff = (callPackage ./scmpuff.nix { });
         sddm-themes = (callPackage ./sddm-themes.nix { });
-        xdg-desktop-portal = (callPackage ./xdg-desktop-portal.nix { });
       };
 
       # Make nur packages available.
