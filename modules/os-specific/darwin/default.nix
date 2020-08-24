@@ -16,6 +16,13 @@
       enableCompletion = false;
     };
 
+    # My user.
+    my.user = {
+      home = "/Users/${config.my.username}";
+      name = "${config.my.username}";
+      shell = pkgs.zsh;
+    };
+
     # Dotfiles location.
     my.dotfiles = "/Users/${config.my.username}/.dotfiles";
 
@@ -83,11 +90,14 @@
       "pinentry-program ${pkgs.pinentry_mac}/Applications/pinentry-mac.app/Contents/MacOS/pinentry-mac"
     ];
 
-    # Use keychain for ssh.
-    my.home.programs.ssh.extraConfig = ''
-      UseKeychain yes
-      AddKeysToAgent yes
-    '';
+    # Darwin specific home-manager settings.
+    my.home = {
+      # Use keychain for ssh.
+      programs.ssh.extraConfig = ''
+        UseKeychain yes
+        AddKeysToAgent yes
+      '';
+    };
 
     # Enable lorri.
     environment.systemPackages = [ pkgs.lorri ];

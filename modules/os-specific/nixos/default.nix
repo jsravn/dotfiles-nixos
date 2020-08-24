@@ -51,6 +51,8 @@ with lib; {
 
   # Login user.
   my.user = {
+    home = "/home/${config.my.username}";
+    name = "${config.my.username}";
     isNormalUser = true;
     uid = 1000;
     extraGroups = [ "wheel" "audio" "video" "networkmanager" ];

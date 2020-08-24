@@ -39,7 +39,7 @@ in {
       # Global aliases.
       alias = mkOption {
         type = with types; nullOr (attrsOf (nullOr (either str path)));
-        default = {};
+        default = { };
       };
 
       # Dotfiles location.
@@ -54,10 +54,13 @@ in {
     users.users.${config.my.username} = mkAliasDefinitions options.my.user;
 
     my = {
-      user.packages = config.my.packages;
+      home = {
+        # Obey XDG.
+        xdg.enable = true;
+      };
 
-      # Obey XDG.
-      home.xdg.enable = true;
+      # Define user packages.
+      user.packages = config.my.packages;
 
       # Conform more programs to XDG conventions. The rest are handled by their
       # respective modules.
@@ -90,8 +93,10 @@ in {
     '';
 
     # Add search paths so they can be referenced directly in modules.
-    nix.nixPath = options.nix.nixPath.default
-                  ++ [ "bin=${config.my.dotfiles}/bin" "config=${config.my.dotfiles}/config" ];
+    nix.nixPath = options.nix.nixPath.default ++ [
+      "bin=${config.my.dotfiles}/bin"
+      "config=${config.my.dotfiles}/config"
+    ];
 
     # Add custom overlays to override packages.
     # See https://nixos.org/nixpkgs/manual/#chap-overlays for details.
