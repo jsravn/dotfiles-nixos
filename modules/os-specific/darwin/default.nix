@@ -29,15 +29,6 @@
     # Enable fonts.
     fonts.enableFontDir = true;
 
-    # Remove zsh cache files.
-    # Remove zgen files when configuration changes so it reconfigures.
-    system.activationScripts.extraUserActivation.text = ''
-      pushd /Users/${config.my.username}/.cache
-      rm -rf zsh/*
-      rm -f zgen/init.zsh
-      popd
-    '';
-
     # Link home-manager packages to ~/Applications.
     system.build.applications = pkgs.lib.mkForce (pkgs.buildEnv {
       name = "system-applications";
@@ -123,11 +114,11 @@
 
       NSGlobalDomain = {
         # Key rate.
-        InitialKeyRepeat = 15;
-        KeyRepeat = 2;
+        InitialKeyRepeat = 12;
+        KeyRepeat = 1;
 
         # Improve font smooth on non-retina displays (https://sayzlim.net/font-smoothing-non-retina-display/).
-        AppleFontSmoothing = 1;
+        AppleFontSmoothing = 2;
 
         # Always show the scrollbars.
         AppleShowScrollBars = "Always";
@@ -204,16 +195,23 @@
     # Set things not in the nix-darwin module.
     # See https://github.com/mathiasbynens/dotfiles/blob/main/.macos for a reference of everything possible.
     # These should all be moved into the nix-darwin module at some point.
-    system.activationScripts.extraActivation.text = ''
+    system.activationScripts.extraUserActivation.text = ''
+###############################################################################
+# Home directory                                                              #
+###############################################################################
+# Remove zsh cache files and zgen files when configuration changes so it reconfigures.
+pushd /Users/${config.my.username}/.cache
+rm -rf zsh/*
+rm -f zgen/init.zsh
+popd
+
+###############################################################################
+# General UI/UX                                                               #
+###############################################################################
+
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change
 osascript -e 'tell application "System Preferences" to quit'
-
-# Disable the sound effects on boot
-sudo nvram SystemAudioVolume=" "
-
-# Disable transparency in the menu bar and elsewhere on Yosemite
-defaults write com.apple.universalaccess reduceTransparency -bool true
 
 # Automatically quit printer app once the print jobs complete
 defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
@@ -227,69 +225,14 @@ defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
 # Set Help Viewer windows to non-floating mode
 defaults write com.apple.helpviewer DevMode -bool true
 
-# Reveal IP address, hostname, OS version, etc. when clicking the clock
-# in the login window
-sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
-
 # Increase sound quality for Bluetooth headphones/headsets
 defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
-
-# Use scroll gesture with the Ctrl (^) modifier key to zoom
-defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
-defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
-# Follow the keyboard focus while zoomed in
-defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
 
 # Set language and text formats
 # Note: if you’re in the US, replace `EUR` with `USD`, `Centimeters` with
 # `Inches`, `en_GB` with `en_US`, and `true` with `false`.
 defaults write NSGlobalDomain AppleLanguages -array "en-GB" "en"
 defaults write NSGlobalDomain AppleLocale -string "en_GB@currency=GBP"
-
-# Show language menu in the top right corner of the boot screen
-sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true
-
-###############################################################################
-# Energy saving                                                               #
-###############################################################################
-
-## These power settings supposedly fix a lot of the problems w/ the macbook not sleeping properly.
-# Enable lid wakeup
-sudo pmset -a lidwake 1
-
-# Restart automatically on power loss
-sudo pmset -a autorestart 1
-
-# Restart automatically if the computer freezes
-sudo systemsetup -setrestartfreeze on
-
-# Sleep the display after 15 minutes
-sudo pmset -a displaysleep 15
-
-# Disable machine sleep while charging
-sudo pmset -c sleep 0
-
-# Set machine sleep to 5 minutes on battery
-sudo pmset -b sleep 5
-
-# Set standby delay to 24 hours (default is 1 hour)
-sudo pmset -a standbydelay 86400
-
-# Never go into computer sleep mode
-sudo systemsetup -setcomputersleep Off > /dev/null
-
-# Hibernation mode
-# 0: Disable hibernation (speeds up entering sleep mode)
-# 3: Copy RAM to disk so the system state can still be restored in case of a
-#    power failure.
-sudo pmset -a hibernatemode 0
-
-# Remove the sleep image file to save disk space
-# sudo rm /private/var/vm/sleepimage
-# Create a zero-byte file instead…
-# sudo touch /private/var/vm/sleepimage
-# …and make sure it can’t be rewritten
-# sudo chflags uchg /private/var/vm/sleepimage
 
 ###############################################################################
 # Screen                                                                      #
@@ -307,9 +250,6 @@ defaults write com.apple.screencapture type -string "png"
 
 # Disable shadow in screenshots
 defaults write com.apple.screencapture disable-shadow -bool true
-
-# Enable HiDPI display modes (requires restart)
-sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
 
 ###############################################################################
 # Finder                                                                      #
@@ -379,10 +319,7 @@ defaults write com.apple.finder WarnOnEmptyTrash -bool false
 defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
 
 # Show the ~/Library folder
-chflags nohidden ~/Library && xattr -d com.apple.FinderInfo ~/Library 2>/dev/null || true
-
-# Show the /Volumes folder
-sudo chflags nohidden /Volumes
+chflags nohidden ~/Library && xattr -d com.apple.FinderInfo ~/Library || true
 
 # Remove Dropbox’s green checkmark icons in Finder
 file=/Applications/Dropbox.app/Contents/Resources/emblem-dropbox-uptodate.icns
@@ -443,6 +380,89 @@ defaults write com.google.Chrome.canary DisablePrintPreview -bool true
 defaults write com.google.Chrome PMPrintingExpandedStateForPrint2 -bool true
 defaults write com.google.Chrome.canary PMPrintingExpandedStateForPrint2 -bool true
     '';
+
+    # Things to run as the root user.
+    system.activationScripts.extraActivation.text = ''
+###############################################################################
+# General UI/UX                                                               #
+###############################################################################
+
+# Disable the sound effects on boot
+nvram SystemAudioVolume=" "
+
+# Reveal IP address, hostname, OS version, etc. when clicking the clock
+# in the login window
+defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
+
+# Show language menu in the top right corner of the boot screen
+defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true
+
+# Disable transparency in the menu bar and elsewhere on Yosemite
+defaults write com.apple.universalaccess reduceTransparency -bool true
+
+# Use scroll gesture with the Ctrl (^) modifier key to zoom
+defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
+defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
+
+# Follow the keyboard focus while zoomed in
+defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
+
+###############################################################################
+# Energy saving                                                               #
+###############################################################################
+
+## These power settings supposedly fix a lot of the problems w/ the macbook not sleeping properly.
+# Enable lid wakeup
+pmset -a lidwake 1
+
+# Restart automatically on power loss
+pmset -a autorestart 1
+
+# Restart automatically if the computer freezes
+systemsetup -setrestartfreeze on
+
+# Sleep the display after 15 minutes
+pmset -a displaysleep 15
+
+# Disable machine sleep while charging
+pmset -c sleep 0
+
+# Set machine sleep to 5 minutes on battery
+pmset -b sleep 5
+
+# Set standby delay to 24 hours (default is 1 hour)
+pmset -a standbydelay 86400
+
+# Never go into computer sleep mode
+systemsetup -setcomputersleep Off > /dev/null
+
+# Hibernation mode
+# 0: Disable hibernation (speeds up entering sleep mode)
+# 3: Copy RAM to disk so the system state can still be restored in case of a
+#    power failure.
+pmset -a hibernatemode 0
+
+# Remove the sleep image file to save disk space
+# sudo rm /private/var/vm/sleepimage
+# Create a zero-byte file instead…
+# sudo touch /private/var/vm/sleepimage
+# …and make sure it can’t be rewritten
+# sudo chflags uchg /private/var/vm/sleepimage
+
+###############################################################################
+# Screen                                                                      #
+###############################################################################
+
+# Enable HiDPI display modes (requires restart)
+defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
+
+###############################################################################
+# Finder                                                                      #
+###############################################################################
+
+# Show the /Volumes folder
+chflags nohidden /Volumes
+'';
 
     # Use pinentry for gpg-agent.
     # HACK Without this config file you get "No pinentry program" on 20.03.
