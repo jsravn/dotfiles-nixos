@@ -123,8 +123,8 @@
 
       NSGlobalDomain = {
         # Key rate.
-        InitialKeyRepeat = 10;
-        KeyRepeat = 1;
+        InitialKeyRepeat = 15;
+        KeyRepeat = 2;
 
         # Improve font smooth on non-retina displays (https://sayzlim.net/font-smoothing-non-retina-display/).
         AppleFontSmoothing = 1;
@@ -379,7 +379,7 @@ defaults write com.apple.finder WarnOnEmptyTrash -bool false
 defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
 
 # Show the ~/Library folder
-chflags nohidden ~/Library && xattr -d com.apple.FinderInfo ~/Library
+chflags nohidden ~/Library && xattr -d com.apple.FinderInfo ~/Library 2>/dev/null || true
 
 # Show the /Volumes folder
 sudo chflags nohidden /Volumes
