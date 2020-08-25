@@ -180,6 +180,9 @@
         # Set locale information. Not everything is available here - see the activation script below.
         AppleMeasurementUnits = "Centimeters";
         AppleMetricUnits = 1;
+
+        # Disable beep.
+        "com.apple.sound.beep.feedback" = 0;
       };
 
       # Disable "Are you sure?" dialogue when running downloaded applications.
