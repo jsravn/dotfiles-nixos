@@ -4,6 +4,7 @@
   imports = [ <modules/os-specific/darwin> ];
 
   time.timeZone = "Europe/London";
+  networking.hostName = "loki";
 
   modules = {
     dev = {

@@ -114,8 +114,8 @@
 
       NSGlobalDomain = {
         # Key rate.
-        InitialKeyRepeat = 12;
-        KeyRepeat = 1;
+        InitialKeyRepeat = 13;
+        KeyRepeat = 2;
 
         # Improve font smooth on non-retina displays (https://sayzlim.net/font-smoothing-non-retina-display/).
         AppleFontSmoothing = 2;
