@@ -16,7 +16,11 @@ with lib; {
     [ "xhci_pci" "ehci_pci" "ahci" "usbhid" "uas" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.extraModulePackages = [ ];
-  boot.kernelModules = [ "kvm-intel" "nct6775" ];
+  boot.kernelModules = [ "kvm-intel" "nct6775" "hid-apple" ];
+  # Use F keys as default on MacOS keyboards (aka Keychron).
+  boot.extraModprobeConfig = ''
+    options hid_apple fnmode=2
+  '';
   # Unlocks more sensors.
   boot.kernelParams = mkBefore [ "acpi_enforce_resources=lax" ];
 
