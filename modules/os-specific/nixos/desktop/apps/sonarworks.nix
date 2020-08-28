@@ -25,7 +25,7 @@
 with lib; {
   config = mkIf config.modules.desktop.enable {
     my.packages = with pkgs; [
-      unstable.carla
+      carla
       jack2
       non
       gnome3.zenity # Used by Sonarworks to open file dialogues.
@@ -58,7 +58,7 @@ with lib; {
       (writeScriptBin "carla-sonarworks" ''
         #!${stdenv.shell}
         export LD_LIBRARY_PATH=${xorg.libX11}/lib:${xorg.libXext}/lib:$LD_LIBRARY_PATH
-        exec ${unstable.carla}/bin/carla
+        exec ${carla}/bin/carla
       '')
     ];
 
