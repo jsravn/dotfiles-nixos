@@ -1,6 +1,9 @@
 # Screensharing configuration for Wayland/Sway.
 #
 # This enables chromium to do screensharing when the pipewire flag is enabled in chrome://flags.
+#
+# This only works with chromium on unstable - which breaks opening links from stable apps. So for now,
+# this will have to wait until the next NixOS stable release.
 { config, lib, pkgs, ... }:
 with lib;
 let xdp = pkgs.unstable.xdg-desktop-portal;

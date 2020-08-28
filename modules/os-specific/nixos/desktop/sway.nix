@@ -2,7 +2,7 @@
 with lib;
 let
   cfg = config.modules.desktop.sway;
-  swayPackage = pkgs.unstable.sway.override {
+  swayPackage = pkgs.sway.override {
     extraOptions = [ "--verbose" "--unsupported-gpu" ];
     extraSessionCommands = ''
       # Fix Java apps.
@@ -49,19 +49,19 @@ in {
     my = {
       packages = with pkgs; [
         # sway extra packages
-        unstable.swaybg
-        unstable.swayidle
-        unstable.swaylock
-        unstable.xwayland
+        swaybg
+        swayidle
+        swaylock
+        xwayland
 
         # waybar
-        unstable.waybar # unstable contains a sleep/resume fix
+        waybar # unstable contains a sleep/resume fix
         libappindicator # tray icons
 
         # support applications
-        unstable.grim
-        unstable.slurp
-        unstable.mako # notifications
+        grim
+        slurp
+        mako # notifications
         wl-clipboard
         imagemagick
         rofi
