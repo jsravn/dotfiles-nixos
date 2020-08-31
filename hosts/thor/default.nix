@@ -49,6 +49,7 @@
       mullvad.enable = true;
       printers.enable = true;
       ssh.enable = true;
+      virtualbox.enable = true;
     };
 
     shell.enable = true;
