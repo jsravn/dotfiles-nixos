@@ -12,6 +12,9 @@ with lib; {
         # serial
         screen
         uucp
+
+        # nix utilities
+        nix-prefetch-scripts
       ];
     };
 

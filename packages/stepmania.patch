@@ -1,0 +1,18 @@
+diff --git a/CMake/SMDefs.cmake b/CMake/SMDefs.cmake
+index 811fa40586..ed7ef6bb9b 100644
+--- a/CMake/SMDefs.cmake
++++ b/CMake/SMDefs.cmake
+@@ -5,11 +5,8 @@ set(SM_VERSION_PATCH 0)
+ set(SM_VERSION_TRADITIONAL
+     "${SM_VERSION_MAJOR}.${SM_VERSION_MINOR}.${SM_VERSION_PATCH}")
+ 
+-execute_process(COMMAND git rev-parse --short HEAD
+-                WORKING_DIRECTORY "${SM_ROOT_DIR}"
+-                OUTPUT_VARIABLE SM_VERSION_GIT_HASH
+-                RESULT_VARIABLE ret
+-                OUTPUT_STRIP_TRAILING_WHITESPACE)
++set(SM_VERSION_GIT_HASH "1c869edab5")
++set(ret "0")
+ 
+ if(NOT (ret STREQUAL "0"))
+   message(
