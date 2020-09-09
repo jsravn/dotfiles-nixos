@@ -39,6 +39,7 @@ with lib; {
     gnumake
     file
     pciutils
+    usbutils
     libsysfs
     lm_sensors
   ];

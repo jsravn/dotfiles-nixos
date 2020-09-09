@@ -19,9 +19,13 @@ let
   };
 in {
   options.modules.desktop.sway = {
-    hwmonTemp = mkOption {
+    temperatureHwmonPath = mkOption {
       type = types.str;
-      default = "/sys/class/hwmon/hwmon0/temp1_input";
+      default = "";
+    };
+    temperatureHwmonName = mkOption {
+      type = types.str;
+      default = "";
     };
     extraConfig = mkOption {
       type = with types; listOf str;
@@ -55,7 +59,7 @@ in {
         xwayland
 
         # waybar
-        waybar # unstable contains a sleep/resume fix
+        unstable.waybar # unstable contains a sleep/resume fix, and temp fix
         libappindicator # tray icons
 
         # support applications
@@ -85,7 +89,7 @@ in {
         recursive = true;
       };
       home.xdg.configFile."waybar/config".text =
-        replaceStrings [ "HWMON_TEMP" ] [ cfg.hwmonTemp ]
+        replaceStrings [ "HWMON_PATH_ABS" "HWMON_INPUT_FILENAME" ] [ cfg.temperatureHwmonPath cfg.temperatureHwmonName ]
         (readFile <config/waybar/config.tmpl>);
 
       # Machine specific config.
