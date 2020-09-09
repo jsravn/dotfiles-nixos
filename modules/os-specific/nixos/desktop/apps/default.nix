@@ -26,11 +26,12 @@ with lib; {
           ];
         }))
 
-        # Games.
+        # Games
         unstable.lutris
         unstable.steam
+        unstable.stepmania
 
-        # Browser apps.
+        # Browser apps
         (makeDesktopItem {
           name = "fastmail";
           desktopName = "Fastmail";
@@ -52,7 +53,7 @@ with lib; {
           categories = "Productivity";
         })
 
-        # Gnome utility apps.
+        # Gnome utility apps
         gnome3.eog # Image viewer
         gnome3.evince # PDF/Document Viewer
         gnome3.gedit # A generic text editor
@@ -61,12 +62,12 @@ with lib; {
         gnome3.seahorse # Secret browser
       ];
 
-      # Start up dropbox automatically in Sway.
+      # Start up dropbox automatically in Sway
       home.xdg.configFile."sway.d/50-dropbox.conf".text = ''
         exec dropbox
       '';
 
-      # Redshift config.
+      # Redshift config
       home.xdg.configFile."redshift.conf".text = ''
         [redshift]
         location-provider=manual
@@ -78,13 +79,13 @@ with lib; {
       '';
     };
 
-    # Add support for mounting network filesystems to Nautilus.
+    # Add support for mounting network filesystems to Nautilus
     services.gvfs.enable = true;
 
     # Unlock gnome-keyring on login. Requires a keyring called "login".
     services.gnome3.gnome-keyring.enable = true;
 
-    # For games.
+    # For games
     hardware.opengl.driSupport32Bit = true;
     hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ libva ];
     hardware.pulseaudio.support32Bit = true;
