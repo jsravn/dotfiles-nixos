@@ -8,7 +8,7 @@
 with lib;
 let xdp = pkgs.unstable.xdg-desktop-portal;
 in {
-  config = mkIf config.modules.desktop.enable {
+  config = mkIf false {
     systemd.packages = with pkgs; [
       unstable.pipewire
       xdp 

@@ -20,6 +20,7 @@ with lib; {
   # Use F keys as default on MacOS keyboards (aka Keychron).
   boot.extraModprobeConfig = ''
     options hid_apple fnmode=2
+    options usbhid jspoll=1
   '';
   # Unlocks more sensors.
   boot.kernelParams = mkBefore [ "acpi_enforce_resources=lax" ];

@@ -27,7 +27,7 @@
     term.tmux.enable = true;
 
     dev = {
-      # cc.enable = true;
+      cc.enable = true;
       go.enable = true;
       # node.enable = true;
       python3.enable = true;

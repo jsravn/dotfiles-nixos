@@ -56,7 +56,7 @@ with lib; {
     name = "${config.my.username}";
     isNormalUser = true;
     uid = 1000;
-    extraGroups = [ "wheel" "audio" "video" "networkmanager" ];
+    extraGroups = [ "wheel" "audio" "video" "networkmanager" "input" ];
     description = "James Ravn";
     shell = pkgs.zsh;
   };
