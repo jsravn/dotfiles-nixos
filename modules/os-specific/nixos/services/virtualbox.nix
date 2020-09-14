@@ -10,7 +10,6 @@ with lib; {
   config = mkIf config.modules.services.virtualbox.enable {
     virtualisation.virtualbox = {
       host.enable = true;
-      # host.enableExtensionPack = true;
       host.package = pkgs.virtualbox.overrideAttrs (oldAttrs: rec {
           qtWrapperArgs = [
             # virtualbox breaks if XDG_SESSION_TYPE is set to wayland

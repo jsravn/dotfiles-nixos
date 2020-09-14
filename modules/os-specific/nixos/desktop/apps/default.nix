@@ -29,7 +29,6 @@ with lib; {
         # Games
         unstable.lutris
         unstable.steam
-        my.stepmania
 
         # Browser apps
         (makeDesktopItem {
