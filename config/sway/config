@@ -120,12 +120,16 @@ bindsym Shift+Control+$mod+Print exec grim -o $(swaymsg -t get_outputs | jq -r '
 
 # control volume and songs
 bindsym XF86AudioMute exec $audio mute
-bindsym $mod+F10 exec $audio mute
 bindsym XF86AudioLowerVolume exec $audio lowerVolume
-bindsym $mod+F11 exec $audio lowerVolume
 bindsym XF86AudioRaiseVolume exec $audio raiseVolume
-bindsym $mod+F12 exec $audio raiseVolume
 bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playctl previous
+
+# control volume and songs on keyboard without media keys
+bindsym $mod+F10 exec $audio mute
+bindsym $mod+F11 exec $audio lowerVolume
+bindsym $mod+F12 exec $audio raiseVolume
 bindsym $mod+Home exec playerctl play-pause
 bindsym $mod+Prior exec playerctl previous    # PageUp
 bindsym $mod+Next exec playerctl next         # PageDown
