@@ -22,10 +22,17 @@
 # Run non-session-manager, and select the Sonarworks session.
 # 
 { config, lib, pkgs, ... }:
-with lib; {
+with lib;
+let carlaPackage = pkgs.carla.overrideAttrs (oldAttrs: rec {
+          qtWrapperArgs = [
+            # virtualbox breaks if XDG_SESSION_TYPE is set to wayland
+            "--unset XDG_SESSION_TYPE"
+          ];
+      });
+in {
   config = mkIf config.modules.desktop.enable {
     my.packages = with pkgs; [
-      unstable.carla
+      carlaPackage
       jack2
       non
       gnome3.zenity # Used by Sonarworks to open file dialogues.
@@ -58,7 +65,7 @@ with lib; {
       (writeScriptBin "carla-sonarworks" ''
         #!${stdenv.shell}
         export LD_LIBRARY_PATH=${xorg.libX11}/lib:${xorg.libXext}/lib:$LD_LIBRARY_PATH
-        exec ${unstable.carla}/bin/carla
+        exec ${carlaPackage}/bin/carla
       '')
     ];
 

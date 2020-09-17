@@ -14,6 +14,7 @@
         prl-tools = (callPackage ./prl-tools.nix { kernel = pkgs.linux; });
         scmpuff = (callPackage ./scmpuff.nix { });
         sddm-themes = (callPackage ./sddm-themes.nix { });
+        stepmania = (callPackage ./stepmania.nix { });
       };
 
       # Make nur packages available.

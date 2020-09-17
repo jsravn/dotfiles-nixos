@@ -7,5 +7,6 @@
     ./parallels-guest.nix
     ./printers.nix
     ./ssh.nix
+    ./virtualbox.nix
   ];
 }

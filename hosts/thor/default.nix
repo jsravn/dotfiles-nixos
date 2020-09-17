@@ -13,7 +13,8 @@
   modules = {
     desktop = {
       enable = true;
-      sway.hwmonTemp = "/sys/class/hwmon/hwmon1/temp1_input";
+      sway.temperatureHwmonPath = "/sys/devices/platform/nct6775.656/hwmon";
+      sway.temperatureHwmonName = "temp1_input";
       sway.extraConfig = [
         "output DP-1 mode 2560x1440@165Hz"
         "output DP-1 subpixel rgb"
@@ -26,9 +27,10 @@
     term.tmux.enable = true;
 
     dev = {
-      # cc.enable = true;
+      cc.enable = true;
       go.enable = true;
-      node.enable = true;
+      # node.enable = true;
+      python3.enable = true;
     };
 
     editors = {
@@ -49,6 +51,7 @@
       mullvad.enable = true;
       printers.enable = true;
       ssh.enable = true;
+      virtualbox.enable = true;
     };
 
     shell.enable = true;

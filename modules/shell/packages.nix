@@ -15,6 +15,9 @@ with lib; {
 
         # misc utils
         watch
+
+        # nix utilities
+        nix-prefetch-scripts
       ];
     };
 

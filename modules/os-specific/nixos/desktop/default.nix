@@ -3,6 +3,7 @@ with lib; {
   imports = [
     ./apps
     ./browsers.nix
+    ./bluetooth.nix
     ./fonts.nix
     ./xorg.nix
     # ./sddm.nix
