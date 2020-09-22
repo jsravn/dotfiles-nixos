@@ -64,17 +64,6 @@ with lib; {
       home.xdg.configFile."sway.d/50-dropbox.conf".text = ''
         exec dropbox
       '';
-
-      # Redshift config
-      home.xdg.configFile."redshift.conf".text = ''
-        [redshift]
-        location-provider=manual
-        temp-day=6500
-
-        [manual]
-        lat=${config.my.latitude}
-        lon=${config.my.longitude}
-      '';
     };
 
     # Add support for mounting network filesystems to Nautilus

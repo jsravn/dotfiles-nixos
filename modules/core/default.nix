@@ -9,6 +9,11 @@ let
       type = types.str;
       default = value;
     };
+  mkOptionFloat = value:
+    mkOption {
+      type = types.float;
+      default = value;
+    };
 in {
   options = {
     # Contains my user configuration.
@@ -16,8 +21,8 @@ in {
       # Personal details.
       username = mkOptionStr "james";
       email = mkOptionStr "james@r-vn.org";
-      latitude = mkOptionStr "51.508166";
-      longitude = mkOptionStr "-0.075971";
+      latitude = mkOptionFloat 51.508166;
+      longitude = mkOptionFloat (-0.075971);
 
       # Convenience aliases.
       home =

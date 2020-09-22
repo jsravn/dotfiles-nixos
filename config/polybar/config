@@ -46,7 +46,7 @@ width = 100%
 height = 34
 offset-x = 0
 offset-y = 0
-bottom = true
+bottom = false
 
 overline-size = 0
 overline-color = #f00
@@ -62,9 +62,8 @@ padding-right = 2
 module-margin-left = 0
 module-margin-right = 0
 
-font-0 = "Fira Code:pixelsize=9;2"
-font-1 = "Wuncon Siji:pixelsize=12;2"
-font-2 = "Siji:pixelsize=10;2"
+font-0 = "DejaVu Mono:pixelsize=9;2"
+font-1 = "Noto Color Emoji:pixelsize=9;2"
 
 ; modules-left = volume pad cpu memory pad pkg mail
 modules-left = pulseaudio pad cpu memory pad fs
@@ -81,13 +80,13 @@ type = internal/bspwm
 pin-workspaces = true
 enable-click = true
 
-# ws-icon-0 = 1;
-# ws-icon-1 = 2;
-# ws-icon-2 = 3;
-# ws-icon-3 = 4;
-# ws-icon-4 = 5;
-# ws-icon-5 = 6;
-ws-icon-default = 
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-default = 
 
 format = <label-state> <label-mode>
 label-padding = 1

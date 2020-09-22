@@ -18,6 +18,12 @@ with lib; {
       })
     ];
 
+    # for redshift
+    location = {
+      latitude = config.my.latitude;
+      longitude = config.my.longitude;
+    };
+
     services = {
       picom = {
         enable = true;
@@ -43,7 +49,13 @@ with lib; {
         enable = true;
         displayManager.defaultSession = "none+bspwm";
         displayManager.lightdm.enable = true;
-        displayManager.lightdm.greeters.mini.enable = true;
+        displayManager.lightdm.greeters.mini = {
+          enable = true;
+          user = "james";
+        };
+        displayManager.sessionCommands = ''
+          xrdb -merge "$XDG_CONFIG_HOME"/xtheme/*
+        '';
         windowManager.bspwm.enable = true;
       };
     };
@@ -55,6 +67,7 @@ with lib; {
         "polybar".source = <config/polybar>;
         "rofi".source = <config/rofi>;
         "sxhkd".source = <config/sxhkd>;
+        "xtheme".source = <config/xtheme>;
       };
 
       packages = with pkgs; [
@@ -62,7 +75,7 @@ with lib; {
         
         (writeScriptBin "rofi" ''
           #!${stdenv.shell}
-          exec ${rofi}/bin/rofi -terminal xst -m -1 "$@"
+          exec ${rofi}/bin/rofi -terminal kitty -m -1 "$@"
         '')
         # Fake rofi dmenu entries
         (makeDesktopItem {

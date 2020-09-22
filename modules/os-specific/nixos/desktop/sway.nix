@@ -19,6 +19,10 @@ let
   };
 in {
   options.modules.desktop.sway = {
+    enable = mkOption {
+      type = types.bool;
+      default = false;
+    };
     temperatureHwmonPath = mkOption {
       type = types.str;
       default = "";
@@ -33,7 +37,7 @@ in {
     };
   };
 
-  config = mkIf config.modules.desktop.enable {
+  config = mkIf config.modules.desktop.sway.enable {
     environment.systemPackages = with pkgs; [
       # sway is a system package so it can be found by graphical session managers.
       swayPackage
@@ -47,8 +51,6 @@ in {
     security.pam.services.swaylock = { };
     # To make a Sway session available if a display manager like SDDM is enabled:
     services.xserver.displayManager.sessionPackages = [ swayPackage ];
-    fonts.enableDefaultFonts = true;
-    programs.dconf.enable = true;
 
     my = {
       packages = with pkgs; [
@@ -121,6 +123,17 @@ in {
       home.xdg.configFile."mako/config".text = ''
         icons=1
         icon-path=${pkgs.gnome3.adwaita-icon-theme}/share/icons/Adwaita
+      '';
+
+      # Redshift config
+      home.xdg.configFile."redshift.conf".text = ''
+        [redshift]
+        location-provider=manual
+        temp-day=6500
+
+        [manual]
+        lat=${config.my.latitude}
+        lon=${config.my.longitude}
       '';
     };
   };

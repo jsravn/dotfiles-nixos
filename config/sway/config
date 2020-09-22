@@ -123,8 +123,8 @@ bindsym XF86AudioMute exec $audio mute
 bindsym XF86AudioLowerVolume exec $audio lowerVolume
 bindsym XF86AudioRaiseVolume exec $audio raiseVolume
 bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playctl previous
 
 # control volume and songs on keyboard without media keys
 bindsym $mod+F10 exec $audio mute

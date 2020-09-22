@@ -13,13 +13,17 @@
   modules = {
     desktop = {
       enable = true;
-      sway.temperatureHwmonPath = "/sys/devices/platform/nct6775.656/hwmon";
-      sway.temperatureHwmonName = "temp1_input";
-      sway.extraConfig = [
-        "output DP-1 mode 2560x1440@165Hz"
-        "output DP-1 subpixel rgb"
-        "output DP-1 max_render_time 6"
-      ];
+      # bspwm.enable = true;
+      sway = {
+        enable = true;
+        temperatureHwmonPath = "/sys/devices/platform/nct6775.656/hwmon";
+        temperatureHwmonName = "temp1_input";
+        extraConfig = [
+          "output DP-1 mode 2560x1440@165Hz"
+          "output DP-1 subpixel rgb"
+          "output DP-1 max_render_time 6"
+        ];
+      };
       browsers.default = "chromium";
       bluetooth.enable = true;
     };
