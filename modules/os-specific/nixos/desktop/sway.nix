@@ -37,7 +37,7 @@ in {
     };
   };
 
-  config = mkIf config.modules.desktop.sway.enable {
+  config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       # sway is a system package so it can be found by graphical session managers.
       swayPackage
@@ -132,8 +132,8 @@ in {
         temp-day=6500
 
         [manual]
-        lat=${config.my.latitude}
-        lon=${config.my.longitude}
+        lat=${toString config.my.latitude}
+        lon=${toString config.my.longitude}
       '';
     };
   };
