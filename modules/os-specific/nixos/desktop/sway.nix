@@ -69,6 +69,7 @@ in {
         wl-clipboard
         imagemagick
         rofi
+        redshift-wlr
         libnotify
         my.notify-send-sh
         playerctl # music control

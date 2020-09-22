@@ -64,7 +64,7 @@ exec redshift -m wayland
 #      workspace $ws1; exec chromium;"
 
 # background
-output * bg ~/.config/sway/publicenemy1HDfree.jpg fill
+output * bg ~/.background-image fill
 
 # idle
 exec swayidle -w \

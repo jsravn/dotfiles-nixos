@@ -21,6 +21,7 @@
         "output DP-1 max_render_time 6"
       ];
       browsers.default = "chromium";
+      bluetooth.enable = true;
     };
 
     term.kitty.enable = true;

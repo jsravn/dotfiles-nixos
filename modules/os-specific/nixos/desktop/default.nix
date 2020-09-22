@@ -1,12 +1,12 @@
-{ lib, ... }:
+{ config, lib, ... }:
 with lib; {
   imports = [
     ./apps
     ./browsers.nix
     ./bluetooth.nix
+    ./bspwm.nix
     ./fonts.nix
-    ./xorg.nix
-    # ./sddm.nix
+    ./kde.nix
     ./sound.nix
     ./sway.nix
     ./theme.nix
@@ -19,5 +19,13 @@ with lib; {
       type = types.bool;
       default = false;
     };
+    wallpaper.path = mkOption {
+      type = types.path;
+      default = <config/images/publicenemy1HDfree.jpg>;
+    };
+  };
+
+  config = mkIf (builtins.pathExists config.modules.desktop.wallpaper.path) {
+    my.home.home.file.".background-image".source = config.modules.desktop.wallpaper.path;
   };
 }

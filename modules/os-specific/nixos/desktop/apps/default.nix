@@ -13,7 +13,6 @@ with lib; {
         libreoffice
         mpv
         pinta
-        redshift-wlr
         samba
         slack
         spotify
