@@ -13,6 +13,9 @@ with lib; {
         screen
         uucp
 
+        # misc utils
+        watch
+
         # nix utilities
         nix-prefetch-scripts
       ];

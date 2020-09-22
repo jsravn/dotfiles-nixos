@@ -1,6 +1,4 @@
-let
-  pkgs = import <nixpkgs-unstable> {};
-in
+{ pkgs ? import <nixpkgs-unstable> {} }:
 pkgs.mkShell {
   buildInputs = with pkgs; [
     gcc
@@ -12,6 +10,5 @@ pkgs.mkShell {
     kustomize
     gradle
     jq
-    keepassx2
-  ];
+  ] ++ (if pkgs.stdenv.isLinux then [ keepassx2 ] else []);
 }
