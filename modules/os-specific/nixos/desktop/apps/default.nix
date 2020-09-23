@@ -10,6 +10,7 @@ with lib; {
         discord
         dropbox
         gitter
+        glxinfo
         libreoffice
         mpv
         pinta
@@ -71,10 +72,5 @@ with lib; {
 
     # Unlock gnome-keyring on login. Requires a keyring called "login".
     services.gnome3.gnome-keyring.enable = true;
-
-    # For games
-    hardware.opengl.driSupport32Bit = true;
-    hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ libva ];
-    hardware.pulseaudio.support32Bit = true;
   };
 }

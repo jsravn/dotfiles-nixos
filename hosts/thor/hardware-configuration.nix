@@ -6,11 +6,11 @@ with lib; {
     <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
   ];
 
-  # Use custom linux firmware that has the more recent amdgpu firmware (navi14).
+  # Use custom linux firmware that has the more recent firmware.
   hardware.firmware = with pkgs; [ firmwareLinuxNonfree ];
 
   # Use latest kernel to better support 5500XT.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
 
   boot.initrd.availableKernelModules =
     [ "xhci_pci" "ehci_pci" "ahci" "usbhid" "uas" "usb_storage" "sd_mod" ];
@@ -31,10 +31,20 @@ with lib; {
   hardware.cpu.intel.updateMicrocode = true;
 
   ## GPU
-  services.xserver.videoDrivers = [ "amdgpu" ];
+  services.xserver.videoDrivers = [ "nvidia" ];
   hardware.opengl = {
     enable = true;
-    extraPackages = with pkgs; [ libva ];
+    extraPackages = with pkgs; [
+      # Install default drivers including intel.
+      mesa.drivers
+      libva
+      vaapiIntel
+      vaapiVdpau
+      libvdpau-va-gl
+    ];
+    # 32-bit support
+    driSupport32Bit = true;
+    extraPackages32 = with pkgs.pkgsi686Linux; [ libva ];
   };
 
   ## SSDs
