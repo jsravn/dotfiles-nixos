@@ -15,6 +15,9 @@ with lib; {
         default-sample-rate = "48000";
         alternate-sample-rate = "44100";
       };
+      extraConfig = ''
+        load-module module-switch-on-connect
+      '';
     };
     security.rtkit.enable = true;
     my.packages = with pkgs; [ pavucontrol ];

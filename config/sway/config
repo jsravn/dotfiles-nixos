@@ -114,6 +114,7 @@ bindsym $mod+Print exec grim - | wl-copy
 
 # capture the specified screen area to clipboard
 bindsym Shift+$mod+Print exec grim -g "$(slurp)" - | wl-copy
+bindsym Shift+$mod+F12 exec grim -g "$(slurp)" - | wl-copy
 
 # capture the focused monitor to clipboard
 bindsym Shift+Control+$mod+Print exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | wl-copy

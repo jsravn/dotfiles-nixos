@@ -122,6 +122,7 @@ in {
       # Set up mako.
       home.xdg.configFile."mako/config".text = ''
         icons=1
+        ignore-timeout=1
         icon-path=${pkgs.gnome3.adwaita-icon-theme}/share/icons/Adwaita
       '';
 

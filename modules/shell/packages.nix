@@ -14,6 +14,7 @@ with lib; {
         uucp
 
         # misc utils
+        entr
         watch
 
         # nix utilities
