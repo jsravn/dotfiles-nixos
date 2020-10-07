@@ -17,6 +17,7 @@ with lib; {
         samba
         slack
         spotify
+        tdesktop # telegram
         thunderbird
         wireshark
         (zoom-us.overrideAttrs (oldAttrs: rec {

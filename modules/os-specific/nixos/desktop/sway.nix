@@ -62,7 +62,7 @@ in {
 
         # waybar
         unstable.waybar # unstable contains a sleep/resume fix, and temp fix
-        libappindicator # tray icons
+        unstable.libappindicator # tray icons
 
         # support applications
         grim
