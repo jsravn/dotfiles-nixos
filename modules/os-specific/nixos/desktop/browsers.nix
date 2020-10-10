@@ -5,7 +5,7 @@ in {
   options.modules.desktop.browsers = {
     default = mkOption {
       type = types.str;
-      default = "firefox";
+      default = "chromium";
     };
 
     chromium = {
