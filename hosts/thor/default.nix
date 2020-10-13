@@ -40,7 +40,7 @@
     dev = {
       cc.enable = true;
       go.enable = true;
-      # node.enable = true;
+      node.enable = true;
       python3.enable = true;
     };
 
