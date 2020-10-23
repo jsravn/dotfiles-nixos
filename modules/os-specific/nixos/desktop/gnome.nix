@@ -26,6 +26,7 @@ with lib; {
       gnomeExtensions.caffeine
       gnomeExtensions.system-monitor
       gnomeExtensions.clipboard-indicator
+      gnomeExtensions.paperwm
     ];
   };
 }
