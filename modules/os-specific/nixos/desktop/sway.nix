@@ -136,6 +136,11 @@ in {
         lat=${toString config.my.latitude}
         lon=${toString config.my.longitude}
       '';
+
+      # Start up dropbox automatically in Sway
+      home.xdg.configFile."sway.d/50-dropbox.conf".text = ''
+        exec dropbox
+      '';
     };
   };
 }
