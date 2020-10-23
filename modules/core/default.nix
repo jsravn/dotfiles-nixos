@@ -16,7 +16,6 @@ let
       type = types.float;
       default = value;
     };
->>>>>>> eb6fd3fa9e1b371da584da82b0edd6c43d8d9829
 in {
   options = {
     # Contains my user configuration.
