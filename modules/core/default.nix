@@ -22,6 +22,7 @@ in {
     my = {
       # Personal details.
       username = mkOptionStr "james";
+      homeDirectory = mkOptionStr "";
       email = mkOptionStr "james@r-vn.org";
       latitude = mkOptionFloat 51.508166;
       longitude = mkOptionFloat (-0.075971);
@@ -61,9 +62,13 @@ in {
     users.users.${config.my.username} = mkAliasDefinitions options.my.user;
 
     my = {
+      homeDirectory = "/home/${config.my.username}";
+
       home = {
         # Obey XDG.
         xdg.enable = true;
+        home.username = config.my.username;
+        home.homeDirectory = config.my.homeDirectory;
       };
 
       # Define user packages.

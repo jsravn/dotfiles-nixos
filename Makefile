@@ -44,8 +44,10 @@ rollback:
 	sudo nixos-rebuild $(FLAGS) --rollback $(COMMAND)
 
 add-channels:
-	sudo nix-channel --add "https://nixos.org/channels/nixos-${NIXOS_VERSION}" nixos
-	sudo nix-channel --add "https://github.com/rycee/home-manager/archive/release-${NIXOS_VERSION}.tar.gz" home-manager
+	# sudo nix-channel --add "https://nixos.org/channels/nixos-${NIXOS_VERSION}" nixos
+	sudo nix-channel --add "https://nixos.org/channels/nixos-unstable" nixos
+	# sudo nix-channel --add "https://github.com/rycee/home-manager/archive/release-${NIXOS_VERSION}.tar.gz" home-manager
+	sudo nix-channel --add "https://github.com/rycee/home-manager/archive/master.tar.gz" home-manager
 	sudo nix-channel --add "https://nixos.org/channels/nixos-unstable" nixos-unstable
 	# Used by shell.nix files.
 	sudo nix-channel --add "https://nixos.org/channels/nixpkgs-unstable" nixpkgs-unstable

@@ -8,8 +8,8 @@ with lib; {
   # Use custom linux firmware that has the more recent firmware.
   hardware.firmware = with pkgs; [ firmwareLinuxNonfree ];
 
-  # Use latest kernel to better support 5500XT.
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
+  # Use latest kernel.
+  #boot.kernelPackages = pkgs.linuxPackages_latest;
 
   boot.initrd.availableKernelModules =
     [ "xhci_pci" "ahci" "usbhid" "uas" "usb_storage" "sd_mod" ];
@@ -30,7 +30,7 @@ with lib; {
   hardware.cpu.amd.updateMicrocode = true;
 
   ## GPU
-  services.xserver.videoDrivers = [ "nvidiaBeta" ];
+  services.xserver.videoDrivers = [ "nvidia" ];
   hardware.opengl = {
     enable = true;
     # 32-bit support
