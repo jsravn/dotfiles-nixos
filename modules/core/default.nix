@@ -11,6 +11,12 @@ let
     };
   userType = if pkgs.stdenv.isDarwin then types.submodule <darwin/modules/users/user.nix>
          else types.submodule;
+  mkOptionFloat = value:
+    mkOption {
+      type = types.float;
+      default = value;
+    };
+>>>>>>> eb6fd3fa9e1b371da584da82b0edd6c43d8d9829
 in {
   options = {
     # Contains my user configuration.
@@ -18,8 +24,8 @@ in {
       # Personal details.
       username = mkOptionStr "james";
       email = mkOptionStr "james@r-vn.org";
-      latitude = mkOptionStr "51.508166";
-      longitude = mkOptionStr "-0.075971";
+      latitude = mkOptionFloat 51.508166;
+      longitude = mkOptionFloat (-0.075971);
 
       # Convenience aliases.
       home =

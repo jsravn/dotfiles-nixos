@@ -13,14 +13,25 @@
   modules = {
     desktop = {
       enable = true;
-      sway.temperatureHwmonPath = "/sys/devices/platform/nct6775.656/hwmon";
-      sway.temperatureHwmonName = "temp1_input";
-      sway.extraConfig = [
-        "output DP-1 mode 2560x1440@165Hz"
-        "output DP-1 subpixel rgb"
-        "output DP-1 max_render_time 6"
-      ];
+      # bspwm.enable = true;
+      sway = {
+        enable = true;
+        temperatureHwmonPath = "/sys/devices/platform/nct6775.656/hwmon";
+        temperatureHwmonName = "temp1_input";
+        extraConfig = [
+          # Dedicated GPU.
+          "output DP-1 mode 2560x1440@165Hz"
+          "output DP-1 subpixel rgb"
+          "output DP-1 max_render_time 6"
+          # Onboard Intel.
+          "output DP-5 mode 2560x1440@165Hz"
+          "output DP-5 subpixel rgb"
+        ];
+      };
       browsers.default = "chromium";
+      # To accelerate for Intel graphics.
+      browsers.chromium.useVaapi = true;
+      bluetooth.enable = true;
     };
 
     term.kitty.enable = true;
@@ -29,7 +40,7 @@
     dev = {
       cc.enable = true;
       go.enable = true;
-      # node.enable = true;
+      node.enable = true;
       python3.enable = true;
     };
 
@@ -51,7 +62,7 @@
       mullvad.enable = true;
       printers.enable = true;
       ssh.enable = true;
-      virtualbox.enable = true;
+      #virtualbox.enable = true;
     };
 
     shell.enable = true;

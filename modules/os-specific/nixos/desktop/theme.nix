@@ -1,6 +1,11 @@
 { pkgs, config, lib, ... }:
 with lib; {
   config = mkIf config.modules.desktop.enable {
+    # Install all the default fonts.
+    fonts.enableDefaultFonts = true;
+    # Required for gnome theme
+    programs.dconf.enable = true;
+
     my = {
       home.gtk = {
         enable = true;

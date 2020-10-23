@@ -11,7 +11,7 @@ with lib; {
     my = {
       packages = with pkgs; [ go ];
 
-      env.GOPATH = "$HOME/go:$HOME/godev";
+      env.GOPATH = "$HOME/go";
       env.PATH = [ "$HOME/go/bin" ];
     };
   };

@@ -78,9 +78,6 @@ in {
       .endif
     '';
 
-    # Includes the JACK module.
-    hardware.pulseaudio.package = pkgs.pulseaudioFull;
-
     # Enable realtime priority and remove memlock limit for the audio group.
     security.pam.loginLimits = [
       {
