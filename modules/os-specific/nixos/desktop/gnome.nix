@@ -13,7 +13,19 @@ with lib; {
       enable = true;
       displayManager.gdm.enable = true;
       desktopManager.gnome3.enable = true;
-      autorun = false;
+      desktopManager.gnome3.extraGSettingsOverrides = ''
+        [org.gnome.desktop.peripherals.keyboard]
+        repeat-interval = 35
+        delay = 270
+      '';
+      autorun = true;
     };
+    environment.systemPackages = with pkgs; [
+      gnome3.gnome-tweak-tool
+      gnomeExtensions.appindicator
+      gnomeExtensions.caffeine
+      gnomeExtensions.system-monitor
+      gnomeExtensions.clipboard-indicator
+    ];
   };
 }

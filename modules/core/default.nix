@@ -10,7 +10,7 @@ let
       default = value;
     };
   userType = if pkgs.stdenv.isDarwin then types.submodule <darwin/modules/users/user.nix>
-         else types.submodule;
+         else options.users.users.type.functor.wrapped;
   mkOptionFloat = value:
     mkOption {
       type = types.float;
@@ -60,6 +60,11 @@ in {
     home-manager.users.${config.my.username} =
       mkAliasDefinitions options.my.home;
     users.users.${config.my.username} = mkAliasDefinitions options.my.user;
+
+    # Use the nixos user packages when installing packages via home-manager.
+    home-manager.useUserPackages = true;
+    # Use the global nixpkgs definition.
+    home-manager.useGlobalPkgs = true;
 
     my = {
       homeDirectory = "/home/${config.my.username}";

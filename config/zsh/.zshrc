@@ -64,5 +64,5 @@ if [[ $TERM != dumb ]]; then
   [ -f ~/.zshrc ] && source ~/.zshrc
 
   # Source home-manager session variables.
-  . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
+  [ -f ~/.nix-profile/etc/profile.d/hm-session-vars.sh ] && source ~/.nix-profile/etc/profile.d/hm-session-vars.sh
 fi

@@ -37,20 +37,20 @@ with lib; {
           desktopName = "Fastmail";
           icon = "emblem-mail";
           exec = "chromium --app=https://fastmail.com";
-          categories = "Productivity";
+          categories = "X-Productivity";
         })
         (makeDesktopItem {
           name = "outlook";
           desktopName = "Outlook";
           icon = "emblem-mail";
           exec = "chromium --app=https://outlook.office.com";
-          categories = "Productivity";
+          categories = "X-Productivity";
         })
         (makeDesktopItem {
           name = "whatsapp";
           desktopName = "Whatsapp";
           exec = "chromium --app=https://web.whatsapp.com";
-          categories = "Productivity";
+          categories = "X-Productivity";
         })
       ];
     };

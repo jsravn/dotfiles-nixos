@@ -25,7 +25,7 @@ with lib; {
       home.programs.emacs = {
         enable = config.modules.editors.emacs.managePackage;
         package = config.modules.editors.emacs.package;
-        extraPackages = epkgs: [ epkgs.emacs-libvterm ];
+        extraPackages = epkgs: [ epkgs.vterm ];
       };
 
       packages = with pkgs; [
@@ -42,7 +42,7 @@ with lib; {
 
         ## Module dependencies
         # :checkers spell
-        (aspellWithDicts(ps: [ps.en ps.en-computers ps.en-science]))
+        (aspellWithDicts(ps: [ps.en ps.en-computers]))
         # :checkers grammar
         languagetool
         # :tools lookup
