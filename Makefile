@@ -67,7 +67,7 @@ format:
 ## Darwin
 darwin-add-channels:
 	nix-channel --add "https://github.com/LnL7/nix-darwin/archive/master.tar.gz" darwin
-	nix-channel --add "https://nixos.org/channels/nixpkgs-unstable" nixpkgs
+	nix-channel --add "https://nixos.org/channels/nixpkgs-${NIXOS_VERSION}-darwin" nixpkgs
 	nix-channel --add "https://github.com/rycee/home-manager/archive/master.tar.gz" home-manager
 	# Used by shell.nix files.
 	nix-channel --add "https://nixos.org/channels/nixpkgs-unstable" nixpkgs-unstable

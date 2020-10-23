@@ -494,8 +494,8 @@ chflags nohidden /Volumes
           EnvironmentVariables = { };
           KeepAlive = true;
           RunAtLoad = true;
-          StandardOutPath = "/var/tmp/lorri.log";
-          StandardErrorPath = "/var/tmp/lorri.log";
+          StandardOutPath = "/var/tmp/lorri-out.log";
+          StandardErrorPath = "/var/tmp/lorri-err.log";
         };
         script = ''
           source ${config.system.build.setEnvironment}

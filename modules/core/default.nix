@@ -9,6 +9,8 @@ let
       type = types.str;
       default = value;
     };
+  userType = if pkgs.stdenv.isDarwin then types.submodule <darwin/modules/users/user.nix>
+         else types.submodule;
 in {
   options = {
     # Contains my user configuration.
@@ -22,7 +24,7 @@ in {
       # Convenience aliases.
       home =
         mkOption { type = options.home-manager.users.type.functor.wrapped; };
-      user = mkOption { type = types.submodule; };
+      user = mkOption { type = userType; };
       packages = mkOption { type = with types; listOf package; };
 
       # Global environment.

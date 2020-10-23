@@ -27,7 +27,7 @@
       unstable = if super.pkgs.stdenv.isLinux then
         import <nixos-unstable> { inherit config; }
       else
-        pkgs;
+        import <nixpkgs-unstable> { inherit config; };
     })
 
   # Provides emacsUnstable.
