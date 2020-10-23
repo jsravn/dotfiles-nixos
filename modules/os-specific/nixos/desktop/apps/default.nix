@@ -58,6 +58,7 @@ with lib; {
         gnome3.evince # PDF/Document Viewer
         gnome3.gedit # A generic text editor
         gnome3.gnome-calculator # A nice calculator
+        gnome3.gnome-disk-utility # Format disks from nautilus
         gnome3.nautilus # File browser
         gnome3.seahorse # Secret browser
       ];
