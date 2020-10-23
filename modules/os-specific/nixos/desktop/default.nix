@@ -6,6 +6,7 @@ with lib; {
     ./bluetooth.nix
     ./bspwm.nix
     ./fonts.nix
+    ./gnome.nix
     ./kde.nix
     ./sound.nix
     ./sway.nix
