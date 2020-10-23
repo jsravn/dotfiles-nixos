@@ -15,7 +15,7 @@
       enable = true;
       # bspwm.enable = true;
       sway = {
-        enable = true;
+        enable = false;
         temperatureHwmonPath = "/sys/devices/platform/nct6775.656/hwmon";
         temperatureHwmonName = "temp1_input";
         extraConfig = [
@@ -28,9 +28,8 @@
           "output DP-5 subpixel rgb"
         ];
       };
+      gnome.enable = true;
       browsers.default = "chromium";
-      # To accelerate for Intel graphics.
-      browsers.chromium.useVaapi = true;
       bluetooth.enable = true;
     };
 
