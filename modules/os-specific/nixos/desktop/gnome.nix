@@ -28,5 +28,10 @@ with lib; {
       gnomeExtensions.clipboard-indicator
       gnomeExtensions.paperwm
     ];
+
+    my.home.xdg.configFile."paperwm" = {
+      source = <config/paperwm>;
+      recursive = true;
+    };
   };
 }
