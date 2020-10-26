@@ -15,6 +15,7 @@
         scmpuff = (callPackage ./scmpuff.nix { });
         sddm-themes = (callPackage ./sddm-themes.nix { });
         stepmania = (callPackage ./stepmania.nix { });
+        gnome-extension-switcher = (callPackage ./switcher.nix { });
       };
 
       # Make nur packages available.

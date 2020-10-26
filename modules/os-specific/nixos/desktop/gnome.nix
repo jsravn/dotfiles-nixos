@@ -27,6 +27,8 @@ with lib; {
       gnomeExtensions.system-monitor
       gnomeExtensions.clipboard-indicator
       gnomeExtensions.paperwm
+      gnomeExtensions.dash-to-dock
+      my.gnome-extension-switcher
     ];
 
     my.home.xdg.configFile."paperwm" = {
