@@ -26,8 +26,8 @@ with lib; {
       gnomeExtensions.caffeine
       gnomeExtensions.system-monitor
       gnomeExtensions.clipboard-indicator
-      gnomeExtensions.paperwm
       gnomeExtensions.dash-to-dock
+      my.gnome-extension-paperwm
       my.gnome-extension-switcher
     ];
 

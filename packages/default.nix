@@ -16,6 +16,7 @@
         sddm-themes = (callPackage ./sddm-themes.nix { });
         stepmania = (callPackage ./stepmania.nix { });
         gnome-extension-switcher = (callPackage ./switcher.nix { });
+        gnome-extension-paperwm = (callPackage ./paperwm.nix { });
       };
 
       # Make nur packages available.
