@@ -29,7 +29,8 @@ in {
           "text/markdown" = [ "org.gnome.gedit.desktop" ];
           "x-scheme-handler/slack" = [ "slack.desktop" ];
           "text/plain" = [ "org.gnome.gedit.desktop" ];
-          "image/jpeg" = [ "eog.desktop" ];
+          "image/jpeg" = [ "org.gnome.eog.desktop" ];
+          "image/png" = [ "org.gnome.eog.desktop" ];
         };
       };
     };

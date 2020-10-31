@@ -16,6 +16,7 @@ with lib; {
         # misc utils
         entr
         watch
+        jq
 
         # nix utilities
         nix-prefetch-scripts
