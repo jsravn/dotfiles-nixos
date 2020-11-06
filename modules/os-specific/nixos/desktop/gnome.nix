@@ -11,7 +11,10 @@ with lib; {
   config = mkIf config.modules.desktop.gnome.enable {
     services.xserver = {
       enable = true;
-      displayManager.gdm.enable = true;
+      displayManager.gdm = {
+        enable = true;
+        autoSuspend = false;
+      };
       desktopManager.gnome3.enable = true;
       desktopManager.gnome3.extraGSettingsOverrides = ''
         [org.gnome.desktop.peripherals.keyboard]

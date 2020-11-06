@@ -22,7 +22,7 @@ with lib; {
     options usbhid jspoll=1
   '';
   # Unlocks more sensors.
-  boot.kernelParams = mkBefore [ "acpi_enforce_resources=lax" ];
+  boot.kernelParams = [ "nomodeset" ];
 
   ## CPU
   nix.maxJobs = lib.mkDefault 12;
@@ -36,6 +36,8 @@ with lib; {
     # 32-bit support
     driSupport32Bit = true;
   };
+  hardware.nvidia.modesetting.enable = true;
+  services.xserver.displayManager.gdm.nvidiaWayland = true;
 
   ## SSDs
   services.fstrim.enable = true;

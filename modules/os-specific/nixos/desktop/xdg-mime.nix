@@ -33,6 +33,8 @@ in {
           "image/png" = [ "org.gnome.eog.desktop" ];
         };
       };
+      # Overwrite any changes made manually to the mimeapps.list.
+      home.xdg.configFile."mimeapps.list".force = true;
     };
   };
 }
