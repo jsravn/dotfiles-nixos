@@ -21,11 +21,10 @@ with lib; {
     options hid_apple fnmode=2
     options usbhid jspoll=1
   '';
-  # Unlocks more sensors.
-  boot.kernelParams = [ "nomodeset" ];
+  boot.kernelParams = [ "nomodeset" "acpi_enforce_resources=lax" ];
 
   ## CPU
-  nix.maxJobs = lib.mkDefault 12;
+  nix.maxJobs = lib.mkDefault 24;
   powerManagement.cpuFreqGovernor = "performance";
   hardware.cpu.amd.updateMicrocode = true;
 

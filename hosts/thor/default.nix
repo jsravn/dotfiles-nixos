@@ -51,8 +51,9 @@
     };
 
     # make-linux-fast-again.com
-    security.mitigations.disable = true;
-    security.mitigations.acceptRisk = true;
+    # not needed on AMD
+    # security.mitigations.disable = true;
+    # security.mitigations.acceptRisk = true;
 
     services = {
       docker.enable = true;
