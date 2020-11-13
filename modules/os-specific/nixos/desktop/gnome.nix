@@ -25,6 +25,7 @@ with lib; {
     };
     environment.systemPackages = with pkgs; [
       gnome3.gnome-tweak-tool
+      gnome3.pomodoro
       gnomeExtensions.appindicator
       gnomeExtensions.caffeine
       gnomeExtensions.system-monitor
