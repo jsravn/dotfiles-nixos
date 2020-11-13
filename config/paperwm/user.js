@@ -26,6 +26,10 @@ function init() {
         wm_class: "Gnome-calculator",
         scratch_layer: true,
     });
+    Tiling.defwinprop({
+        wm_class: "Gnome-pomodoro",
+        scratch_layer: true,
+    });
 }
 
 function enable() {
