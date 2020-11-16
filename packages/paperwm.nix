@@ -2,13 +2,13 @@
 
 stdenv.mkDerivation rec {
   pname = "gnome-shell-extension-paperwm";
-  version = "3197ac1df027b3e42dee2236848f6e45fa5d54fe";
+  version = "ee0a3eaee414fc9e8e708ed961a0738f54eed023";
 
   src = fetchFromGitHub {
     owner = "paperwm";
     repo = "PaperWM";
     rev = version;
-    sha256 = "1x66x6s0hnh4qwxhv7pz1azzwk4qqz4s0hy4fq7087jb1v8hgh4p";
+    sha256 = "1qy5zkl0ki71b19713ns8n8jvbg4bc0svppklc68wpm5pj6zcp90";
   };
 
   uuid = "paperwm@hedning:matrix.org";
