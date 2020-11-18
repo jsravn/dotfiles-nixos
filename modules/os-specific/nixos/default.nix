@@ -24,6 +24,15 @@ with lib; {
   # Many modern apps require a large number of watches.
   boot.kernel.sysctl."fs.inotify.max_user_watches" = 524288;
 
+  # Raise nofile limits for esync.
+  systemd.extraConfig = "DefaultLimitNOFILE=1048576";
+  security.pam.loginLimits = [{
+    domain = "*";
+    type = "hard";
+    item = "nofile";
+    value = "1048576";
+  }];
+
   # Networking settings.
   networking.networkmanager.enable = true;
   networking.firewall.logRefusedConnections = false;

@@ -68,7 +68,7 @@ with lib; {
         shfmt
         shellcheck
         # :lang yaml
-        unstable.yaml-language-server
+        #yaml-language-server
         # :term vterm
         # use shell.nix with libvterm-neovim:
         # { pkgs ? import <nixpkgs> {} }:

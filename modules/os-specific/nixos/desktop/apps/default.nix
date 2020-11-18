@@ -28,8 +28,8 @@ with lib; {
         }))
 
         # Games
-        unstable.lutris
-        unstable.steam
+        lutris
+        steam
 
         # Browser apps
         (makeDesktopItem {
