@@ -92,18 +92,6 @@ in {
         type = "-";
         value = "99";
       }
-      {
-        domain = "@audio";
-        item = "nofile";
-        type = "soft";
-        value = "99999";
-      }
-      {
-        domain = "@audio";
-        item = "nofile";
-        type = "hard";
-        value = "99999";
-      }
     ];
 
     # Enable rtc and hpet also used by JACK.

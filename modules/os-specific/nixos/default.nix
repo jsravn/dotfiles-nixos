@@ -26,12 +26,7 @@ with lib; {
 
   # Raise nofile limits for esync.
   systemd.extraConfig = "DefaultLimitNOFILE=1048576";
-  security.pam.loginLimits = [{
-    domain = "*";
-    type = "hard";
-    item = "nofile";
-    value = "1048576";
-  }];
+  systemd.user.extraConfig = "DefaultLimitNOFILE=1048576";
 
   # Networking settings.
   networking.networkmanager.enable = true;
