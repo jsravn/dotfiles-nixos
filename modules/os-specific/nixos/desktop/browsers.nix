@@ -13,16 +13,6 @@ in {
         type = types.bool;
         default = false;
       };
-
-      useOzone = mkOption {
-        type = types.bool;
-        default = false;
-      };
-
-      useVaapi = mkOption {
-        type = types.bool;
-        default = false;
-      };
     };
   };
 
@@ -30,8 +20,6 @@ in {
     my.packages = with pkgs; [
       (chromium.override {
         enableWideVine = true;
-        useOzone = cfg.browsers.chromium.useOzone;
-        enableVaapi = cfg.browsers.chromium.useVaapi;
       })
       firefox-bin
     ];
