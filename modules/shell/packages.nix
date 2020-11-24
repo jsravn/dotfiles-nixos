@@ -17,6 +17,7 @@ with lib; {
         entr
         watch
         jq
+        dstat
 
         # nix utilities
         nix-prefetch-scripts
