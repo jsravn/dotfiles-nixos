@@ -8,6 +8,6 @@ with lib; {
   };
 
   config = mkIf config.modules.dev.cc.enable {
-    my = { packages = with pkgs; [ cmake gnumake libtool clang gcc gdb ]; };
+    my = { packages = with pkgs; [ cmake gnumake libtool clang gdb ]; };
   };
 }
