@@ -36,7 +36,6 @@ with lib; {
     driSupport32Bit = true;
   };
   hardware.nvidia.modesetting.enable = true;
-  services.xserver.displayManager.gdm.nvidiaWayland = true;
 
   ## SSDs
   services.fstrim.enable = true;
