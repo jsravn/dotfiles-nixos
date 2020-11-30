@@ -100,6 +100,7 @@ in {
       XDG_CACHE_HOME = "$HOME/.cache";
       XDG_DATA_HOME = "$HOME/.local/share";
       XDG_BIN_HOME = "$HOME/.local/bin";
+      NIXPKGS_ALLOW_UNFREE = "1";
     };
 
     # Configure environment.
@@ -124,7 +125,6 @@ in {
 
     # Aliases for nixos.
     environment.shellAliases = {
-      nix-env = "NIXPKGS_ALLOW_UNFREE=1 nix-env";
       nix-shell = ''
         NIX_PATH="nixpkgs-overlays=${config.my.dotfiles}/packages/default.nix:$NIX_PATH" nix-shell'';
     };
