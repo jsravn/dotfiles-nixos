@@ -40,9 +40,6 @@ with lib; {
   ## SSDs
   services.fstrim.enable = true;
 
-  # MCE checks for hardware errors - should always be enabled.
-  hardware.mcelog.enable = true;
-
   ## Boot with UEFI.
   boot.loader = {
     timeout = 3;
