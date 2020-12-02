@@ -12,7 +12,7 @@ with lib; {
   #boot.kernelPackages = pkgs.linuxPackages_latest;
 
   boot.initrd.availableKernelModules =
-    [ "xhci_pci" "ahci" "usbhid" "uas" "usb_storage" "sd_mod" ];
+    [ "xhci_pci" "nvme" "ahci" "usbhid" "uas" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.extraModulePackages = [ ];
   boot.kernelModules = [ "kvm-amd" "nct6775" "hid-apple" ];
@@ -39,6 +39,9 @@ with lib; {
 
   ## SSDs
   services.fstrim.enable = true;
+
+  # MCE checks for hardware errors - should always be enabled.
+  hardware.mcelog.enable = true;
 
   ## Boot with UEFI.
   boot.loader = {
