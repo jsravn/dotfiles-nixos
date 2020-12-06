@@ -39,5 +39,8 @@ with lib; {
       source = <config/paperwm>;
       recursive = true;
     };
+
+    # hide mouse cursor
+    services.unclutter-xfixes.enable = true;
   };
 }

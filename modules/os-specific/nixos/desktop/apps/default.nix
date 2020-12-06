@@ -12,6 +12,7 @@ with lib; {
         gitter
         glxinfo
         libreoffice
+        gparted
         mpv
         pinta
         samba
