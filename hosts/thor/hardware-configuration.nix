@@ -40,6 +40,9 @@ with lib; {
   ## SSDs
   services.fstrim.enable = true;
 
+  ## Support NTFS volumes.
+  boot.supportedFilesystems = [ "ntfs" ];
+
   ## Boot with UEFI.
   boot.loader = {
     timeout = 3;
