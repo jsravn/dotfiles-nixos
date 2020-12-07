@@ -1,6 +1,7 @@
 //!HOOK LUMA
 //!HOOK RGB
 //!BIND HOOKED
+//!DESC static noise to luma
 
 // Change this to tune the strength of the noise
 // Apparently this has to be float on some setups
