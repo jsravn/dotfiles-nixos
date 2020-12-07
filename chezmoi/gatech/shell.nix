@@ -16,6 +16,7 @@ pkgs.mkShell {
     xorg.libXext xorg.libX11 xorg.libXv xorg.libXrandr zlib
     ncurses5 stdenv.cc binutils
     openmpi
+    gnuplot
   ];
   shellHook = ''
       export CUDA_PATH=${pkgs.cudatoolkit}

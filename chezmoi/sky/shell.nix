@@ -1,4 +1,7 @@
-{ pkgs ? import <nixpkgs-unstable> {} }:
+let
+  pkgs = import <nixpkgs-unstable> {};
+  my-python = pkgs.python3.withPackages (ps: with ps; [ boto3 ]);
+in
 pkgs.mkShell {
   buildInputs = with pkgs; [
     gcc
@@ -10,5 +13,11 @@ pkgs.mkShell {
     kustomize
     gradle
     jq
-  ] ++ (if pkgs.stdenv.isLinux then [ keepassx2 ] else []);
+    keepassx2
+    mkcert
+    my-python
+    protobuf
+    openssl
+    zip
+  ];
 }

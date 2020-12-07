@@ -1,1 +1,2 @@
 eval "$(lorri direnv)"
+#export LD_LIBRARY_PATH=/run/opengl-driver/lib:/nix/store/hgldp9nqsmrkrg1h0rs3k8v7rz0vx797-cudatoolkit-10.2.89/extras/CUPTI/lib64
