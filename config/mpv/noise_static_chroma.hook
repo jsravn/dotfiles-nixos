@@ -1,5 +1,6 @@
 //!HOOK CHROMA
 //!BIND HOOKED
+//!DESC static noise to chroma
 
 // Change this to tune the strength of the noise
 // Apparently this has to be float on some setups
