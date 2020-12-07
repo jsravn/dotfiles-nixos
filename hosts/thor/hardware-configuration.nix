@@ -32,6 +32,7 @@ with lib; {
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.opengl = {
     enable = true;
+    driSupport = true;
     # 32-bit support
     driSupport32Bit = true;
   };

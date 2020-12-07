@@ -20,6 +20,7 @@ with lib; {
         spotify
         tdesktop # telegram
         thunderbird
+        vulkan-tools
         wireshark
         (zoom-us.overrideAttrs (oldAttrs: rec {
           qtWrapperArgs = oldAttrs.qtWrapperArgs ++ [
@@ -54,6 +55,8 @@ with lib; {
           categories = "X-Productivity";
         })
       ];
+
+      home.xdg.configFile."mpv".source = <config/mpv>;
     };
   };
 }
