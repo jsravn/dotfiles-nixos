@@ -1,5 +1,3 @@
-// Revised 10/14/19
-//
 // KrigBilateral by Shiandow
 //
 // This library is free software; you can redistribute it and/or
