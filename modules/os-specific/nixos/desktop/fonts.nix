@@ -2,7 +2,8 @@
 with lib; {
   config = mkIf config.modules.desktop.enable {
     fonts = {
-      fontDir.enable = true;
+      # fontDir.enable = true;
+      enableFontDir = true;
       enableGhostscriptFonts = true;
       fonts = with pkgs; [ dejavu_fonts noto-fonts-emoji font-awesome-ttf ];
       fontconfig = {
