@@ -20,6 +20,9 @@ with lib; {
         [org.gnome.desktop.peripherals.keyboard]
         repeat-interval = 35
         delay = 270
+
+        [org.gnome.settings-daemon.plugins.media-keys]
+        rotate-video-lock-static = []
       '';
       autorun = true;
     };

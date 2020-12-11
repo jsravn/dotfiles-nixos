@@ -29,7 +29,15 @@ with lib; {
   hardware.cpu.amd.updateMicrocode = true;
 
   ## GPU
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver = {
+    videoDrivers = [ "nvidia" ];
+    # Disable temporal dithering, just like in Windows. Let the display handle it.
+    deviceSection = ''
+      Option "FlatPanelProperties" "Dithering=Disabled"
+    '';
+    # 10-bit display.
+    #defaultDepth = 10;
+  };
   hardware.opengl = {
     enable = true;
     driSupport = true;
@@ -66,6 +74,11 @@ with lib; {
     "/boot" = {
       device = "/dev/disk/by-label/BOOT";
       fsType = "vfat";
+    };
+    "/windows" = {
+      device = "/dev/nvme0n1p4";
+      fsType = "ntfs";
+      options = [ "nofail" ];
     };
   };
   swapDevices = [ ];
