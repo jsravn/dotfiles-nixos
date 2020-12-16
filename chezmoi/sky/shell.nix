@@ -1,5 +1,5 @@
 let
-  pkgs = import <nixpkgs-unstable> {};
+  pkgs = import <nixpkgs> {};
   my-python = pkgs.python3.withPackages (ps: with ps; [ boto3 ]);
 in
 pkgs.mkShell {
@@ -17,6 +17,7 @@ pkgs.mkShell {
     mkcert
     my-python
     protobuf
+    prometheus
     openssl
     zip
   ];
