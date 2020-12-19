@@ -65,7 +65,7 @@ in {
       (writeScriptBin "carla-sonarworks" ''
         #!${stdenv.shell}
         export LD_LIBRARY_PATH=${xorg.libX11}/lib:${xorg.libXext}/lib:$LD_LIBRARY_PATH
-        exec ${carlaPackage}/bin/carla
+        ${carlaPackage}/bin/carla
       '')
     ];
 

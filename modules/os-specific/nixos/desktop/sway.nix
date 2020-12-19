@@ -61,8 +61,8 @@ in {
         xwayland
 
         # waybar
-        unstable.waybar # unstable contains a sleep/resume fix, and temp fix
-        unstable.libappindicator # tray icons
+        waybar # unstable contains a sleep/resume fix, and temp fix
+        libappindicator # tray icons
 
         # support applications
         grim

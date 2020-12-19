@@ -9,7 +9,7 @@ with lib; {
 
   config = mkIf config.modules.services.printers.enable {
     services.printing.enable = true;
-    services.printing.drivers = with pkgs; [ unstable.brlaser ];
+    services.printing.drivers = with pkgs; [ brlaser ];
     hardware.printers.ensureDefaultPrinter = "hl-2135w";
     hardware.printers.ensurePrinters = [{
       name = "hl-2135w";
