@@ -5,8 +5,8 @@ in {
   options.modules.desktop.defaultApplications = {
     browser = mkOption {
       type = types.str;
-      default = "chromium.desktop";
-    }; 
+      default = "chromium-browser.desktop";
+    };
   };
 
   config = mkIf cfg.enable {
