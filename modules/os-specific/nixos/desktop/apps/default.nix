@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 with lib; {
   imports =
-    [ ./gnome.nix ./keybase.nix ./obs-studio.nix ./sonarworks.nix ];
+    [ ./gnome.nix ./keybase.nix ./obs-studio.nix ./sonarworks.nix ./syncthing.nix ];
 
   config = mkIf config.modules.desktop.enable {
     my = {
