@@ -22,12 +22,7 @@ with lib; {
         thunderbird
         vulkan-tools
         wireshark
-        (zoom-us.overrideAttrs (oldAttrs: rec {
-          qtWrapperArgs = oldAttrs.qtWrapperArgs ++ [
-            # zoom breaks if XDG_SESSION_TYPE is set to wayland
-            "--unset XDG_SESSION_TYPE"
-          ];
-        }))
+        zoom-us
 
         # Games
         lutris
