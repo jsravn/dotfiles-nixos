@@ -23,6 +23,10 @@ with lib; {
 
         [org.gnome.settings-daemon.plugins.media-keys]
         rotate-video-lock-static = []
+
+        [org.gnome.desktop.wm.keybindings]
+        switch-to-workspace-left = []
+        switch-to-workspace-right = []
       '';
       autorun = true;
     };
