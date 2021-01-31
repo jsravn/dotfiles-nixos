@@ -36,13 +36,13 @@ with lib; {
       Option "FlatPanelProperties" "Dithering=Disabled"
     '';
     # 10-bit display.
-    #defaultDepth = 10;
+    #defaultDepth = 30;
   };
   hardware.opengl = {
     enable = true;
     driSupport = true;
-    # 32-bit support
-    driSupport32Bit = true;
+    # 32-bit support - not working on nvidia.
+    # driSupport32Bit = true;
   };
   hardware.nvidia.modesetting.enable = true;
 
