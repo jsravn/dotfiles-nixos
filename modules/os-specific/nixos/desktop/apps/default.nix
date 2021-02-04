@@ -28,6 +28,9 @@ with lib; {
         lutris
         steam
 
+        # Windows only
+        wineWowPackages.stable
+
         # Browser apps
         (makeDesktopItem {
           name = "fastmail";

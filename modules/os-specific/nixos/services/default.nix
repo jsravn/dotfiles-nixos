@@ -6,6 +6,7 @@
     ./mullvad.nix
     ./parallels-guest.nix
     ./printers.nix
+    ./roon-bridge.nix
     ./ssh.nix
     ./virtualbox.nix
   ];

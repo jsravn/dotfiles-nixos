@@ -20,7 +20,7 @@
 # To use:
 # jack-start <usb device>
 # Run non-session-manager, and select the Sonarworks session.
-# 
+#
 { config, lib, pkgs, ... }:
 with lib;
 let carlaPackage = pkgs.carla.overrideAttrs (oldAttrs: rec {

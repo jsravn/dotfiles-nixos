@@ -61,6 +61,7 @@
       lorri.enable = true;
       mullvad.enable = true;
       printers.enable = true;
+      roon-bridge.enable = true;
       ssh.enable = true;
       #virtualbox.enable = true;
     };

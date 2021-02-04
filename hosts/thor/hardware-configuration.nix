@@ -34,6 +34,9 @@ with lib; {
     # Disable temporal dithering, just like in Windows. Let the display handle it.
     deviceSection = ''
       Option "FlatPanelProperties" "Dithering=Disabled"
+      Option "ModeValidation" "NoEdidHDMI2Check"
+      Option "ModeValidation" "AllowNonEdidModes"
+      Option "ModeDebug" "true"
     '';
     # 10-bit display.
     #defaultDepth = 30;
@@ -78,7 +81,7 @@ with lib; {
     "/windows" = {
       device = "/dev/nvme0n1p4";
       fsType = "ntfs";
-      options = [ "nofail" ];
+      options = [ "rw" ];
     };
   };
   swapDevices = [ ];
