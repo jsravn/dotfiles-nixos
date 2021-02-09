@@ -34,6 +34,9 @@ in {
       };
     };
 
+    # XXX hack to get roon-bridge to connect to roon-core
+    # it seems to listen on a random port, not sure how to fix that
+    networking.firewall.enable = false;
     networking.firewall = {
       allowedTCPPortRanges = [
         { from = 9100; to = 9200; }

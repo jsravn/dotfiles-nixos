@@ -5,7 +5,7 @@ with lib; {
     hardware.pulseaudio = {
       enable = true;
       support32Bit = true;
-      package = pkgs.pulseaudioFull;  # Includes the JACK and bluetooth modules.
+      package = pkgs.pulseaudioFull; # Includes the JACK and bluetooth modules.
       daemon.config = {
         # 5 is good - see https://gitlab.freedesktop.org/pulseaudio/pulseaudio/issues/310
         resample-method = "speex-float-5";

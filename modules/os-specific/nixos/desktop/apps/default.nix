@@ -9,6 +9,7 @@ with lib; {
         calibre
         discord
         dropbox
+        gimp-with-plugins
         gitter
         glxinfo
         libreoffice

@@ -8,6 +8,7 @@ with lib; {
     ./fonts.nix
     ./gnome.nix
     ./kde.nix
+    ./scanner.nix
     ./sound.nix
     ./sway.nix
     ./theme.nix
