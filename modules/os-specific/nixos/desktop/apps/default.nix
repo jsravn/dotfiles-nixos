@@ -6,8 +6,10 @@ with lib; {
   config = mkIf config.modules.desktop.enable {
     my = {
       packages = with pkgs; [
+        audacity
         calibre
         discord
+        dr14_tmeter
         dropbox
         gimp-with-plugins
         gitter
