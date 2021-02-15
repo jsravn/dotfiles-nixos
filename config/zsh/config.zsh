@@ -14,15 +14,16 @@ export _FASD_DATA="$XDG_CACHE_HOME/fasd"
 # Treat these characters as part of a word.
 WORDCHARS='_-*?[]~&.;!#$%^(){}<>'
 
-unsetopt BRACE_CCL        # Allow brace character class list expansion.
-setopt COMBINING_CHARS    # Combine zero-length punc chars (accents) with base char
-setopt RC_QUOTES          # Allow 'Henry''s Garage' instead of 'Henry'\''s Garage'
+unsetopt BRACE_CCL         # Allow brace character class list expansion.
+setopt COMBINING_CHARS     # Combine zero-length punc chars (accents) with base char
+setopt RC_QUOTES           # Allow 'Henry''s Garage' instead of 'Henry'\''s Garage'
 setopt HASH_LIST_ALL
 unsetopt CORRECT_ALL
 unsetopt NOMATCH
-unsetopt MAIL_WARNING     # Don't print a warning message if a mail file has been accessed.
-unsetopt BEEP             # Hush now, quiet now.
-unsetopt IGNOREEOF        # Whether ^D sends an EOF or not.
+unsetopt MAIL_WARNING      # Don't print a warning message if a mail file has been accessed.
+unsetopt BEEP              # Hush now, quiet now.
+unsetopt IGNOREEOF         # Whether ^D sends an EOF or not.
+setopt INTERACTIVECOMMENTS # Allow comments in CLI
 
 ## Jobs
 setopt LONG_LIST_JOBS     # List jobs in the long format by default.

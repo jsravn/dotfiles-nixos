@@ -15,6 +15,7 @@ with lib; {
         gitAndTools.gitFull
         gitAndTools.hub
         gitAndTools.diff-so-fancy
+        gitAndTools.git-filter-repo
       ]);
       home.xdg.configFile."git".source = <config/git>;
     };

@@ -9,7 +9,10 @@ with lib; {
 
   config = mkIf config.modules.dev.python3.enable {
     my = {
-      packages = with pkgs; [ python3Minimal ];
+      packages = with pkgs; [
+        python3
+        python-language-server
+      ];
     };
   };
 }
