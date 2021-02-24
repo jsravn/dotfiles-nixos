@@ -18,6 +18,8 @@ with lib; {
         gparted
         mpv
         pinta
+        plexamp
+        plex-media-player
         samba
         slack
         spotify

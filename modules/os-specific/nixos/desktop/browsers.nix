@@ -7,13 +7,6 @@ in {
       type = types.str;
       default = "chromium";
     };
-
-    chromium = {
-      enable = mkOption {
-        type = types.bool;
-        default = false;
-      };
-    };
   };
 
   config = mkIf cfg.enable {
