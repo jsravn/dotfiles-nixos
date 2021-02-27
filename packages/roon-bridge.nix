@@ -15,7 +15,7 @@
 
   src = fetchurl {
     url = "http://download.roonlabs.com/builds/RoonBridge_linuxx64.tar.bz2";
-    sha256 = "6a1772d3f4c13b231f0ade154e47034d9180166c10253d8abd9b8cb45700637c";
+    sha256 = "0z3301bv934vpn53s98hdhb814ad0d3lw5fy18gj6fy1yk9p45va";
   };
 
   buildInputs = [
