@@ -49,6 +49,12 @@ with lib; {
   };
   hardware.nvidia.modesetting.enable = true;
 
+  ## Sound
+  # Listen to SPDIF in.
+  hardware.pulseaudio.extraConfig = ''
+    load-module module-loopback latency_msec=1 source=alsa_input.pci-0000_05_00.0.iec958-stereo
+  '';
+
   ## SSDs
   services.fstrim.enable = true;
 
