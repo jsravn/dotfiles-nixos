@@ -18,8 +18,8 @@ with lib; {
         gparted
         mpv
         pinta
-        plexamp
-        plex-media-player
+        unstable.plexamp
+        unstable.plex-media-player
         samba
         slack
         spotify
