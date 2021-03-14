@@ -5,15 +5,13 @@ in {
   options.modules.desktop.browsers = {
     default = mkOption {
       type = types.str;
-      default = "chromium";
+      default = "google-chrome-stable";
     };
   };
 
   config = mkIf cfg.enable {
     my.packages = with pkgs; [
-      (chromium.override {
-        enableWideVine = true;
-      })
+      google-chrome
       firefox-bin
     ];
 
