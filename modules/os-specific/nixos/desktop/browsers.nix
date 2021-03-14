@@ -7,6 +7,11 @@ in {
       type = types.str;
       default = "google-chrome-stable";
     };
+
+    defaultDesktop = mkOption {
+      type = types.str;
+      default = "google-chrome.desktop";
+    };
   };
 
   config = mkIf cfg.enable {

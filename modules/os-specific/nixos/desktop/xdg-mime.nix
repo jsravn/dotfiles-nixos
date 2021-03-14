@@ -2,13 +2,6 @@
 with lib;
 let cfg = config.modules.desktop;
 in {
-  options.modules.desktop.defaultApplications = {
-    browser = mkOption {
-      type = types.str;
-      default = "chromium-browser.desktop";
-    };
-  };
-
   config = mkIf cfg.enable {
     # Default applications and xdg-open.
     # See https://wiki.archlinux.org/index.php/XDG_MIME_Applications for details.
@@ -20,12 +13,12 @@ in {
         defaultApplications = {
           "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = [ "writer.desktop" ];
           "application/pdf" = [ "org.gnome.Evince.desktop" ];
-          "x-scheme-handler/http" = [ cfg.defaultApplications.browser ];
-          "x-scheme-handler/https" = [ cfg.defaultApplications.browser ];
-          "scheme-handler/http" = [ cfg.defaultApplications.browser ];
-          "scheme-handler/https" = [ cfg.defaultApplications.browser ];
-          "application/xhtml+xml" = [ cfg.defaultApplications.browser ];
-          "text/html" = [ cfg.defaultApplications.browser ];
+          "x-scheme-handler/http" = [ cfg.browsers.defaultDesktop ];
+          "x-scheme-handler/https" = [ cfg.browsers.defaultDesktop ];
+          "scheme-handler/http" = [ cfg.browsers.defaultDesktop ];
+          "scheme-handler/https" = [ cfg.browsers.defaultDesktop ];
+          "application/xhtml+xml" = [ cfg.browsers.defaultDesktop ];
+          "text/html" = [ cfg.browsers.defaultDesktop ];
           "text/markdown" = [ "org.gnome.gedit.desktop" ];
           "x-scheme-handler/slack" = [ "slack.desktop" ];
           "text/plain" = [ "org.gnome.gedit.desktop" ];
