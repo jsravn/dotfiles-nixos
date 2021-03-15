@@ -8,6 +8,7 @@ with lib; {
       flac
       lame
       sox
+      mkvtoolnix
     ];
   };
 }
