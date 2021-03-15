@@ -7,6 +7,7 @@ with lib; {
       ffmpeg
       flac
       lame
+      sox
     ];
   };
 }
