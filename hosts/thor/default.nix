@@ -39,6 +39,7 @@
     dev = {
       cc.enable = true;
       go.enable = true;
+      java.enable = true;
       node.enable = true;
       python3.enable = true;
     };
