@@ -1,5 +1,6 @@
 let
   pkgs = import <nixpkgs> { config.allowUnfree = true; };
+  myjava = pkgs.jdk8;
 in
 pkgs.mkShell {
   buildInputs = with pkgs; [
@@ -17,11 +18,14 @@ pkgs.mkShell {
     ncurses5 stdenv.cc binutils
     openmpi
     gnuplot
+    myjava
   ];
   shellHook = ''
       export CUDA_PATH=${pkgs.cudatoolkit}
       export LD_LIBRARY_PATH=${pkgs.linuxPackages.nvidia_x11}/lib:${pkgs.ncurses5}/lib:${pkgs.cudatoolkit}/extras/CUPTI/lib64
       export EXTRA_LDFLAGS="-L/lib -L${pkgs.linuxPackages.nvidia_x11}/lib"
       export EXTRA_CCFLAGS="-I/usr/include"
+      export JAVA_HOME=${myjava}
+      export PATH="${myjava}/bin:$PATH"
   '';
 }

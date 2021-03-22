@@ -1,6 +1,6 @@
 let
-  pkgs = import <nixpkgs> {};
-  my-python = pkgs.python3.withPackages (ps: with ps; [ boto3 ]);
+  pkgs = import <nixpkgs-unstable> {};
+  my-python = pkgs.python3.withPackages (ps: with ps; [ boto3 black kubernetes ]);
 in
 pkgs.mkShell {
   buildInputs = with pkgs; [
@@ -20,5 +20,7 @@ pkgs.mkShell {
     prometheus
     openssl
     zip
+    terraform
+    python-language-server
   ];
 }
