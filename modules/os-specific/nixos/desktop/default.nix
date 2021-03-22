@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 with lib; {
   imports = [
     ./apps
@@ -21,13 +21,5 @@ with lib; {
       type = types.bool;
       default = false;
     };
-    wallpaper.path = mkOption {
-      type = types.path;
-      default = <config/images/publicenemy1HDfree.jpg>;
-    };
-  };
-
-  config = mkIf (builtins.pathExists config.modules.desktop.wallpaper.path) {
-    my.home.home.file.".background-image".source = config.modules.desktop.wallpaper.path;
   };
 }

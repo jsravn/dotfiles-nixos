@@ -5,19 +5,41 @@ with lib; {
       # fontDir.enable = true;
       enableFontDir = true;
       enableGhostscriptFonts = true;
-      fonts = with pkgs; [ dejavu_fonts noto-fonts-emoji font-awesome-ttf ];
+      fonts = with pkgs; [
+        dejavu_fonts
+        noto-fonts-cjk
+        noto-fonts-emoji
+        font-awesome-ttf
+      ];
       fontconfig = {
         defaultFonts = {
-          sansSerif = [ "DejaVu Sans" ];
-          serif = [ "DejaVu Serif" ];
-          monospace = [ "DejaVu Sans Mono" ];
-          emoji = [ "Noto Color Emoji" ];
+          sansSerif = [
+            "DejaVu Sans"
+            "Noto Sans CJK JP"
+          ];
+          serif = [
+            "DejaVu Serif"
+            "Noto Sans CJK JP"
+          ];
+          monospace = [
+            "DejaVu Sans Mono"
+            "Noto Sans Mono CJK JP"
+          ];
+          emoji = [
+            "Noto Color Emoji"
+          ];
         };
         subpixel = {
           lcdfilter = "default";
           rgba = "rgb";
         };
       };
+    };
+
+    # Enable CJK IME.
+    i18n.inputMethod = {
+      enabled = "fcitx";
+      fcitx.engines = with pkgs.fcitx-engines; [ mozc ];
     };
   };
 }
