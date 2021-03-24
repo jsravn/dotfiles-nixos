@@ -50,3 +50,7 @@ alias l="exa -1"
 alias la="LC_COLLATE=C exa -la"
 alias ll="exa -lg"
 alias ls="exa"
+
+# bat
+alias cat="bat"
+alias du="dust"

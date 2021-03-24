@@ -31,9 +31,11 @@ with lib; {
         nix-zsh-completions
         bat
         exa
+        du-dust
         fasd
         fd
         fzf
+        procs
         tldr
         trash-cli
         htop
