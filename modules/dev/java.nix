@@ -8,7 +8,13 @@ with lib; {
   };
 
   config = mkIf config.modules.dev.java.enable {
+    # Enable global default java.
     programs.java.enable = true;
-    programs.java.package = pkgs.jdk8;
+
+    # Also install different JDK versions.
+    my.home.xdg.dataFile = {
+      "jdk8".source = "${pkgs.jdk8}/lib/openjdk";
+      "jdk11".source = "${pkgs.jdk11}/lib/openjdk";
+    };
   };
 }
