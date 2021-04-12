@@ -30,7 +30,7 @@ let carlaPackage = pkgs.carla.overrideAttrs (oldAttrs: rec {
           ];
       });
 in {
-  config = mkIf config.modules.desktop.enable {
+  config = mkIf false {
     my.packages = with pkgs; [
       carlaPackage
       jack2
