@@ -27,7 +27,7 @@ with lib; {
         thunderbird
         vulkan-tools
         wireshark
-        zoom-us
+        unstable.zoom-us
 
         # Games
         lutris

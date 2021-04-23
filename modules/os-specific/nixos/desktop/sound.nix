@@ -14,6 +14,8 @@ with lib; {
         default-sample-format = "float32le";
         default-sample-rate = "48000";
         alternate-sample-rate = "44100";
+        # Just set DAC to the match the rate when possible.
+        avoid-resampling = "yes";
       };
     };
     security.rtkit.enable = true;
