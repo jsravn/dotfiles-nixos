@@ -1,30 +1,21 @@
 # For doom-emacs.
 # From https://github.com/hlissner/dotfiles/blob/1eeb7af2bb7f49fa46bb9a880eb787da9454cafa/modules/editors/emacs.nix.
-{ config, options, lib, pkgs, ... }:
+{ config, options, lib, pkgs, inputs, ... }:
 with lib; {
   options.modules.editors.emacs = {
     enable = mkOption {
       type = types.bool;
       default = false;
     };
-
-    managePackage = mkOption {
-      type = types.bool;
-      default = true;
-    };
-
-    package = mkOption {
-      type = types.package;
-      default = pkgs.emacsUnstable;
-      description = "The Emacs package to use.";
-    };
   };
 
   config = mkIf config.modules.editors.emacs.enable {
+    nixpkgs.overlays = [ inputs.emacs-overlay.overlay ];
+
     my = {
       home.programs.emacs = {
-        enable = config.modules.editors.emacs.managePackage;
-        package = config.modules.editors.emacs.package;
+        enable = true;
+        package = pkgs.emacsPgtkGcc;
         extraPackages = epkgs: [ epkgs.vterm ];
       };
 

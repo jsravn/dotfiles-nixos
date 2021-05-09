@@ -2,7 +2,7 @@
 with lib; {
   config = mkIf config.modules.shell.enable {
     my = {
-      packages = with pkgs; [ unstable.chezmoi lastpass-cli ];
+      packages = with pkgs; [ chezmoi lastpass-cli ];
       home.xdg.configFile."chezmoi/chezmoi.toml".text = ''
         sourceDir = "${config.my.dotfiles}/chezmoi"
       '';

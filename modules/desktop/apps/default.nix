@@ -28,8 +28,8 @@ with lib; {
         gparted
         mpv
         pinta
-        unstable.plexamp
-        unstable.plex-media-player
+        plexamp
+        plex-media-player
         peek
         samba
         slack
@@ -38,7 +38,7 @@ with lib; {
         thunderbird
         vulkan-tools
         wireshark
-        unstable.zoom-us
+        zoom-us
 
         # Games
         lutris

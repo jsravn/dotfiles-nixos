@@ -10,6 +10,12 @@ with lib; {
   # Optimise hard disk space of store.
   nix.autoOptimiseStore = true;
 
+  # Enable flakes.
+  nix.package = pkgs.nixUnstable;
+  nix.extraOptions = ''
+    experimental-features = nix-command flakes
+  '';
+
   # Use tmpfs for /tmp.
   boot.tmpOnTmpfs = true;
 

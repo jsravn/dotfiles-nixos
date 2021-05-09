@@ -1,5 +1,5 @@
 let
-  pkgs = import <nixpkgs-unstable> {};
+  pkgs = import <nixpkgs> {};
   my-python = pkgs.python3.withPackages (ps: with ps; [ boto3 black kubernetes ]);
 in
 pkgs.mkShell {

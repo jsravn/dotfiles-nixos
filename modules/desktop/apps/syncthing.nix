@@ -4,7 +4,7 @@ with lib; {
     services = {
       syncthing = {
         enable = true;
-        package = pkgs.unstable.syncthing;
+        package = pkgs.syncthing;
         user = config.my.username;
         # This setting seems to be completely ignored in the Nixos module.
         dataDir = "/home/${config.my.username}/Sync";

@@ -122,7 +122,9 @@ in {
 
     # Add custom overlays to override packages.
     # See https://nixos.org/nixpkgs/manual/#chap-overlays for details.
-    nixpkgs.overlays = import ../../packages;
+    nixpkgs.overlays = [
+      (import ../../packages)
+    ];
 
     # Allow unfree packages.
     nixpkgs.config.allowUnfree = true;
