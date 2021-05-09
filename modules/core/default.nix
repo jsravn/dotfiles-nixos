@@ -9,14 +9,18 @@ let
       type = types.str;
       default = value;
     };
-  userType = if pkgs.stdenv.isDarwin then types.submodule <darwin/modules/users/user.nix>
-         else options.users.users.type.functor.wrapped;
+  userType = options.users.users.type.functor.wrapped;
   mkOptionFloat = value:
     mkOption {
       type = types.float;
       default = value;
     };
 in {
+  imports = [
+    <home-manager/nixos>
+    ./nixos.nix
+  ];
+
   options = {
     # Contains my user configuration.
     my = {

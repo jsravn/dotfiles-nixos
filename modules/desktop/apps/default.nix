@@ -1,11 +1,19 @@
 { config, lib, pkgs, ... }:
 with lib; {
-  imports =
-    [ ./gnome.nix ./keybase.nix ./media.nix ./obs-studio.nix ./sonarworks.nix ./syncthing.nix ];
+  imports = [
+    ./browsers.nix
+    ./gnome-apps.nix
+    ./keybase.nix
+    ./media.nix
+    ./obs-studio.nix
+    ./sonarworks.nix
+    ./syncthing.nix
+  ];
 
   config = mkIf config.modules.desktop.enable {
     my = {
       packages = with pkgs; [
+        # Desktop apps
         audacity
         calibre
         deluge
@@ -15,6 +23,7 @@ with lib; {
         gimp-with-plugins
         gitter
         glxinfo
+        kitty
         libreoffice
         gparted
         mpv
@@ -62,6 +71,7 @@ with lib; {
         })
       ];
 
+      home.xdg.configFile."kitty".source = <config/kitty>;
       home.xdg.configFile."mpv".source = <config/mpv>;
     };
   };

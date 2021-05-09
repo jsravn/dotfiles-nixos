@@ -72,7 +72,7 @@ with lib; {
 
       packages = with pkgs; [
         feh # background images
-        
+
         (writeScriptBin "rofi" ''
           #!${stdenv.shell}
           exec ${rofi}/bin/rofi -terminal kitty -m -1 "$@"

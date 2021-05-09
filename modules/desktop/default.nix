@@ -2,7 +2,6 @@
 with lib; {
   imports = [
     ./apps
-    ./browsers.nix
     ./bluetooth.nix
     ./bspwm.nix
     ./fonts.nix

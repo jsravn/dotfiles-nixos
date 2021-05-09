@@ -1,14 +1,6 @@
 # NixOS specific configuration and modules.
-
 { config, lib, options, pkgs, stdenv, ... }:
 with lib; {
-  imports = [
-    <home-manager/nixos>
-    ./desktop # X11/Wayland desktop apps
-    ./security # Security settings
-    ./services # Background services
-  ];
-
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
@@ -61,7 +53,7 @@ with lib; {
     isNormalUser = true;
     uid = 1000;
     extraGroups = [ "wheel" "audio" "video" "networkmanager" "input" ];
-    description = "James Ravn";
+    description = "James";
     shell = pkgs.zsh;
   };
 

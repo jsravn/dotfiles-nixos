@@ -10,13 +10,14 @@ with lib; {
     ./packages.nix
     ./scmpuff.nix
     ./ssh.nix
+    ./tmux.nix
     ./zsh.nix
   ];
 
   options.modules.shell = {
     enable = mkOption {
       type = types.bool;
-      default = false;
+      default = true;
     };
   };
 }

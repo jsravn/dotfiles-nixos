@@ -103,7 +103,7 @@ in {
       # Set terminal.
       home.xdg.configFile."sway.d/00-term.conf".text = ''
         # Set terminal
-        set $term ${config.modules.term.default}
+        set $term kitty
       '';
 
       # Start some gnome services.
