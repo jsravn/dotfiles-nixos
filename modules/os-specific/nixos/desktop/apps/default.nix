@@ -8,6 +8,7 @@ with lib; {
       packages = with pkgs; [
         audacity
         calibre
+        deluge
         discord
         dr14_tmeter
         dropbox
@@ -20,6 +21,7 @@ with lib; {
         pinta
         unstable.plexamp
         unstable.plex-media-player
+        peek
         samba
         slack
         spotify
@@ -32,6 +34,7 @@ with lib; {
         # Games
         lutris
         steam
+        minecraft
 
         # Windows only
         wineWowPackages.stable

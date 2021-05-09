@@ -1,4 +1,3 @@
-NIXOS_VERSION	:= 20.03
 USER            := james
 PREFIX          := /mnt
 NIXOS_PREFIX	:= $(PREFIX)/etc/nixos
@@ -63,19 +62,3 @@ $(HOME)/.dotfiles:
 
 format:
 	nixfmt $(shell find . -name '*.nix')
-
-## Darwin
-darwin-add-channels:
-	nix-channel --add "https://github.com/LnL7/nix-darwin/archive/master.tar.gz" darwin
-	nix-channel --add "https://nixos.org/channels/nixpkgs-${NIXOS_VERSION}-darwin" nixpkgs
-	nix-channel --add "https://github.com/rycee/home-manager/archive/master.tar.gz" home-manager
-	# Used by shell.nix files.
-	nix-channel --add "https://nixos.org/channels/nixpkgs-unstable" nixpkgs-unstable
-
-du: darwin-update
-darwin-update: darwin-add-channels
-	nix-channel --update
-
-ds: darwin-switch
-darwin-switch: darwin-add-channels
-	TERM=xterm-256color darwin-rebuild $(FLAGS) switch
