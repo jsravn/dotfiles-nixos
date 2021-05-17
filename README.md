@@ -39,32 +39,6 @@ git clone https://github.com/hlissner/doom-emacs ~/.config/emacs; doom up
 git clone https://github.com/hlissner/.vim ~/.vim; cd ~/.vim; make install
 ```
 
-# OS X
-
-Follow the [Nix manual](https://nixos.org/nix/manual/#sect-macos-installation) to install Nix as a single user install on OS X. Then
-install [nix-darwin](https://github.com/LnL7/nix-darwin). Create `~/.nixpkgs/darwin-configuration.nix`:
-
-``` nix
-import "../.dotfiles" loki
-```
-
-Then clone this repo:
-
-``` sh
-git clone https://github.com/jsravn/dotfiles.git .dotfiles
-```
-
-And install it:
-
-``` sh
-cd ~/.dotfiles
-make darwin-switch
-```
-
-Unfortunately most GUI packages are not well handled on Nix, so the best option is to use homebrew to install those. This repo
-will manage all the dotfiles and shell configuration, and also enable `shell.nix` with lorri/direnv. It also installs a few graphical
-applications that can be installed from Nix (like kitty).
-
 # Credit
 
 While I built this NixOS configuration for my own needs, many things were borrowed/inspired from
