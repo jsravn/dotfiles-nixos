@@ -9,13 +9,13 @@ with lib; {
   hardware.firmware = with pkgs; [ firmwareLinuxNonfree ];
 
   # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.unstable.linuxPackages_latest;
 
   boot.initrd.availableKernelModules =
     [ "xhci_pci" "nvme" "ahci" "usbhid" "uas" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.extraModulePackages = [ ];
-  boot.kernelModules = [ "kvm-amd" "nct6775" "hid-apple" ];
+  boot.kernelModules = [ "kvm-amd" "nct6775" "hid-apple" "wireguard" ];
   # Use F keys as default on MacOS keyboards (aka Keychron).
   boot.extraModprobeConfig = ''
     options hid_apple fnmode=2
