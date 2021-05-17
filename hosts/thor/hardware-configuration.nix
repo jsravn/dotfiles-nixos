@@ -9,7 +9,7 @@ with lib; {
   hardware.firmware = with pkgs; [ firmwareLinuxNonfree ];
 
   # Use latest kernel.
-  #boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   boot.initrd.availableKernelModules =
     [ "xhci_pci" "nvme" "ahci" "usbhid" "uas" "usb_storage" "sd_mod" ];

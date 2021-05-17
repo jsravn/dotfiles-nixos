@@ -18,13 +18,19 @@ with lib; {
         watch
         jq
         dstat
+        iperf
 
         # nix utilities
         nix-prefetch-scripts
       ];
     };
 
-    # Give us all the manpages.
-    environment.systemPackages = [ pkgs.manpages ];
+    environment.systemPackages = with pkgs; [
+      # Give us all the manpages.
+      manpages
+
+      # Wireguard
+      wireguard-tools
+    ];
   };
 }

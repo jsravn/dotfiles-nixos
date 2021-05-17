@@ -47,6 +47,7 @@ with lib; {
 
         # Windows only
         wineWowPackages.stable
+        winetricks
 
         # Browser apps
         (makeDesktopItem {
