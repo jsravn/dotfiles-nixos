@@ -26,7 +26,8 @@ in {
             ${pkgs.rclone}/bin/rclone mount mjolnir:/mnt/unionfs ${mountDir} \
               --use-mmap \
               --vfs-cache-mode=full \
-              --vfs-read-ahead=64M
+              --vfs-read-ahead=64M \
+              --read-only
           '';
           ExecStop = "${pkgs.fuse}/bin/fusermount -u ${mountDir}";
           Type = "notify";
