@@ -26,11 +26,13 @@
           inherit super;
         };
 
-      # Make unstable packages available. On darwin, pkgs is always unstable.
-      unstable = if super.pkgs.stdenv.isLinux then
-        import <nixos-unstable> { inherit config; }
-      else
-        import <nixpkgs-unstable> { inherit config; };
+      # Make unstable packages available.
+      unstable = import <nixos-unstable> {
+        inherit config;
+        overlays = [
+          (import (builtins.fetchTarball "https://github.com/nix-community/emacs-overlay/archive/master.tar.gz"))
+        ];
+      };
     })
 
   # Provides emacsUnstable.
