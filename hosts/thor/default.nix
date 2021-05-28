@@ -37,7 +37,7 @@
       libvirtd.enable = true;
       lorri.enable = true;
       mjolnir.enable = true;
-      mullvad.enable = true;
+      mullvad.enable = false;
       printers.enable = true;
       roon-bridge.enable = true;
       ssh.enable = true;
