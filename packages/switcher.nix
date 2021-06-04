@@ -2,16 +2,17 @@
 , fetchFromGitHub
 , glib
 , gettext
+, lib
 }:
 
 stdenv.mkDerivation rec {
   pname = "gnome-shell-extension-switcher";
-  version = "2020-10-26";
+  version = "2021-06-04";
 
   src = fetchFromGitHub {
     owner = "daniellandau";
     repo = "switcher";
-    rev = "afdf9fc81baa53a44637230a1ff9d547f3074765";
+    rev = "427171cfd37d657801d48539e1f35645d14fcd7e";
     sha256 = "0cc0njx1g06dfrzs3pv12v59ix5bzp2r6kvp939zwnip1rzm9i9w";
   };
 
@@ -31,7 +32,7 @@ stdenv.mkDerivation rec {
     runHook postInstall
   '';
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     description = "A windows switcher and app launcher for Gnome Shell";
     homepage = "https://github.com/daniellandau/switcher";
     license = licenses.gpl2;

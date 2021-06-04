@@ -32,8 +32,5 @@ with lib; {
       # Wireguard
       wireguard-tools
     ];
-
-    # Needed for kernel 5.4.
-    boot.extraModulePackages = [ config.boot.kernelPackages.wireguard ];
   };
 }

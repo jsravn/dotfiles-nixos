@@ -127,6 +127,11 @@ in {
     # Allow unfree packages.
     nixpkgs.config.allowUnfree = true;
 
+    # Allow some insecure packages.
+    nixpkgs.config.permittedInsecurePackages = [
+      "ffmpeg-3.4.8"
+    ];
+
     # Aliases for nixos.
     environment.shellAliases = {
       nix-shell = ''
