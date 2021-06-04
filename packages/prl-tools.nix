@@ -63,7 +63,7 @@ stdenv.mkDerivation rec {
   '';
 
   libPath = with xorg;
-            lib.makeLibraryPath ([ stdenv.cc.cc libXrandr libXext libX11 libXcomposite libXinerama ]
+            stdenv.lib.makeLibraryPath ([ stdenv.cc.cc libXrandr libXext libX11 libXcomposite libXinerama ]
             ++ lib.optionals (!libsOnly) [ libXi glib dbus-glib zlib ]);
 
 
@@ -155,7 +155,7 @@ stdenv.mkDerivation rec {
   dontStrip = true;
   dontPatchELF = true;
 
-  meta = with lib; {
+  meta = with stdenv.lib; {
     description = "Parallels Tools for Linux guests";
     homepage = https://parallels.com;
     platforms = [ "i686-linux" "x86_64-linux" ];
