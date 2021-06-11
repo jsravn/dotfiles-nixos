@@ -9,6 +9,7 @@ with lib; {
       lame
       sox
       mkvtoolnix
+      mktorrent
     ];
   };
 }

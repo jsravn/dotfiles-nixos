@@ -19,7 +19,7 @@ in {
         Unit = {
           Description = "mount mjolnir directories";
         };
-        Install.WantedBy = [ "multi-user.target" ];
+        Install.WantedBy = [ "default.target" ];
         Service = {
           ExecStartPre = "/run/current-system/sw/bin/mkdir -p ${mountDir}";
           ExecStart = ''
@@ -30,6 +30,7 @@ in {
           '';
           ExecStop = "${pkgs.fuse}/bin/fusermount -u ${mountDir}";
           Type = "notify";
+          KillMode = "none";
           Restart = "always";
           RestartSec = "30s";
         };
