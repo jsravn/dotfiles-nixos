@@ -28,7 +28,15 @@ with lib; {
         gparted
         mpv
         pinta
-        unstable.plexamp
+        #unstable.plexamp
+        # Override the unstable desktop which doesn't work on Nixos 20.09.
+        (makeDesktopItem {
+          name = "plexamp";
+          desktopName = "Plexamp";
+          icon = "${pkgs.unstable.plexamp}/share/icons/hicolor/512x512/apps/plexamp.png";
+          categories = "AudioVideo";
+          exec = "${pkgs.unstable.plexamp}/bin/plexamp %U";
+        })
         unstable.plex-media-player
         peek
         samba
@@ -48,28 +56,6 @@ with lib; {
         # Windows only
         wineWowPackages.stable
         winetricks
-
-        # Browser apps
-        (makeDesktopItem {
-          name = "fastmail";
-          desktopName = "Fastmail";
-          icon = "emblem-mail";
-          exec = "chromium --app=https://fastmail.com";
-          categories = "X-Productivity";
-        })
-        (makeDesktopItem {
-          name = "outlook";
-          desktopName = "Outlook";
-          icon = "emblem-mail";
-          exec = "chromium --app=https://outlook.office.com";
-          categories = "X-Productivity";
-        })
-        (makeDesktopItem {
-          name = "whatsapp";
-          desktopName = "Whatsapp";
-          exec = "chromium --app=https://web.whatsapp.com";
-          categories = "X-Productivity";
-        })
       ];
 
       home.xdg.configFile."kitty".source = <config/kitty>;

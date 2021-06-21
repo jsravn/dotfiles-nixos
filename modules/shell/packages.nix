@@ -34,6 +34,6 @@ with lib; {
     ];
 
     # Needed for kernel 5.4.
-    #boot.extraModulePackages = [ config.boot.kernelPackages.wireguard ];
+    boot.extraModulePackages = [ config.boot.kernelPackages.wireguard ];
   };
 }
