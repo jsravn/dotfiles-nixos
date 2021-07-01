@@ -21,7 +21,7 @@ with lib; {
     options hid_apple fnmode=2
     options usbhid jspoll=1
   '';
-  boot.kernelParams = [ "nomodeset" "acpi_enforce_resources=lax" ];
+  boot.kernelParams = [ "nomodeset" "acpi_enforce_resources=lax" "mitigations=off" ];
 
   ## CPU
   nix.maxJobs = lib.mkDefault 32;
@@ -45,7 +45,7 @@ with lib; {
     enable = true;
     driSupport = true;
     # 32-bit support - not working on nvidia.
-    # driSupport32Bit = true;
+    driSupport32Bit = true;
   };
   hardware.nvidia.modesetting.enable = true;
 

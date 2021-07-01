@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
 set -eu
 
-if [ $# -lt 1 ]; then
-    echo "$0 <flac"
-    exit 1
-fi
+RATE=${RATE:-48000}
 
-flac="$1"
-rate="${2:-48000}"
-
-sox "$flac" -G -b 16 "2-$flac" rate -v -L $rate dither
-mv -f "2-$flac" "$flac"
+for flac in "$@"; do
+    echo "Resampling $flac"
+    set -x
+    sox "$flac" -G -b 16 "2-$flac" rate -v -L $RATE dither
+    set +x
+    mv -f "2-$flac" "$flac"
+done
