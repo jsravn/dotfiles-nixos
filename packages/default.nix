@@ -6,10 +6,6 @@
         cached-nix-shell = (callPackage (builtins.fetchTarball
           "https://github.com/xzfc/cached-nix-shell/archive/master.tar.gz")
           { });
-        emacsMacport = callPackage ./emacsMacport {
-          inherit (pkgs.darwin.apple_sdk.frameworks) AppKit GSS ImageIO;
-          stdenv = pkgs.clangStdenv;
-        };
         notify-send-sh = (callPackage ./notify-send-sh.nix { });
         prl-tools = (callPackage ./prl-tools.nix { kernel = pkgs.linux; });
         roon-bridge = (callPackage ./roon-bridge.nix { });
@@ -18,6 +14,16 @@
         stepmania = (callPackage ./stepmania.nix { });
         gnome-extension-switcher = (callPackage ./switcher.nix { });
         gnome-extension-paperwm = (callPackage ./paperwm.nix { });
+      };
+
+      gnomeExtensions = super.gnomeExtensions // {
+        paperwm = super.gnomeExtensions.paperwm.overrideDerivation (old: {
+          version = "pre-40.0";
+          src = builtins.fetchGit {
+            url = https://github.com/paperwm/paperwm.git;
+            ref = "next-release";
+          };
+        });
       };
 
       # Make nur packages available.

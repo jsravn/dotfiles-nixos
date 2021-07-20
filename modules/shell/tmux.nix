@@ -7,7 +7,7 @@ with lib; {
     };
   };
 
-  config = mkIf config.modules.term.tmux.enable {
+  config = mkIf config.modules.shell.enable {
     my = {
       packages = with pkgs; [ tmux ];
       alias.tmux = "tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf";

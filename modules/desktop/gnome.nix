@@ -15,8 +15,8 @@ with lib; {
         enable = true;
         autoSuspend = false;
       };
-      desktopManager.gnome3.enable = true;
-      desktopManager.gnome3.extraGSettingsOverrides = ''
+      desktopManager.gnome.enable = true;
+      desktopManager.gnome.extraGSettingsOverrides = ''
         [org.gnome.desktop.peripherals.keyboard]
         repeat-interval = 35
         delay = 270
@@ -31,15 +31,20 @@ with lib; {
       autorun = true;
     };
     environment.systemPackages = with pkgs; [
-      gnome3.gnome-tweak-tool
-      gnome3.pomodoro
+      gnome.gnome-tweak-tool
+      gnome.pomodoro
       gnomeExtensions.appindicator
       gnomeExtensions.caffeine
       gnomeExtensions.system-monitor
       gnomeExtensions.clipboard-indicator
       gnomeExtensions.dash-to-dock
-      my.gnome-extension-paperwm
-      my.gnome-extension-switcher
+      gnomeExtensions.cleaner-overview
+      gnomeExtensions.vertical-overview
+      gnomeExtensions.disable-workspace-switch-animation-for-gnome-40
+      gnomeExtensions.paperwm
+      gnomeExtensions.switcher
+      #my.gnome-extension-paperwm
+      #my.gnome-extension-switcher
     ];
 
     my.home.xdg.configFile."paperwm" = {

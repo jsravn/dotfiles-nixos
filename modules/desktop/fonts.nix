@@ -3,7 +3,7 @@ with lib; {
   config = mkIf config.modules.desktop.enable {
     fonts = {
       # fontDir.enable = true;
-      enableFontDir = true;
+      fontDir.enable = true;
       enableGhostscriptFonts = true;
       fonts = with pkgs; [
         dejavu_fonts
