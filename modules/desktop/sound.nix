@@ -19,6 +19,9 @@ with lib; {
       };
     };
     security.rtkit.enable = true;
-    my.packages = with pkgs; [ pavucontrol pulseeffects ];
+    environment.systemPackages = with pkgs; [
+      pavucontrol
+      pulseeffects
+    ];
   };
 }
