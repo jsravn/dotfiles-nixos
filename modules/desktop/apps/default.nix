@@ -17,7 +17,7 @@ with lib; {
         audacity
         calibre
         deluge
-        discord
+        #discord
         dr14_tmeter
         dropbox
         gimp-with-plugins
@@ -60,6 +60,13 @@ with lib; {
 
       home.xdg.configFile."kitty".source = <config/kitty>;
       home.xdg.configFile."mpv".source = <config/mpv>;
+
+      home.xdg.systemDirs.data = [
+        "/var/lib/flatpak/exports/share"
+        "/home/${config.my.username}/.local/share/flatpak/exports/share"
+      ];
     };
+
+    services.flatpak.enable = true;
   };
 }
