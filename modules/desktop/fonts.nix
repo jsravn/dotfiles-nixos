@@ -36,6 +36,17 @@ with lib; {
       };
     };
 
+    # Enable home-manager discovery of user fonts.
+    my = {
+      home.fonts.fontconfig.enable = true; 
+      # Install these in home for flatpak apps to pick them up.
+      packages = with pkgs; [
+        noto-fonts-cjk
+        noto-fonts-emoji
+        font-awesome-ttf
+      ];
+    };
+
     # Enable CJK IME.
     i18n.inputMethod = {
       enabled = "fcitx";

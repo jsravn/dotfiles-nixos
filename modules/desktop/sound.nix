@@ -18,10 +18,20 @@ with lib; {
         avoid-resampling = "yes";
       };
     };
+    # hardware.pulseaudio.enable = false;
+    # sound.enable = true;  # enable alsa
+    # services.pipewire = {
+    #   enable = true;
+    #   alsa.enable = true;
+    #   alsa.support32Bit = true;
+    #   pulse.enable = true;
+    # };
     security.rtkit.enable = true;
     environment.systemPackages = with pkgs; [
+      alsaUtils
       pavucontrol
-      pulseeffects-pw
+      pulseeffects-legacy
+      # pulseeffects-pw
     ];
   };
 }

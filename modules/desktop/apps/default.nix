@@ -17,7 +17,7 @@ with lib; {
         audacity
         calibre
         deluge
-        #discord
+        discord
         dr14_tmeter
         dropbox
         gimp-with-plugins
@@ -37,7 +37,7 @@ with lib; {
           categories = "AudioVideo";
           exec = "${pkgs.unstable.plexamp}/bin/plexamp %U";
         })
-        unstable.plex-media-player
+        # unstable.plex-media-player
         peek
         samba
         slack
