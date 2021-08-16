@@ -24,6 +24,7 @@ in {
           "text/plain" = [ "org.gnome.gedit.desktop" ];
           "image/jpeg" = [ "org.gnome.eog.desktop" ];
           "image/png" = [ "org.gnome.eog.desktop" ];
+          "inode/directory" = [ "org.gnome.Nautilus.desktop" ];
         };
       };
       # Overwrite any changes made manually to the mimeapps.list.

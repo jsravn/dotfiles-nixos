@@ -31,6 +31,7 @@ with lib; {
       alsaUtils
       pavucontrol
       pulseeffects-legacy
+      # my.dsp
       # pulseeffects-pw
     ];
   };

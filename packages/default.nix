@@ -6,6 +6,7 @@
         cached-nix-shell = (callPackage (builtins.fetchTarball
           "https://github.com/xzfc/cached-nix-shell/archive/master.tar.gz")
           { });
+        dsp = (callPackage ./dsp.nix { });
         notify-send-sh = (callPackage ./notify-send-sh.nix { });
         prl-tools = (callPackage ./prl-tools.nix { kernel = pkgs.linux; });
         roon-bridge = (callPackage ./roon-bridge.nix { });

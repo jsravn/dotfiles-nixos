@@ -19,6 +19,7 @@ with lib; {
         jq
         dstat
         iperf
+        graphviz
 
         # nix utilities
         nix-prefetch-scripts
