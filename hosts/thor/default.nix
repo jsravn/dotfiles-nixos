@@ -35,7 +35,7 @@
     services = {
       docker.enable = true;
       libvirtd.enable = true;
-      lorri.enable = true;
+      lorri.enable = false;
       mjolnir.enable = true;
       mullvad.enable = false;
       printers.enable = true;
