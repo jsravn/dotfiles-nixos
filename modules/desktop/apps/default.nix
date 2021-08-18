@@ -54,8 +54,8 @@ with lib; {
         minecraft
 
         # Windows only
-        #wineWowPackages.stable
-        #winetricks
+        wineWowPackages.stable
+        winetricks
       ];
 
       home.xdg.configFile."kitty".source = <config/kitty>;
