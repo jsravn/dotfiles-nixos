@@ -22,18 +22,19 @@ function init() {
     Examples = Extension.imports.examples;
     App = Extension.imports.app;
 
-    Tiling.defwinprop({
-        wm_class: "Gnome-calculator",
-        scratch_layer: true,
-    });
-    Tiling.defwinprop({
-        wm_class: "Gnome-pomodoro",
-        scratch_layer: true,
-    });
-    Tiling.defwinprop({
-        wm_class: "mpv",
-        scratch_layer: true,
-    });
+    // buggy in gnome 40
+    // Tiling.defwinprop({
+    //     wm_class: "Gnome-calculator",
+    //     scratch_layer: true,
+    // });
+    // Tiling.defwinprop({
+    //     wm_class: "Gnome-pomodoro",
+    //     scratch_layer: true,
+    // });
+    // Tiling.defwinprop({
+    //     wm_class: "mpv",
+    //     scratch_layer: true,
+    // });
 }
 
 function enable() {
