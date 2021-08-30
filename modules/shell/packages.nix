@@ -20,6 +20,7 @@ with lib; {
         dstat
         iperf
         graphviz
+        whois
 
         # nix utilities
         nix-prefetch-scripts
