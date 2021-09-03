@@ -34,10 +34,10 @@ with lib; {
       gnome.gnome-tweak-tool
       gnome.pomodoro
       gnomeExtensions.appindicator
-      gnomeExtensions.caffeine
-      gnomeExtensions.system-monitor
+      # gnomeExtensions.caffeine
+      # gnomeExtensions.system-monitor
       gnomeExtensions.clipboard-indicator
-      gnomeExtensions.dash-to-dock
+      # gnomeExtensions.dash-to-dock
       gnomeExtensions.cleaner-overview
       gnomeExtensions.vertical-overview
       gnomeExtensions.disable-workspace-switch-animation-for-gnome-40

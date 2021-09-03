@@ -7,8 +7,16 @@ with lib; {
   # should.
   system.stateVersion = "20.09";
 
-  # Optimise hard disk space of store.
-  nix.autoOptimiseStore = true;
+  nix = {
+    # Optimise hard disk space of store.
+    autoOptimiseStore = true;
+
+    # use nix-community binary cache
+    binaryCaches = [ "https://nix-community.cachix.org" ];
+    binaryCachePublicKeys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
+  };
 
   # Use tmpfs for /tmp.
   boot.tmpOnTmpfs = true;

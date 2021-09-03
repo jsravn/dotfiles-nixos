@@ -37,7 +37,7 @@ with lib; {
           categories = "AudioVideo";
           exec = "${pkgs.unstable.plexamp}/bin/plexamp %U";
         })
-        # unstable.plex-media-player
+        plex-media-player
         peek
         samba
         slack
@@ -47,6 +47,7 @@ with lib; {
         vulkan-tools
         wireshark
         unstable.zoom-us
+        mattermost-desktop
 
         # Games
         lutris
