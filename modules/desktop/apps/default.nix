@@ -29,7 +29,7 @@ with lib; {
         mpv
         pinta
         #unstable.plexamp
-        # Override the unstable desktop which doesn't work on Nixos 20.09.
+        # Override the unstable desktop which doesn't work on latest Nixos.
         (makeDesktopItem {
           name = "plexamp";
           desktopName = "Plexamp";
@@ -48,6 +48,9 @@ with lib; {
         wireshark
         unstable.zoom-us
         mattermost-desktop
+
+        # Dev tools
+        ghidra-bin
 
         # Games
         lutris
