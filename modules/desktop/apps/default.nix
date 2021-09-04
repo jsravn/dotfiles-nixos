@@ -51,6 +51,7 @@ with lib; {
 
         # Dev tools
         ghidra-bin
+        pwndbg
 
         # Games
         lutris
