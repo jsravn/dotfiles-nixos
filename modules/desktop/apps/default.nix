@@ -37,7 +37,7 @@ with lib; {
           categories = "AudioVideo";
           exec = "${pkgs.unstable.plexamp}/bin/plexamp %U";
         })
-        plex-media-player
+        #plex-media-player
         peek
         samba
         slack
@@ -50,12 +50,11 @@ with lib; {
         mattermost-desktop
 
         # Dev tools
-        ghidra-bin
+        unstable.ghidra-bin
         pwndbg
 
         # Games
         lutris
-        steam
         minecraft
 
         # Windows only
@@ -71,6 +70,12 @@ with lib; {
         "/home/${config.my.username}/.local/share/flatpak/exports/share"
       ];
     };
+
+    programs.steam.enable = true;
+    environment.systemPackages = with pkgs; [
+      # provides steam-run command
+      steam-run-native
+    ];
 
     services.flatpak.enable = true;
   };
