@@ -33,7 +33,8 @@ with lib; {
         (makeDesktopItem {
           name = "plexamp";
           desktopName = "Plexamp";
-          icon = "${pkgs.unstable.plexamp}/share/icons/hicolor/512x512/apps/plexamp.png";
+          icon =
+            "${pkgs.unstable.plexamp}/share/icons/hicolor/512x512/apps/plexamp.png";
           categories = "AudioVideo";
           exec = "${pkgs.unstable.plexamp}/bin/plexamp %U";
         })
@@ -60,6 +61,9 @@ with lib; {
         # Windows only
         wineWowPackages.stable
         winetricks
+
+        # Extra
+        (appimage-run.override { extraPkgs = pkgs: [ pkgs.gmp ]; })
       ];
 
       home.xdg.configFile."kitty".source = <config/kitty>;
@@ -72,11 +76,21 @@ with lib; {
     };
 
     programs.steam.enable = true;
-    environment.systemPackages = with pkgs; [
-      # provides steam-run command
-      steam-run-native
-    ];
+    environment.systemPackages = with pkgs;
+      [
+        # provides steam-run command
+        steam-run-native
+      ];
 
+    # flatpak apps
     services.flatpak.enable = true;
+
+    # netdata for system monitoring
+    services.netdata.enable = true;
+
+    # gc adapter
+    services.udev.extraRules = ''
+      SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="0337", MODE="0666"
+    '';
   };
 }

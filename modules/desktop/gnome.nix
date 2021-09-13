@@ -34,7 +34,7 @@ with lib; {
       gnome.gnome-tweak-tool
       gnome.pomodoro
       gnomeExtensions.appindicator
-      # gnomeExtensions.caffeine
+      gnomeExtensions.caffeine
       # gnomeExtensions.system-monitor
       gnomeExtensions.clipboard-indicator
       # gnomeExtensions.dash-to-dock
