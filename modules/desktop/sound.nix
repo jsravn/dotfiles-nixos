@@ -6,6 +6,7 @@ with lib; {
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
+      jack.enable = true;
     };
 
     # required for pipewire PA emulation

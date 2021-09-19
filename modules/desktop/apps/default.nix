@@ -30,14 +30,14 @@ with lib; {
         pinta
         #unstable.plexamp
         # Override the unstable desktop which doesn't work on latest Nixos.
-        (makeDesktopItem {
-          name = "plexamp";
-          desktopName = "Plexamp";
-          icon =
-            "${pkgs.unstable.plexamp}/share/icons/hicolor/512x512/apps/plexamp.png";
-          categories = "AudioVideo";
-          exec = "${pkgs.unstable.plexamp}/bin/plexamp %U";
-        })
+        # (makeDesktopItem {
+        #   name = "plexamp";
+        #   desktopName = "Plexamp";
+        #   icon =
+        #     "${pkgs.unstable.plexamp}/share/icons/hicolor/512x512/apps/plexamp.png";
+        #   categories = "AudioVideo";
+        #   exec = "${pkgs.unstable.plexamp}/bin/plexamp %U";
+        # })
         #plex-media-player
         (unstable.plex-mpv-shim.overrideAttrs (oldAttrs: rec {
           propagatedBuildInputs = oldAttrs.propagatedBuildInputs ++ (with unstable.python3Packages; [ tkinter pystray ]);
@@ -56,6 +56,7 @@ with lib; {
         # Dev tools
         unstable.ghidra-bin
         pwndbg
+        teensy-loader-cli
 
         # Games
         lutris
@@ -91,9 +92,16 @@ with lib; {
     # netdata for system monitoring
     services.netdata.enable = true;
 
-    # gc adapter
+    # gc adapter, teensy
     services.udev.extraRules = ''
       SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="0337", MODE="0666"
+      ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04*", ENV{ID_MM_DEVICE_IGNORE}="1", ENV{ID_MM_PORT_IGNORE}="1"
+      ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789a]*", ENV{MTP_NO_PROBE}="1"
+      KERNEL=="ttyACM*", ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04*", MODE:="0666", RUN:="${pkgs.coreutils}/bin/stty -F /dev/%k raw -echo"
+      KERNEL=="hidraw*", ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04*", MODE:="0666"
+      SUBSYSTEMS=="usb", ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04*", MODE:="0666"
+      KERNEL=="hidraw*", ATTRS{idVendor}=="1fc9", ATTRS{idProduct}=="013*", MODE:="0666"
+      SUBSYSTEMS=="usb", ATTRS{idVendor}=="1fc9", ATTRS{idProduct}=="013*", MODE:="0666"
     '';
   };
 }

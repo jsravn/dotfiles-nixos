@@ -24,6 +24,9 @@ with lib; {
   # Many modern apps require a large number of watches.
   boot.kernel.sysctl."fs.inotify.max_user_watches" = 524288;
 
+  # Modern UDP protocols like QUIC need larger buffers.
+  boot.kernel.sysctl."net.core.rmem_max" = 2500000;
+
   # Raise nofile limits for esync.
   systemd.extraConfig = "DefaultLimitNOFILE=1048576";
   systemd.user.extraConfig = "DefaultLimitNOFILE=1048576";
