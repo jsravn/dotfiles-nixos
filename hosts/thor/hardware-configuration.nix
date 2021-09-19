@@ -58,8 +58,8 @@ with lib; {
     Install.WantedBy = [ "default.target" ];
     Service = {
       ExecStart = ''
-        pw-link alsa_input.pci-0000_05_00.0.iec958-stereo:capture_FR alsa_output.usb-Topping_D10-00.analog-stereo:playback_FR
-        pw-link alsa_input.pci-0000_05_00.0.iec958-stereo:capture_FL alsa_output.usb-Topping_D10-00.analog-stereo:playback_FL
+        ${pkgs.pipewire}/bin/pw-link alsa_input.pci-0000_05_00.0.iec958-stereo:capture_FR alsa_output.usb-Topping_D10-00.analog-stereo:playback_FR && \
+        ${pkgs.pipewire}/bin/pw-link alsa_input.pci-0000_05_00.0.iec958-stereo:capture_FL alsa_output.usb-Topping_D10-00.analog-stereo:playback_FL
       '';
       Type = "oneshot";
     };
