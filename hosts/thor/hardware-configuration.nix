@@ -54,8 +54,9 @@ with lib; {
   my.home.systemd.user.services.soundlink = {
     Unit = {
       Description = "link spdif in to sound output";
+      After = "pipewire-media-session.service";
     };
-    Install.WantedBy = [ "default.target" ];
+    Install.WantedBy = [ "pipewire-media-session.service" ];
     Service = {
       ExecStart = ''
         ${pkgs.pipewire}/bin/pw-link alsa_input.pci-0000_05_00.0.iec958-stereo:capture_FR alsa_output.usb-Topping_D10-00.analog-stereo:playback_FR && \
