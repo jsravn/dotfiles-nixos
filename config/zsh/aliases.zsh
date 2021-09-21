@@ -50,3 +50,6 @@ alias l="exa -1"
 alias la="LC_COLLATE=C exa -la"
 alias ll="exa -lg"
 alias ls="exa"
+
+# git
+alias g="git"
