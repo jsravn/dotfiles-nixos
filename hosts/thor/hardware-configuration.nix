@@ -51,13 +51,16 @@ with lib; {
 
   ## Sound
   # Listen to SPDIF in.
-  my.home.systemd.user.services.soundlink = {
+  my.home.systemd.user.services.spdiflisten = {
     Unit = {
       Description = "link spdif in to sound output";
-      After = "pipewire-media-session.service";
+      BindsTo = "pipewire.service";
+      After = "pipewire.service";
     };
     Install.WantedBy = [ "pipewire-media-session.service" ];
     Service = {
+      # Kludge to deal w/ pipewire sound cards not being immediately available.
+      ExecStartPre = "${pkgs.coreutils}/bin/sleep 10";
       ExecStart = ''
         ${pkgs.pipewire}/bin/pw-link alsa_input.pci-0000_05_00.0.iec958-stereo:capture_FR alsa_output.usb-Topping_D10-00.analog-stereo:playback_FR && \
         ${pkgs.pipewire}/bin/pw-link alsa_input.pci-0000_05_00.0.iec958-stereo:capture_FL alsa_output.usb-Topping_D10-00.analog-stereo:playback_FL
