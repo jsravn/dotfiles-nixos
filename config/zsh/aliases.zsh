@@ -55,6 +55,6 @@ alias ls="exa"
 alias g="git"
 
 # pretty print json logs
-tojson() {
+ppjson() {
     stdbuf -oL jq -rC '.'  | sed 's/\\n/\n/g; s/\\t/\t/g'
 }
