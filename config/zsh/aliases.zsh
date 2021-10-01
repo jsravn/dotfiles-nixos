@@ -53,3 +53,8 @@ alias ls="exa"
 
 # git
 alias g="git"
+
+# pretty print json logs
+tojson() {
+    stdbuf -oL jq -rC '.'  | sed 's/\\n/\n/g; s/\\t/\t/g'
+}

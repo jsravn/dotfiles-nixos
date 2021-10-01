@@ -60,11 +60,9 @@ with lib; {
     Install.WantedBy = [ "pipewire-media-session.service" ];
     Service = {
       # Kludge to deal w/ pipewire sound cards not being immediately available.
-      ExecStartPre = "${pkgs.coreutils}/bin/sleep 10";
-      ExecStart = ''
-        ${pkgs.pipewire}/bin/pw-link alsa_input.pci-0000_05_00.0.iec958-stereo:capture_FR alsa_output.usb-Topping_D10-00.analog-stereo:playback_FR && \
-        ${pkgs.pipewire}/bin/pw-link alsa_input.pci-0000_05_00.0.iec958-stereo:capture_FL alsa_output.usb-Topping_D10-00.analog-stereo:playback_FL
-      '';
+      ExecStartPre = "${pkgs.coreutils}/bin/sleep 5";
+      ExecStart = "${pkgs.pipewire}/bin/pw-link alsa_input.pci-0000_05_00.0.iec958-stereo:capture_FR alsa_output.usb-Topping_D10-00.analog-stereo:playback_FR";
+      ExecStartPost = "${pkgs.pipewire}/bin/pw-link alsa_input.pci-0000_05_00.0.iec958-stereo:capture_FL alsa_output.usb-Topping_D10-00.analog-stereo:playback_FL";
       Type = "oneshot";
     };
   };
