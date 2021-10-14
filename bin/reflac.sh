@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+#
+# From https://raw.githubusercontent.com/chungy/reflac/master/reflac
+
 set -euo pipefail
 shopt -s dotglob
 IFS=$'\n\t'
