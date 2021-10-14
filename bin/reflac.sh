@@ -1,0 +1,162 @@
+#!/usr/bin/env bash
+set -euo pipefail
+shopt -s dotglob
+IFS=$'\n\t'
+
+VERSION=2.0.1
+
+VERBOSE=0
+RECURSIVE=0
+NOACTION=0
+SYNC=1
+FLAC_LEVEL=5 # Default FLAC compression level
+
+SELF="$(readlink -f "$0")"
+OPTS=$(getopt -o 012345678hnrsvV \
+              -l best,fast,help,no-action,no-sync,recursive,verbose,version \
+              -n reflac -- "$@")
+TMPDIR="$(mktemp --tmpdir -d reflac.XXXXXXXXXX)"
+
+eval set -- "$OPTS"
+
+trap "exit 1" INT
+
+cleanup()
+{
+    rmdir "$TMPDIR"
+    exit "$1"
+}
+
+usage()
+{
+    cat <<EOF
+‘reflac’ recompresses FLAC files while maintaining tags and file names.
+
+Usage: reflac [OPTION]... [--] DIRECTORY...
+
+ -h --help       Displays this help text
+ -0 --fast       Use the fastest, but worst, compression possible.
+ -1..-7          Adjust FLAC compression between these standard ranges.
+                 The default is -5, the same as for flac itself.
+ -8 --best       Use the slowest, but best, compression possible.
+ -n --no-action  Do not recompress.  With --verbose, displays a list of
+                 files that would be processed.
+ -r --recursive  Recurse into directories.
+ -s --no-sync    Do not synchronize file data.  Will return faster, with
+                 the potential danger to lose your files in a system crash.
+ -v --verbose    Increases the verbosity.  Use once to display the FLACs
+                 currently being processed, use twice for the full ‘flac’
+                 output.
+ -V --version    Displays the version of this program
+
+DIRECTORY should point ‘reflac’ to somewhere that contains *.flac
+files. Optionally terminate the argument list with -- so that any
+possible directory names don’t get misinterpreted as arguments.
+EOF
+    cleanup 0
+}
+
+recompress()
+{
+    for flac in *.flac; do
+        if [ $VERBOSE -eq 1 ]; then
+            echo "  $flac"
+        fi
+
+        if [ $NOACTION -eq 0 ]; then
+            if [ $VERBOSE -gt 1 ]; then
+                flac -$FLAC_LEVEL \
+                     --output-name="${TMPDIR}/$(basename -- "$flac")" \
+                     --verify -- \
+                     "$flac"
+            else
+                flac --silent -$FLAC_LEVEL \
+                     --output-name="${TMPDIR}/$(basename -- "$flac")" \
+                     --verify -- \
+                     "$flac"
+            fi
+
+            mv -f -- "$TMPDIR/$flac" "$flac.new"
+            if [ $SYNC -eq 1 ]; then
+                sync "$flac.new"
+                mv -f "$flac.new" "$flac"
+                sync "$flac"
+            else
+                mv -f "$flac.new" "$flac"
+            fi
+        fi
+    done
+}
+
+while true ; do
+    case "$1" in
+        -0|-1|-2|-3|-4|-5|-6|-7|-8)
+            FLAC_LEVEL=${1#-}
+            shift ;;
+        --fast)
+            FLAC_LEVEL=0
+            shift ;;
+        --best)
+            FLAC_LEVEL=8
+            shift ;;
+        -h|--help)
+            usage ;;
+        -n|--no-action)
+            NOACTION=1
+            shift ;;
+        -r|--recursive)
+            RECURSIVE=1
+            shift ;;
+        -s|--no-sync)
+            SYNC=0
+            shift ;;
+        -v|--verbose)
+            VERBOSE=$((VERBOSE+1))
+            shift ;;
+        -V|--version)
+            echo "reflac version $VERSION"
+            cleanup 0 ;;
+        --) shift; break ;;
+        *) echo "$0: This should never happen!" >&2; cleanup 1 ;;
+    esac
+done
+
+if [ -z "$*" ]; then
+    usage
+fi
+
+if [ $VERBOSE -eq 0 ] && [ $NOACTION -eq 1 ]; then
+    cleanup 0
+fi
+
+for dir; do
+    REFLAC_OPTS="${FLAC_LEVEL}"
+
+    if [ $SYNC -eq 0 ]; then
+        REFLAC_OPTS="${REFLAC_OPTS}s"
+    fi
+
+    if [ $RECURSIVE -eq 1 ] && [ $NOACTION -eq 1 ]; then
+        find "$(readlink -f -- "$dir")" -type d -execdir "$SELF" -nv {} \;
+    elif [ $RECURSIVE -eq 1 ]; then
+        if [ $VERBOSE -eq 1 ]; then
+            find "$(readlink -f -- "$dir")" -type d \
+                 -execdir "$SELF" -v"$REFLAC_OPTS" {} \;
+        elif [ $VERBOSE -ge 2 ]; then
+            find "$(readlink -f -- "$dir")" -type d \
+                 -execdir "$SELF" -vv"$REFLAC_OPTS" {} \;
+        else
+            find "$(readlink -f -- "$dir")" -type d \
+                 -execdir "$SELF" -"$REFLAC_OPTS" {} \;
+        fi
+    else
+        pushd -- "$dir" >/dev/null || cleanup $?
+        if [ $VERBOSE -gt 0 ]; then readlink -f .; fi
+        if [ -n "$(ls -- *.flac 2>/dev/null)" ]; then
+            recompress
+        fi
+        popd >/dev/null
+    fi
+done
+
+rmdir "$TMPDIR"
