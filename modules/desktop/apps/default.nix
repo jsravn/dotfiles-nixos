@@ -46,12 +46,12 @@ with lib; {
         samba
         slack
         spotify
-        tdesktop # telegram
-        thunderbird
+        #tdesktop # telegram
+        #thunderbird
         vulkan-tools
         wireshark
-        unstable.zoom-us
-        mattermost-desktop
+        #zoom-us
+        #mattermost-desktop
 
         # Dev tools
         unstable.ghidra-bin
