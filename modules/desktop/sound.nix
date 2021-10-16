@@ -18,6 +18,7 @@ with lib; {
       alsaUtils
       pavucontrol
       unstable.easyeffects
+      qjackctl
     ];
   };
 }

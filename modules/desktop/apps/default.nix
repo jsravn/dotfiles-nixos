@@ -50,7 +50,7 @@ with lib; {
         #thunderbird
         vulkan-tools
         wireshark
-        #zoom-us
+        zoom-us
         #mattermost-desktop
 
         # Dev tools
