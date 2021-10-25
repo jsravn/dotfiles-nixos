@@ -32,14 +32,21 @@ with lib; {
   services.xserver = {
     videoDrivers = [ "nvidia" ];
     # Disable temporal dithering, just like in Windows. Let the display handle it.
+    # Also disable gsync which messes up timings for mpv display-resample.
     deviceSection = ''
       Option "FlatPanelProperties" "Dithering=Disabled"
       Option "ModeValidation" "NoEdidHDMI2Check"
       Option "ModeValidation" "AllowNonEdidModes"
       Option "ModeDebug" "true"
+      Option "MetaModes" "nvidia-auto-select +0+0 {AllowGSYNC=Off}"
     '';
     # 10-bit display.
-    #defaultDepth = 30;
+    # defaultDepth = 30;
+    # screenSection = ''
+    # SubSection "Display"
+    # Depth 30
+    # EndSubSection
+    # '';
   };
   hardware.opengl = {
     enable = true;

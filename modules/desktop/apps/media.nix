@@ -10,6 +10,7 @@ with lib; {
       sox
       mkvtoolnix
       mktorrent
+      aegisub
     ];
   };
 }
