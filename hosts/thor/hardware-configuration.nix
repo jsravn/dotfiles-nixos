@@ -38,7 +38,6 @@ with lib; {
       Option "ModeValidation" "NoEdidHDMI2Check"
       Option "ModeValidation" "AllowNonEdidModes"
       Option "ModeDebug" "true"
-      Option "MetaModes" "nvidia-auto-select +0+0 {AllowGSYNC=Off}"
     '';
     # 10-bit display.
     # defaultDepth = 30;
@@ -55,6 +54,20 @@ with lib; {
     driSupport32Bit = true;
   };
   hardware.nvidia.modesetting.enable = true;
+
+  # Configure nvidia-settings.
+  my.home.systemd.user.services.nvidia-settings = {
+    Unit = {
+      Description = "Set nvidia settings";
+      After = "graphical-session.target";
+    };
+    Install.WantedBy = [ "graphical-session.target" ];
+    Service = {
+      # Explicitly disable VRR because it messes up mpv display-resample.
+      ExecStart = "/run/current-system/sw/bin/nvidia-settings -a AllowVRR=0";
+      Type = "oneshot";
+    };
+  };
 
   ## Sound
   # Listen to SPDIF in.

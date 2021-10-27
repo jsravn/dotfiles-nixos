@@ -95,6 +95,9 @@ with lib; {
   # Enable all the dev documentation.
   documentation.dev.enable = true;
 
+  # Enable home manager systemd auto starting.
+  my.home.systemd.user.startServices = "sd-switch";
+
   # Enable the zsh interactive module.
   programs.zsh = {
     enable = true;

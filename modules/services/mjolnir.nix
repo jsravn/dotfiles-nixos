@@ -32,7 +32,7 @@ in {
           Type = "notify";
           KillMode = "none";
           Restart = "always";
-          RestartSec = "30s";
+          RestartSec = "1h";
         };
       };
     };
