@@ -63,8 +63,7 @@ with lib; {
     };
     Install.WantedBy = [ "graphical-session.target" ];
     Service = {
-      # Explicitly disable VRR because it messes up mpv display-resample.
-      ExecStart = "/run/current-system/sw/bin/nvidia-settings -a AllowVRR=0";
+      ExecStart = "/run/current-system/sw/bin/nvidia-settings -a AllowVRR=1";
       Type = "oneshot";
     };
   };
