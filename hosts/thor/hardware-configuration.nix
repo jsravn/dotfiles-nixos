@@ -63,7 +63,7 @@ with lib; {
     };
     Install.WantedBy = [ "graphical-session.target" ];
     Service = {
-      ExecStart = "/run/current-system/sw/bin/nvidia-settings -a AllowVRR=1";
+      ExecStart = "/run/current-system/sw/bin/nvidia-settings -a AllowVRR=0";
       Type = "oneshot";
     };
   };
