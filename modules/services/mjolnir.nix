@@ -18,8 +18,9 @@ in {
       home.systemd.user.services.mjolnir_mount = {
         Unit = {
           Description = "mount mjolnir directories";
+          After = "graphical-session.target";
         };
-        Install.WantedBy = [ "default.target" ];
+        Install.WantedBy = [ "graphical-session.target" ];
         Service = {
           ExecStartPre = "/run/current-system/sw/bin/mkdir -p ${mountDir}";
           ExecStart = ''
@@ -32,7 +33,7 @@ in {
           Type = "notify";
           KillMode = "none";
           Restart = "always";
-          RestartSec = "1h";
+          RestartSec = "30m";
         };
       };
     };
