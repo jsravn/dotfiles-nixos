@@ -42,7 +42,7 @@
       };
     })
 
-  # Provides emacsUnstable.
+  # Provides emacsUnstable. Pin to last known good version.
   (import (builtins.fetchTarball
-    "https://github.com/nix-community/emacs-overlay/archive/master.tar.gz"))
+    "https://github.com/nix-community/emacs-overlay/archive/64580e3ac034e2704895a272f341a0729d165b93.tar.gz"))
 ]
