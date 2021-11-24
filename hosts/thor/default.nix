@@ -13,7 +13,6 @@
     desktop = {
       enable = true;
       gnome.enable = true;
-      #kde.enable = true;
       browsers.default = "chromium";
       bluetooth.enable = true;
     };

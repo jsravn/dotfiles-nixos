@@ -6,14 +6,14 @@ with lib; {
   ];
 
   # Use custom linux firmware that has the more recent firmware.
-  hardware.firmware = [ pkgs.firmwareLinuxNonfree ];
+  hardware.firmware = with pkgs; [ firmwareLinuxNonfree ];
 
   # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  #boot.kernelPackages = pkgs.unstable.linuxPackages_latest;
 
   boot.initrd.availableKernelModules =
     [ "xhci_pci" "nvme" "ahci" "usbhid" "uas" "usb_storage" "sd_mod" ];
-  boot.initrd.kernelModules = [ "amdgpu" ];
+  boot.initrd.kernelModules = [ ];
   boot.extraModulePackages = [ ];
   boot.kernelModules = [ "kvm-amd" "nct6775" "hid-apple" "wireguard" ];
   # Use F keys as default on MacOS keyboards (aka Keychron).
@@ -30,13 +30,42 @@ with lib; {
 
   ## GPU
   services.xserver = {
-    videoDrivers = [ "amdgpu" ];
+    videoDrivers = [ "nvidia" ];
+    # Disable temporal dithering, just like in Windows. Let the display handle it.
+    # Also disable gsync which messes up timings for mpv display-resample.
+    deviceSection = ''
+      Option "FlatPanelProperties" "Dithering=Disabled"
+      Option "ModeValidation" "NoEdidHDMI2Check"
+      Option "ModeValidation" "AllowNonEdidModes"
+      Option "ModeDebug" "true"
+    '';
+    # 10-bit display.
+    # defaultDepth = 30;
+    # screenSection = ''
+    # SubSection "Display"
+    # Depth 30
+    # EndSubSection
+    # '';
   };
   hardware.opengl = {
     enable = true;
     driSupport = true;
     # 32-bit support - not working on nvidia.
     driSupport32Bit = true;
+  };
+  hardware.nvidia.modesetting.enable = true;
+
+  # Configure nvidia-settings.
+  my.home.systemd.user.services.nvidia-settings = {
+    Unit = {
+      Description = "Set nvidia settings";
+      After = "graphical-session.target";
+    };
+    Install.WantedBy = [ "graphical-session.target" ];
+    Service = {
+      ExecStart = "/run/current-system/sw/bin/nvidia-settings -a AllowVRR=0";
+      Type = "oneshot";
+    };
   };
 
   ## Sound
