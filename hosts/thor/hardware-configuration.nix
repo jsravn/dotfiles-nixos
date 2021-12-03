@@ -9,7 +9,7 @@ with lib; {
   hardware.firmware = with pkgs; [ firmwareLinuxNonfree ];
 
   # Use latest kernel.
-  #boot.kernelPackages = pkgs.unstable.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   boot.initrd.availableKernelModules =
     [ "xhci_pci" "nvme" "ahci" "usbhid" "uas" "usb_storage" "sd_mod" ];
@@ -63,7 +63,7 @@ with lib; {
     };
     Install.WantedBy = [ "graphical-session.target" ];
     Service = {
-      ExecStart = "/run/current-system/sw/bin/nvidia-settings -a AllowVRR=0";
+      ExecStart = "/run/current-system/sw/bin/nvidia-settings -a AllowVRR=1";
       Type = "oneshot";
     };
   };
