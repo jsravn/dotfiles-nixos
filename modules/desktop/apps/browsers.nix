@@ -5,12 +5,12 @@ in {
   options.modules.desktop.browsers = {
     default = mkOption {
       type = types.str;
-      default = "firefox";
+      default = "google-chrome-stable";
     };
 
     defaultDesktop = mkOption {
       type = types.str;
-      default = "firefox.desktop";
+      default = "google-chrome.desktop";
     };
   };
 
