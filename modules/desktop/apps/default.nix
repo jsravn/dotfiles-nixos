@@ -103,5 +103,8 @@ with lib; {
       KERNEL=="hidraw*", ATTRS{idVendor}=="1fc9", ATTRS{idProduct}=="013*", MODE:="0666"
       SUBSYSTEMS=="usb", ATTRS{idVendor}=="1fc9", ATTRS{idProduct}=="013*", MODE:="0666"
     '';
+
+    # qmk udev rules
+    services.udev.packages = [ pkgs.unstable.qmk-udev-rules ];
   };
 }
