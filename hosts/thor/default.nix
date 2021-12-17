@@ -39,7 +39,7 @@
       mjolnir.enable = true;
       mullvad.enable = false;
       printers.enable = true;
-      roon-bridge.enable = true;
+      roon-bridge.enable = false;
       ssh.enable = true;
     };
 
