@@ -43,8 +43,6 @@ with lib; {
       gnomeExtensions.disable-workspace-switch-animation-for-gnome-40
       gnomeExtensions.paperwm
       gnomeExtensions.switcher
-      #my.gnome-extension-paperwm
-      #my.gnome-extension-switcher
     ];
 
     my.home.xdg.configFile."paperwm" = {

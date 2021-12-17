@@ -14,16 +14,19 @@
         sddm-themes = (callPackage ./sddm-themes.nix { });
         stepmania = (callPackage ./stepmania.nix { });
         gnome-extension-switcher = (callPackage ./switcher.nix { });
-        gnome-extension-paperwm = (callPackage ./paperwm.nix { });
       };
 
       gnomeExtensions = super.gnomeExtensions // {
         paperwm = super.gnomeExtensions.paperwm.overrideDerivation (old: {
-          version = "pre-40.0";
-          src = builtins.fetchGit {
-            url = https://github.com/paperwm/paperwm.git;
-            ref = "next-release";
+          version = "pre-41.0";
+          src = super.fetchFromGitHub {
+            owner = "paperwm";
+            repo = "PaperWM";
+            rev = "e9f714846b9eac8bdd5b33c3d33f1a9d2fbdecd4";
+            sha256 = "0wdigmlw4nlm9i4vr24kvhpdbgc6381j6y9nrwgy82mygkcx55l1";
           };
+          patches = old.patches
+            ++ [ ./paperwm.patch ./paperwm2.patch ];
         });
       };
 
@@ -34,7 +37,7 @@
         };
 
       # Make unstable packages available.
-      unstable = import <nixos-unstable> {};
+      unstable = import <nixos-unstable> { };
     })
 
   # Provides emacsUnstable. Pin to last known good version.

@@ -6,7 +6,7 @@ in {
     # Default applications and xdg-open.
     # See https://wiki.archlinux.org/index.php/XDG_MIME_Applications for details.
     my = {
-      packages = with pkgs; [ xdg_utils desktop-file-utils perl530Packages.FileMimeInfo ];
+      packages = with pkgs; [ xdg_utils desktop-file-utils perlPackages.FileMimeInfo ];
       home.xdg.mime.enable = true;
       home.xdg.mimeApps = {
         enable = true;

@@ -5,7 +5,6 @@ with lib; {
     ./gnome-apps.nix
     ./keybase.nix
     ./media.nix
-    ./obs-studio.nix
     ./sonarworks.nix
     ./syncthing.nix
   ];
