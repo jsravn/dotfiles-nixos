@@ -38,9 +38,7 @@ with lib; {
         #   exec = "${pkgs.unstable.plexamp}/bin/plexamp %U";
         # })
         #plex-media-player
-        (unstable.plex-mpv-shim.overrideAttrs (oldAttrs: rec {
-          propagatedBuildInputs = oldAttrs.propagatedBuildInputs ++ (with unstable.python3Packages; [ tkinter pystray ]);
-        }))
+        plex-mpv-shim
         peek
         samba
         slack

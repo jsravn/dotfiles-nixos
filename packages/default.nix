@@ -30,17 +30,11 @@
         });
       };
 
-      # Make nur packages available.
-      nur = import (builtins.fetchTarball
-        "https://github.com/nix-community/NUR/archive/master.tar.gz") {
-          inherit super;
-        };
-
       # Make unstable packages available.
       unstable = import <nixos-unstable> { };
     })
 
   # Provides emacsUnstable. Pin to last known good version.
   (import (builtins.fetchTarball
-    "https://github.com/nix-community/emacs-overlay/archive/8320c615b706f0d459544d7d37a59c5a5ff5e7e0.tar.gz"))
+    "https://github.com/nix-community/emacs-overlay/archive/master.tar.gz"))
 ]

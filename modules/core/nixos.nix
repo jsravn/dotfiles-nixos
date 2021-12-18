@@ -33,6 +33,7 @@ with lib; {
 
   # Networking settings.
   networking.networkmanager.enable = true;
+  networking.firewall.enable = false;
   networking.firewall.logRefusedConnections = false;
 
   # Core system packages for NixOS.
