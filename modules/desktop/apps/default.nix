@@ -27,7 +27,7 @@ with lib; {
         gparted
         mpv
         pinta
-        #unstable.plexamp
+        plexamp
         # Override the unstable desktop which doesn't work on latest Nixos.
         # (makeDesktopItem {
         #   name = "plexamp";
@@ -37,18 +37,15 @@ with lib; {
         #   categories = "AudioVideo";
         #   exec = "${pkgs.unstable.plexamp}/bin/plexamp %U";
         # })
-        #plex-media-player
+        plex-media-player
         plex-mpv-shim
         peek
         samba
         slack
         spotify
-        #tdesktop # telegram
-        #thunderbird
         vulkan-tools
         wireshark
         zoom-us
-        #mattermost-desktop
 
         # Dev tools
         unstable.ghidra-bin
@@ -85,9 +82,6 @@ with lib; {
 
     # flatpak apps
     services.flatpak.enable = true;
-
-    # netdata for system monitoring
-    services.netdata.enable = true;
 
     # gc adapter, teensy
     services.udev.extraRules = ''

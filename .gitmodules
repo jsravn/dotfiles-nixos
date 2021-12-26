@@ -1,0 +1,3 @@
+[submodule "packages/kmonad"]
+	path = modules/services/kmonad
+	url = git@github.com:kmonad/kmonad.git

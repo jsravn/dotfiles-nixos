@@ -43,6 +43,8 @@ with lib; {
       gnomeExtensions.disable-workspace-switch-animation-for-gnome-40
       gnomeExtensions.paperwm
       gnomeExtensions.switcher
+      unstable.gnomeExtensions.pop-shell
+      #my.pop-launcher
     ];
 
     my.home.xdg.configFile."paperwm" = {

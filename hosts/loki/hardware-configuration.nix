@@ -21,11 +21,12 @@ with lib; {
     options hid_apple fnmode=2
     options usbhid jspoll=1
   '';
-  boot.kernelParams = [ "acpi_enforce_resources=lax" "mitigations=off" ];
+  boot.kernelParams = [ "iommu=pt" ];
 
   ## CPU
   nix.maxJobs = lib.mkDefault 16;
   powerManagement.cpuFreqGovernor = "powersave";
+  services.auto-cpufreq.enable = true;
   hardware.cpu.amd.updateMicrocode = true;
 
   ## GPU
@@ -73,7 +74,12 @@ with lib; {
       fsType = "vfat";
     };
   };
-  swapDevices = [ ];
+  swapDevices = [
+    {
+      device = "/swapfile";
+      size = 1024 * 8;
+    }
+  ];
 
   ## Networking
   networking.hostName = "loki";

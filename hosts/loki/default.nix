@@ -6,7 +6,7 @@
   ];
 
   # General configuration
-  time.timeZone = "Europe/London";
+  time.timeZone = "America/Denver";
 
   # Modules
   modules = {
