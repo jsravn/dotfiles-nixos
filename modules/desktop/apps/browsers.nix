@@ -16,7 +16,11 @@ in {
 
   config = mkIf cfg.enable {
     my.packages = with pkgs; [
-      google-chrome
+      (google-chrome.override {
+        commandLineArgs = [
+          "--password-store=basic"
+        ];
+      })
       firefox-bin
       (unstable.tor-browser-bundle-bin.overrideAttrs (old: rec {
         version = "11.0.2";

@@ -9,6 +9,8 @@ with lib; {
     };
   };
   config = mkIf config.modules.desktop.gnome.enable {
+    security.pam.services.gdm.enableGnomeKeyring = true;
+
     services.xserver = {
       enable = true;
       displayManager.gdm = {
