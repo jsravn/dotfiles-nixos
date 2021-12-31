@@ -28,15 +28,6 @@ with lib; {
         mpv
         pinta
         plexamp
-        # Override the unstable desktop which doesn't work on latest Nixos.
-        # (makeDesktopItem {
-        #   name = "plexamp";
-        #   desktopName = "Plexamp";
-        #   icon =
-        #     "${pkgs.unstable.plexamp}/share/icons/hicolor/512x512/apps/plexamp.png";
-        #   categories = "AudioVideo";
-        #   exec = "${pkgs.unstable.plexamp}/bin/plexamp %U";
-        # })
         plex-media-player
         plex-mpv-shim
         peek
@@ -66,6 +57,11 @@ with lib; {
 
       home.xdg.configFile."kitty".source = <config/kitty>;
       home.xdg.configFile."mpv".source = <config/mpv>;
+      home.xdg.configFile."plex-mpv-shim" = {
+        source = <config/plex-mpv-shim>;
+        recursive = true;
+        force = true;
+      };
 
       home.xdg.systemDirs.data = [
         "/var/lib/flatpak/exports/share"

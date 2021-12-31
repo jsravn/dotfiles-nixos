@@ -29,7 +29,7 @@ with lib; {
   # AMD + power-profiles-daemon don't work due to https://bugzilla.kernel.org/show_bug.cgi?id=215177,
   # so use auto-cpufreq instead.
   services.auto-cpufreq.enable = true;
-  environment.gnome.excludePackages = [ pkgs.power-profiles-daemon ];
+  services.power-profiles-daemon.enable = false;
 
   ## GPU
   services.xserver = {
