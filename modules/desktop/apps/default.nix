@@ -6,7 +6,6 @@ with lib; {
     ./keybase.nix
     ./media.nix
     ./sonarworks.nix
-    ./syncthing.nix
   ];
 
   config = mkIf config.modules.desktop.enable {
