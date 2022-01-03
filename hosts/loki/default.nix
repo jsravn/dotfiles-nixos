@@ -1,12 +1,15 @@
 # Loki is my laptop.
 
 { pkgs, ... }: {
-  imports = [
-    ./hardware-configuration.nix
-  ];
+  imports = [ ./hardware-configuration.nix ];
 
   # General configuration
   time.timeZone = "America/Denver";
+
+  # Font sizes
+  home.xdg.configFile."kitty/custom.conf".text =  ''
+    font_size 16.0
+  '';
 
   # Modules
   modules = {

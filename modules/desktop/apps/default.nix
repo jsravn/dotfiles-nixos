@@ -54,7 +54,10 @@ with lib; {
         (appimage-run.override { extraPkgs = pkgs: [ pkgs.gmp ]; })
       ];
 
-      home.xdg.configFile."kitty".source = <config/kitty>;
+      home.xdg.configFile."kitty/kitty.conf".source = <config/kitty/kitty.conf>;
+      home.xdg.configFile."kitty/custom.conf".text = lib.mkDefault ''
+        # Custom config for kitty. Override in host specific configuration.
+      '';
       home.xdg.configFile."mpv".source = <config/mpv>;
       home.xdg.configFile."plex-mpv-shim" = {
         source = <config/plex-mpv-shim>;
