@@ -7,7 +7,7 @@
   time.timeZone = "Europe/London";
 
   # Font sizes
-  home.xdg.configFile."kitty/custom.conf".text =  ''
+  my.home.xdg.configFile."kitty/custom.conf".text =  ''
     font_size 16.0
   '';
 
