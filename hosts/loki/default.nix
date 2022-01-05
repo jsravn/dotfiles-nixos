@@ -4,7 +4,7 @@
   imports = [ ./hardware-configuration.nix ];
 
   # General configuration
-  time.timeZone = "America/Denver";
+  time.timeZone = "Europe/London";
 
   # Font sizes
   home.xdg.configFile."kitty/custom.conf".text =  ''
