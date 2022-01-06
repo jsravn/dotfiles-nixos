@@ -14,19 +14,16 @@
         sddm-themes = (callPackage ./sddm-themes.nix { });
         stepmania = (callPackage ./stepmania.nix { });
         gnome-extension-switcher = (callPackage ./switcher.nix { });
-      };
-
-      gnomeExtensions = super.gnomeExtensions // {
-        paperwm = super.gnomeExtensions.paperwm.overrideDerivation (old: {
-          version = "pre-41.0";
+        paperwm = gnomeExtensions.paperwm.overrideAttrs (old: rec {
+          pname = "gnome-shell-extension-paperwm-community";
+          version = "3dc1e34c88df44184120abf4a6e689d1cfa73cc5";
           src = super.fetchFromGitHub {
-            owner = "paperwm";
+            owner = "PaperWM-community";
             repo = "PaperWM";
-            rev = "e9f714846b9eac8bdd5b33c3d33f1a9d2fbdecd4";
-            sha256 = "0wdigmlw4nlm9i4vr24kvhpdbgc6381j6y9nrwgy82mygkcx55l1";
+            rev = version;
+            sha256 = "039vfgmxzw8flmd70arbnr21l0s4avbra7h184ikvp6spw89jg6a";
           };
-          patches = old.patches
-            ++ [ ./paperwm.patch ./paperwm2.patch ];
+          patches = [ ./paperwm-prefs.patch ];
         });
       };
 
