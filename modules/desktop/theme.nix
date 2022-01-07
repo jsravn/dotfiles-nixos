@@ -19,7 +19,7 @@ with lib; {
         };
         font.name = "DejaVu Sans 11";
         gtk3.extraConfig = {
-          gtk-application-prefer-dark-theme = 1;
+          gtk-application-prefer-dark-theme = 0;
           gtk-cursor-theme-size = 0;
           gtk-cursor-theme-name = "Aidwata";
           gtk-toolbar-style = "GTK_TOOLBAR_BOTH";
