@@ -7,7 +7,7 @@ with lib; {
     programs.dconf.enable = true;
 
     my = {
-      home.gtk = {
+      home.gtk = rec {
         enable = true;
         iconTheme = {
           name = "Adwaita";
@@ -19,7 +19,7 @@ with lib; {
         };
         font.name = "DejaVu Sans 11";
         gtk3.extraConfig = {
-          gtk-application-prefer-dark-theme = 0;
+          gtk-application-prefer-dark-theme = 1;
           gtk-cursor-theme-size = 0;
           gtk-cursor-theme-name = "Aidwata";
           gtk-toolbar-style = "GTK_TOOLBAR_BOTH";
@@ -41,5 +41,11 @@ with lib; {
         Inherits=Aidwata
       '';
     };
+
+    system.userActivationScripts.linkGtk4Settings = ''
+      pushd /home/${config.my.username}/.config/gtk-4.0
+      ln -sf ../gtk-3.0/settings.ini settings.ini
+      popd
+    '';
   };
 }

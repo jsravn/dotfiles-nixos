@@ -85,4 +85,7 @@ with lib; {
 
   ## Networking
   networking.hostName = "loki";
+
+  ## Bluetooth
+  hardware.bluetooth.enable = true;
 }

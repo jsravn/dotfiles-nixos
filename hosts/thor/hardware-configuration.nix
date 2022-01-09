@@ -125,4 +125,7 @@ with lib; {
 
   ## Networking
   networking.hostName = "thor";
+
+  ## Bluetooth
+  hardware.bluetooth.enable = true;
 }
