@@ -1,6 +1,7 @@
 { ... }: {
   imports = [
     ./docker.nix
+    ./gdrive.nix
     #./kmonad.nix
     ./libvirtd.nix
     ./lorri.nix

@@ -36,6 +36,7 @@
       libvirtd.enable = true;
       lorri.enable = false;
       mjolnir.enable = true;
+      gdrive.enable = true;
       mullvad.enable = false;
       printers.enable = true;
       roon-bridge.enable = false;

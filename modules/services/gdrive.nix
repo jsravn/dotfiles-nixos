@@ -3,10 +3,10 @@
 with lib;
 
 let
-  cfg = config.modules.services.mjolnir;
-  mountDir = "${config.my.homeDirectory}/Cloud/mjolnir";
+  cfg = config.modules.services.gdrive;
+  mountDir = "${config.my.homeDirectory}/Cloud/gdrive";
 in {
-  options.modules.services.mjolnir = {
+  options.modules.services.gdrive = {
     enable = mkOption {
       type = types.bool;
       default = false;
@@ -16,16 +16,16 @@ in {
   config = mkIf cfg.enable {
     my = {
       packages = [ pkgs.rclone ];
-      home.systemd.user.services.mjolnir_mount = {
+      home.systemd.user.services.gdrive_mount = {
         Unit = {
-          Description = "mount mjolnir directories";
+          Description = "mount gdrive";
           After = "graphical-session.target";
         };
         Install.WantedBy = [ "graphical-session.target" ];
         Service = {
           ExecStartPre = "/run/current-system/sw/bin/mkdir -p ${mountDir}";
           ExecStart = ''
-            ${pkgs.rclone}/bin/rclone mount mjolnir:/mnt ${mountDir} \
+            ${pkgs.rclone}/bin/rclone mount google:/ ${mountDir} \
               --use-mmap \
               --vfs-cache-mode=full \
               --vfs-read-ahead=64M
