@@ -9,6 +9,15 @@ with lib; {
   ];
 
   config = mkIf config.modules.desktop.enable {
+    environment.systemPackages = with pkgs; [
+      dropbox
+      (runCommand "autostart-dropbox" { inherit (pkgs) dropbox; } ''
+        mkdir -p "$out/etc/xdg/autostart"
+        ln -s "$dropbox/share/applications/dropbox.desktop" \
+          "$out/etc/xdg/autostart/dropbox.desktop"
+      '')
+    ];
+
     my = {
       packages = with pkgs; [
         # Desktop apps
@@ -17,7 +26,6 @@ with lib; {
         deluge
         discord
         dr14_tmeter
-        dropbox
         gimp-with-plugins
         gitter
         glxinfo
@@ -33,6 +41,7 @@ with lib; {
         samba
         slack
         spotify
+        steam-run-native
         vulkan-tools
         wireshark
         zoom-us
@@ -72,11 +81,6 @@ with lib; {
     };
 
     programs.steam.enable = true;
-    environment.systemPackages = with pkgs;
-      [
-        # provides steam-run command
-        steam-run-native
-      ];
 
     # flatpak apps
     services.flatpak.enable = true;
