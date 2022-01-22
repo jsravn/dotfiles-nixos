@@ -42,6 +42,7 @@ with lib; {
         slack
         spotify
         steam-run-native
+        vscode
         vulkan-tools
         wireshark
         zoom-us

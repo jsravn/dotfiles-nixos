@@ -68,6 +68,9 @@ with lib; {
     };
   };
 
+  # Fix webkit views with nvidia.
+  environment.variables.WEBKIT_DISABLE_COMPOSITING_MODE = "1";
+
   ## Sound
   # Listen to SPDIF in.
   my.home.systemd.user.services.spdiflisten = {
@@ -80,8 +83,8 @@ with lib; {
     Service = {
       # Kludge to deal w/ pipewire sound cards not being immediately available.
       ExecStartPre = "${pkgs.coreutils}/bin/sleep 5";
-      ExecStart = "${pkgs.pipewire}/bin/pw-link alsa_input.pci-0000_05_00.0.iec958-stereo:capture_FR alsa_output.usb-Topping_D10-00.analog-stereo:playback_FR";
-      ExecStartPost = "${pkgs.pipewire}/bin/pw-link alsa_input.pci-0000_05_00.0.iec958-stereo:capture_FL alsa_output.usb-Topping_D10-00.analog-stereo:playback_FL";
+      ExecStart = "${pkgs.pipewire}/bin/pw-link alsa_input.pci-0000_05_00.0.iec958-stereo:capture_FL alsa_output.usb-Topping_D10-00.iec958-stereo:playback_FL";
+      ExecStartPost = "${pkgs.pipewire}/bin/pw-link alsa_input.pci-0000_05_00.0.iec958-stereo:capture_FR alsa_output.usb-Topping_D10-00.iec958-stereo:playback_FR";
       Type = "oneshot";
     };
   };
@@ -121,7 +124,12 @@ with lib; {
       options = [ "rw" ];
     };
   };
-  swapDevices = [ ];
+  swapDevices = [
+    {
+      device = "/swapfile";
+      size = 1024 * 8;
+    }
+  ];
 
   ## Networking
   networking.hostName = "thor";
