@@ -21,6 +21,7 @@ with lib; {
         iperf
         graphviz
         whois
+        gh
 
         # nix utilities
         nix-prefetch-scripts

@@ -7,6 +7,8 @@ with lib; {
       alsa.support32Bit = true;
       pulse.enable = true;
       jack.enable = true;
+      # Needed to get fixes for pulseaudio mic input.
+      package = pkgs.unstable.pipewire;
     };
 
     # required for pipewire PA emulation
