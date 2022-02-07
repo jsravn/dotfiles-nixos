@@ -5,8 +5,19 @@ with lib; {
     <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
   ];
 
-  # Use custom linux firmware that has the more recent firmware.
-  hardware.firmware = with pkgs; [ firmwareLinuxNonfree ];
+  # Enable linux firmware package.
+  hardware.firmware = with pkgs; [
+    # xxx: using master temporarily to get ax210 firmware fixes for bluetooth.
+    (firmwareLinuxNonfree.overrideAttrs (old: rec {
+      version = "182a186";
+      src = fetchgit {
+        url = old.src.url;
+        rev = "182a186c570baab3968ca9116ee58b1875fb0168";
+        sha256 = "0vb4pmjw4la07jgm20ldzf3l5l6xg7vb03vmwnk2lz08f0rfrwav";
+      };
+      outputHash = "08clg2kzcdpl8plp85z1nbna6lnp8kapwya1jfbdzr7dvhhg48rm";
+    }))
+  ];
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
