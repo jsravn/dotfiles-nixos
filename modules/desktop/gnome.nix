@@ -16,6 +16,7 @@ with lib; {
       displayManager.gdm = {
         enable = true;
         autoSuspend = false;
+        wayland = false;
       };
       desktopManager.gnome.enable = true;
       desktopManager.gnome.extraGSettingsOverrides = ''
