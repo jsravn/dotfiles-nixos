@@ -10,6 +10,8 @@
   # my.home.xdg.configFile."kitty/custom.conf".text =  ''
   #   font_size 14.0
   # '';
+  programs.adb.enable = true;
+  my.user.extraGroups = ["adbusers"];
 
   # Modules
   modules = {

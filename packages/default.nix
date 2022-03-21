@@ -28,7 +28,9 @@
       };
 
       # Make unstable packages available.
-      unstable = import <nixos-unstable> { };
+      unstable = import <nixos-unstable> {
+        config.allowUnfree = true;
+      };
     })
 
   # Provides emacsUnstable. Pin to last known good version.
