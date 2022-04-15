@@ -8,7 +8,7 @@ with lib; {
       pulse.enable = true;
       jack.enable = true;
       # Needed to get fixes for pulseaudio mic input.
-      package = pkgs.unstable.pipewire;
+      package = pkgs.pipewire;
     };
 
     # required for pipewire PA emulation

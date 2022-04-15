@@ -41,7 +41,7 @@ with lib; {
         samba
         slack
         spotify
-        steam-run-native
+        steam-run
         vscode
         vulkan-tools
         wireshark
