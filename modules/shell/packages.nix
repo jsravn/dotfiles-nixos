@@ -8,6 +8,8 @@ with lib; {
         lsof
         sipcalc
         bind
+        httpie
+        curlie
 
         # serial
         screen
