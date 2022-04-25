@@ -10,6 +10,17 @@ with lib; {
         bind
         httpie
         curlie
+        tcptrack
+        iperf
+        whois
+        conntrack-tools
+        iftop
+        mtr
+        ngrep
+
+        # system utils
+        sysstat
+        dstat
 
         # serial
         screen
@@ -19,11 +30,9 @@ with lib; {
         entr
         watch
         jq
-        dstat
-        iperf
         graphviz
-        whois
         gh
+        psmisc
 
         # nix utilities
         nix-prefetch-scripts
