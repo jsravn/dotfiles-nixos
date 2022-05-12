@@ -38,7 +38,6 @@ with lib; {
         procs
         tldr
         trash-cli
-        htop
         libnotify
         my.notify-send-sh
       ];

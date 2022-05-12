@@ -21,6 +21,8 @@ with lib; {
         # system utils
         sysstat
         dstat
+        htop
+        btop
 
         # serial
         screen
