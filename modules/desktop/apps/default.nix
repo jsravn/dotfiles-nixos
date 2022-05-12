@@ -21,6 +21,7 @@ with lib; {
     my = {
       packages = with pkgs; [
         # Desktop apps
+        anki
         audacity
         calibre
         deluge
@@ -34,7 +35,7 @@ with lib; {
         gparted
         mpv
         pinta
-        plexamp
+        unstable.plexamp
         plex-media-player
         plex-mpv-shim
         peek
