@@ -47,6 +47,7 @@ with lib; {
         vulkan-tools
         wireshark
         zoom-us
+        unstable.obsidian
 
         # Dev tools
         unstable.ghidra-bin

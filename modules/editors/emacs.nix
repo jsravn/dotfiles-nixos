@@ -15,7 +15,7 @@ with lib; {
 
     package = mkOption {
       type = types.package;
-      default = pkgs.emacsGcc;
+      default = pkgs.emacsNativeComp;
       description = "The Emacs package to use.";
     };
   };
