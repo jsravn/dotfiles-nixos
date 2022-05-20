@@ -17,12 +17,14 @@ with lib; {
         iftop
         mtr
         ngrep
+        xe
 
         # system utils
         sysstat
         dstat
         htop
         btop
+        rclone
 
         # serial
         screen
