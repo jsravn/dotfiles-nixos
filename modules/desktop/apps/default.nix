@@ -46,7 +46,7 @@ with lib; {
         vscode
         vulkan-tools
         wireshark
-        zoom-us
+        unstable.zoom-us
         unstable.obsidian
 
         # Dev tools

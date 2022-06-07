@@ -35,6 +35,10 @@ with lib; {
   networking.networkmanager.enable = true;
   networking.firewall.enable = false;
   networking.firewall.logRefusedConnections = false;
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
+  };
 
   # Core system packages for NixOS.
   environment.systemPackages = with pkgs; [
