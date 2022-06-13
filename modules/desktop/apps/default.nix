@@ -43,7 +43,6 @@ with lib; {
         slack
         spotify
         steam-run
-        vscode
         vulkan-tools
         wireshark
         unstable.zoom-us
@@ -53,6 +52,14 @@ with lib; {
         unstable.ghidra-bin
         pwndbg
         teensy-loader-cli
+        (vscode-with-extensions.override {
+          vscodeExtensions = with vscode-extensions;
+            [
+              ms-vsliveshare.vsliveshare
+              ms-vscode.Go
+              ms-vscode.python
+            ];
+        })
 
         # Games
         lutris
