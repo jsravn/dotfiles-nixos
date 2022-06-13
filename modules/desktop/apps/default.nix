@@ -52,12 +52,12 @@ with lib; {
         unstable.ghidra-bin
         pwndbg
         teensy-loader-cli
-        (vscode-with-extensions.override {
-          vscodeExtensions = with vscode-extensions;
+        (unstable.vscode-with-extensions.override {
+          vscodeExtensions = with unstable.vscode-extensions;
             [
               ms-vsliveshare.vsliveshare
-              ms-vscode.Go
-              ms-vscode.python
+              ms-python.python
+              ms-vscode.go
             ];
         })
 

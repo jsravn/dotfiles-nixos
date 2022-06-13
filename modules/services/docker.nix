@@ -9,7 +9,7 @@ with lib; {
 
   config = mkIf config.modules.services.docker.enable {
     my = {
-      packages = with pkgs; [ docker crane ];
+      packages = with pkgs; [ docker crane docker-compose ];
 
       env.DOCKER_CONFIG = "$XDG_CONFIG_HOME/docker";
       env.MACHINE_STORAGE_PATH = "$XDG_DATA_HOME/docker/machine";
