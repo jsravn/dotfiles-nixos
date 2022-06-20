@@ -25,7 +25,7 @@ with lib; {
         audacity
         calibre
         deluge
-        discord
+        #discord
         dr14_tmeter
         gimp-with-plugins
         gitter
@@ -34,6 +34,7 @@ with lib; {
         libreoffice
         gparted
         mpv
+        obs-studio
         pinta
         unstable.plexamp
         plex-media-player
@@ -45,7 +46,7 @@ with lib; {
         steam-run
         vulkan-tools
         wireshark
-        unstable.zoom-us
+        #zoom-us
         unstable.obsidian
 
         # Dev tools
@@ -94,6 +95,10 @@ with lib; {
 
     # flatpak apps
     services.flatpak.enable = true;
+    my.home.home.file.".local/share/flatpak/overrides/global".text = ''
+      [Context]
+      filesystems=/run/current-system/sw/share/X11/fonts:ro;/nix/store:ro
+    '';
 
     # gc adapter, teensy
     services.udev.extraRules = ''
