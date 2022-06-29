@@ -36,7 +36,7 @@ with lib; {
         mpv
         obs-studio
         pinta
-        unstable.plexamp
+        #unstable.plexamp
         plex-media-player
         plex-mpv-shim
         peek

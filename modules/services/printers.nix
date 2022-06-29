@@ -14,7 +14,7 @@ with lib; {
     hardware.printers.ensurePrinters = [{
       name = "hl-2135w";
       description = "Brother HL-2135W";
-      deviceUri = "ipp://BRN008092B8F915.local";
+      deviceUri = "dnssd://Brother%20HL-2130%20series._pdl-datastream._tcp.local/";
       location = "Home Office";
       ppdOptions = {
         PageSize = "A4";
