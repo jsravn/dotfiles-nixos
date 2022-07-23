@@ -52,7 +52,7 @@ with lib; {
     file
     pciutils
     usbutils
-    libsysfs
+    sysfsutils
     lm_sensors
   ];
 

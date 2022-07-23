@@ -15,15 +15,14 @@
         stepmania = (callPackage ./stepmania.nix { });
         gnome-extension-switcher = (callPackage ./switcher.nix { });
         paperwm = gnomeExtensions.paperwm.overrideAttrs (old: rec {
-          pname = "gnome-shell-extension-paperwm-community";
-          version = "3dc1e34c88df44184120abf4a6e689d1cfa73cc5";
+          pname = "gnome-shell-extension-paperwm-ccope";
+          version = "132bbb5c1aa0a7923e02afebee1aa7e3e3569221";
           src = super.fetchFromGitHub {
-            owner = "PaperWM-community";
+            owner = "ccope";
             repo = "PaperWM";
             rev = version;
-            sha256 = "039vfgmxzw8flmd70arbnr21l0s4avbra7h184ikvp6spw89jg6a";
+            sha256 = "sha256-0w5o3isDvXSmJ9N56qOIxnHz3XGKvBRgmGVB9LbiWEM=";
           };
-          patches = [ ./paperwm-prefs.patch ];
         });
       };
 

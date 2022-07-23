@@ -45,7 +45,7 @@ with lib; {
 
     environment.systemPackages = with pkgs; [
       # Give us all the manpages.
-      manpages
+      man-pages
 
       # Wireguard
       wireguard-tools

@@ -34,7 +34,7 @@ with lib; {
       autorun = true;
     };
     environment.systemPackages = with pkgs; [
-      gnome.gnome-tweak-tool
+      gnome.gnome-tweaks
       gnome.pomodoro
       gnomeExtensions.appindicator
       gnomeExtensions.caffeine

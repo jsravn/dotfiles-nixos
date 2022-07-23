@@ -14,5 +14,9 @@ in {
       home.programs.ssh.extraConfig = "Include sky";
       packages = with pkgs; [ aws openconnect ] ++ optional pkgs.stdenv.isLinux networkmanager-openconnect;
     };
+    # For when Sky DNS fails.
+    networking.extraHosts = ''
+      80.238.0.29 skyremoteaccess.bskyb.com
+    '';
   };
 }

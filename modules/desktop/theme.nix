@@ -15,7 +15,7 @@ with lib; {
         };
         theme = {
           name = "Adwaita";
-          package = pkgs.gnome3.gnome_themes_standard;
+          package = pkgs.gnome3.gnome-themes-extra;
         };
         font.name = "DejaVu Sans 11";
         gtk3.extraConfig = {
@@ -41,11 +41,5 @@ with lib; {
         Inherits=Aidwata
       '';
     };
-
-    system.userActivationScripts.linkGtk4Settings = ''
-      pushd /home/${config.my.username}/.config/gtk-4.0
-      ln -sf ../gtk-3.0/settings.ini settings.ini
-      popd
-    '';
   };
 }

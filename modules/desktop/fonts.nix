@@ -9,7 +9,7 @@ with lib; {
         dejavu_fonts
         noto-fonts-cjk
         noto-fonts-emoji
-        font-awesome-ttf
+        font-awesome
       ];
       fontconfig = {
         defaultFonts = {
@@ -43,7 +43,7 @@ with lib; {
       packages = with pkgs; [
         noto-fonts-cjk
         noto-fonts-emoji
-        font-awesome-ttf
+        font-awesome
       ];
     };
 
