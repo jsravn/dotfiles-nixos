@@ -40,6 +40,9 @@ with lib; {
 
         # nix utilities
         nix-prefetch-scripts
+
+        # build utils
+        bazelisk
       ];
     };
 
