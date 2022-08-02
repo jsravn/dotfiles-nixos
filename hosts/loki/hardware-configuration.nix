@@ -16,10 +16,12 @@ with lib; {
   boot.initrd.kernelModules = [ "amdgpu" ];
   boot.extraModulePackages = [ ];
   boot.kernelModules = [ "kvm-amd" "nct6775" "hid-apple" "wireguard" ];
-  # Use F keys as default on MacOS keyboards (aka Keychron).
+  # 1. Use F keys as default on MacOS keyboards (aka Keychron).
+  # 2. Fix ax210 wifi crashes.
   boot.extraModprobeConfig = ''
     options hid_apple fnmode=2
     options usbhid jspoll=1
+    options iwlmvm power_scheme=1
   '';
   boot.kernelParams = [ "iommu=pt" ];
 
