@@ -60,6 +60,10 @@ with lib; {
   };
   hardware.video.hidpi.enable = true;
 
+  # wayland fixes for gdm to prevent crashing at startup
+  systemd.services."getty@tty1".enable = false;
+  systemd.services."autovt@tty1".enable = false;
+
   ## SSDs
   services.fstrim.enable = true;
 
