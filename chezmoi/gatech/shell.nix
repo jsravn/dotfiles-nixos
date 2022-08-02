@@ -16,12 +16,19 @@ in
       dos2unix
       hexedit
       xinetd
+      openssl
+      hashcat
+      libseccomp
+      ruby
+      xortool
+      vice
+      hashcat-utils
+      libsodium
 
       (pkgs.python3.withPackages (p: with p; [
         pynacl
         pwntools
         joblib
       ]))
-      libseccomp
     ];
   }

@@ -26,6 +26,8 @@ pkgs.mkShell {
     unstable.google-cloud-sdk
     unstable.tektoncd-cli
     unstable.stern
+    nodejs
+    tcpdump
   ];
   shellHook = ''
     export JAVA_HOME=${pkgs.jdk11}/lib/openjdk
