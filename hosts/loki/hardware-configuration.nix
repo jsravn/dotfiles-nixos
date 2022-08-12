@@ -9,7 +9,7 @@ with lib; {
   hardware.firmware = with pkgs; [ firmwareLinuxNonfree ];
 
   # use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  #boot.kernelPackages = pkgs.linuxPackages_latest;
 
   boot.initrd.availableKernelModules =
     [ "xhci_pci" "nvme" "ahci" "usbhid" "uas" "usb_storage" "sd_mod" ];
@@ -20,7 +20,6 @@ with lib; {
   # 2. Fix ax210 wifi crashes.
   boot.extraModprobeConfig = ''
     options hid_apple fnmode=2
-    options usbhid jspoll=1
     options iwlmvm power_scheme=1
   '';
   boot.kernelParams = [ "iommu=pt" ];
@@ -52,8 +51,8 @@ with lib; {
   hardware.video.hidpi.enable = true;
 
   # wayland fixes for gdm to prevent crashing at startup
-  systemd.services."getty@tty1".enable = false;
-  systemd.services."autovt@tty1".enable = false;
+  #systemd.services."getty@tty1".enable = false;
+  #systemd.services."autovt@tty1".enable = false;
 
   ## SSDs
   services.fstrim.enable = true;
