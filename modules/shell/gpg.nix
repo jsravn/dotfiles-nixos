@@ -19,7 +19,7 @@ in {
   config = mkIf config.modules.shell.enable {
     my = {
       packages = with pkgs; [ gnupg ];
-      
+
       env.GNUPGHOME = homedir;
 
       home.xdg.configFile."gnupg/gpg-agent.conf" = {

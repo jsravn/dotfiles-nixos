@@ -1,5 +1,4 @@
 # KDE
-# Start with: systemctl start display-manager.service
 { config, lib, pkgs, ... }:
 with lib; {
   options.modules.desktop.kde = {
@@ -8,11 +7,18 @@ with lib; {
       default = false;
     };
   };
+
   config = mkIf config.modules.desktop.kde.enable {
     services.xserver = {
       enable = true;
       desktopManager.plasma5.enable = true;
-      autorun = false;
+      autorun = true;
     };
+
+    security.pam.services.kdm.enableKwallet = true;
+
+    environment.systemPackages = with pkgs; [
+      kde-gtk-config
+    ];
   };
 }
