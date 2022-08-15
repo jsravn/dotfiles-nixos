@@ -15,7 +15,7 @@ with lib; {
       autorun = true;
     };
 
-    security.pam.services.kdm.enableKwallet = true;
+    security.pam.services.sddm.enableKwallet = true;
 
     environment.systemPackages = with pkgs; [
       kde-gtk-config

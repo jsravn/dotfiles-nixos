@@ -128,9 +128,6 @@ with lib; {
   modules.shell.gpg.extraInit =
     [ "pinentry-program ${pkgs.pinentry.gtk2}/bin/pinentry" ];
 
-  # Use gpg as the ssh agent.
-  programs.gnupg.agent.enableSSHSupport = true;
-
   # Add /bin/bash. Yes, it's not pure, but it is pragmatic to do so.
   system.activationScripts.binbash = ''
     mkdir -m 0755 -p /bin
