@@ -46,7 +46,7 @@ with lib; {
         steam-run
         vulkan-tools
         wireshark
-        #zoom-us
+        zoom-us
         #unstable.obsidian
 
         # Dev tools
@@ -99,6 +99,7 @@ with lib; {
       [Context]
       filesystems=/run/current-system/sw/share/X11/fonts:ro;/nix/store:ro
     '';
+    xdg.portal.enable = true;
 
     # gc adapter, teensy
     services.udev.extraRules = ''
