@@ -43,6 +43,10 @@ with lib; {
 
         # build utils
         bazelisk
+
+        # dev utilities
+        binutils-unwrapped-all-targets
+        patchelf
       ];
     };
 
