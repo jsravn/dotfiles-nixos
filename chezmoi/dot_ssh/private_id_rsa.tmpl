@@ -1,1 +1,1 @@
-{{ trim (index (lastpass "keys/ssh") 0).note.privateKey }}
+{{ trim (bitwarden "item" "ssh_privateKey").notes }}

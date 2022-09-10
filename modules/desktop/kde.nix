@@ -20,6 +20,8 @@ with lib; {
 
     environment.systemPackages = with pkgs; [
       kde-gtk-config
+      unstable.ocs-url
+      kate
     ];
   };
 }

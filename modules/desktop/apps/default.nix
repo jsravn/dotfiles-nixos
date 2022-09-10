@@ -23,6 +23,8 @@ with lib; {
         # Desktop apps
         anki
         audacity
+        bitwarden
+        bitwarden-cli
         calibre
         deluge
         #discord
