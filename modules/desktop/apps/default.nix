@@ -55,14 +55,6 @@ with lib; {
         unstable.ghidra-bin
         pwndbg
         teensy-loader-cli
-        (unstable.vscode-with-extensions.override {
-          vscodeExtensions = with unstable.vscode-extensions;
-            [
-              ms-vsliveshare.vsliveshare
-              ms-python.python
-              ms-vscode.go
-            ];
-        })
 
         # Games
         lutris
