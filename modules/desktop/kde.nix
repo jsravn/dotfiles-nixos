@@ -22,6 +22,7 @@ with lib; {
       kde-gtk-config
       unstable.ocs-url
       kate
+      ark
     ];
   };
 }
