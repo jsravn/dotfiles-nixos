@@ -23,6 +23,7 @@ with lib; {
       unstable.ocs-url
       kate
       ark
+      partition-manager
     ];
   };
 }
