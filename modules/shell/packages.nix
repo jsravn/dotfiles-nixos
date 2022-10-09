@@ -37,6 +37,7 @@ with lib; {
         graphviz
         gh
         psmisc
+        xclip
 
         # nix utilities
         nix-prefetch-scripts
@@ -48,6 +49,9 @@ with lib; {
         binutils-unwrapped-all-targets
         patchelf
       ];
+
+      # allow easy piping into clipboard
+      alias.xclip = "xclip -selection c";
     };
 
     environment.systemPackages = with pkgs; [
