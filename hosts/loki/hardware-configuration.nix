@@ -1,15 +1,12 @@
 { config, pkgs, lib, ... }:
 with lib; {
-  imports = [
-    # Enables non-free firmware.
-    <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
-  ];
 
-  # Enable linux firmware package.
+  # Enable linux firmware packages.
   hardware.firmware = with pkgs; [ firmwareLinuxNonfree ];
+  hardware.enableRedistributableFirmware = true;
 
   # use latest kernel.
-  #boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   boot.initrd.availableKernelModules =
     [ "xhci_pci" "nvme" "ahci" "usbhid" "uas" "usb_storage" "sd_mod" ];
