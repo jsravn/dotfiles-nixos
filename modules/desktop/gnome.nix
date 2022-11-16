@@ -45,7 +45,7 @@ with lib; {
       gnomeExtensions.vertical-overview
       gnomeExtensions.disable-workspace-switch-animation-for-gnome-40
       #gnomeExtensions.paperwm
-      my.paperwm
+      #my.paperwm
       gnomeExtensions.switcher
       unstable.gnomeExtensions.pop-shell
       #my.pop-launcher
