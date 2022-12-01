@@ -22,7 +22,7 @@ with lib; {
   boot.kernelParams = [ "iommu=pt" ];
 
   ## CPU
-  nix.maxJobs = lib.mkDefault 16;
+  nix.settings.max-jobs = lib.mkDefault 16;
   hardware.cpu.amd.updateMicrocode = true;
   # AMD + power-profiles-daemon don't work due to https://bugzilla.kernel.org/show_bug.cgi?id=215177,
   # so use auto-cpufreq instead.

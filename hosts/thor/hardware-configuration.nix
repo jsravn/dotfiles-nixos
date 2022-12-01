@@ -25,7 +25,7 @@ with lib; {
   boot.kernelParams = [ "nomodeset" "acpi_enforce_resources=lax" "mitigations=off" ];
 
   ## CPU
-  nix.maxJobs = lib.mkDefault 32;
+  nix.settings.max-jobs = lib.mkDefault 32;
   powerManagement.cpuFreqGovernor = "performance";
   hardware.cpu.amd.updateMicrocode = true;
 

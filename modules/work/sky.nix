@@ -12,7 +12,7 @@ in {
   config = mkIf cfg.enable {
     my = {
       home.programs.ssh.extraConfig = "Include sky";
-      packages = with pkgs; [ aws openconnect ] ++ optional pkgs.stdenv.isLinux networkmanager-openconnect;
+      packages = with pkgs; [ awscli openconnect ] ++ optional pkgs.stdenv.isLinux networkmanager-openconnect;
     };
     # For when Sky DNS fails.
     networking.extraHosts = ''

@@ -47,7 +47,5 @@
       roon-bridge.enable = false;
       ssh.enable = false;
     };
-
-    work.sky.enable = true;
   };
 }
