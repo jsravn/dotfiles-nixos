@@ -1,3 +1,7 @@
+# Obsolete!
+
+I've declared technical bankruptcy on my NixOS configuration and gone back to a more practical desktop distro.
+
 # dotfiles
 
 My dotfiles. It is primarily a NixOS configuration for setting up an entire machine from scratch. In addition it also manages
